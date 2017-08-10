@@ -5,7 +5,6 @@ import (
 	"testing"
 )
 
-
 func TestReturnInt(t *testing.T) {
 	if ReturnInt() != 1 {
 		t.Error("expected 1")
@@ -17,7 +16,6 @@ func TestReturnFloat(t *testing.T) {
 		t.Error("expected 1.1")
 	}
 }
-
 
 func TestReturnIntArray(t *testing.T) {
 	if ReturnIntArray() != [3]int{1, 3, 4} {
