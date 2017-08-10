@@ -39,7 +39,7 @@ func MergeSlices(inF []float32, inI []int32) []int {
 func GetMapValuesSortedByKey(in map[int]string) []string {
 	var res []string
 	var rawKeys []int
-	for i, _ := range in {
+	for i := range in {
 		rawKeys = append(rawKeys, i)
 	}
 
