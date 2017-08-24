@@ -11,7 +11,7 @@ func Song() string {
 func Verse(in int) string {
 	var cnt, start int
 	var result string
-	for i := range e {
+	for i, _ := range e {
 		if string(e[i]) == "\n" {
 			if string(e[i+1]) == "\n" {
 				cnt++
