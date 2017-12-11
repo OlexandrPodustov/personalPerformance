@@ -66,4 +66,4 @@ func Verses(i, n int) string {
 	res = res[:len(res)-2]
 	return res
 }
-func Song() string { return Verses(1,len(sng)-1) }
+func Song() string { return Verses(1, len(sng)-1) }
