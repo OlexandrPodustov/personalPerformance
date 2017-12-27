@@ -5,25 +5,25 @@ import (
 	"fmt"
 )
 
-//Record ...
+// Record ...
 type Record struct {
 	ID, Parent int
 }
 
-//Node ...
+// Node ...
 type Node struct {
 	ID       int
 	Children []*Node
 }
 
-//Mismatch ...
+// Mismatch ...
 type Mismatch struct{}
 
 func (m Mismatch) Error() string {
 	return "c"
 }
 
-//Build ...
+// Build ...
 func Build(records []Record) (*Node, error) {
 	if len(records) == 0 {
 		return nil, nil
