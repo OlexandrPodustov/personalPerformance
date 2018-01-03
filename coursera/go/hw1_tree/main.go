@@ -1,7 +1,11 @@
 package main
 
 import (
+	"fmt"
+	"io"
 	"os"
+	//"path/filepath"
+	//"strings"
 )
 
 func main() {
@@ -15,4 +19,21 @@ func main() {
 	if err != nil {
 		panic(err.Error())
 	}
+}
+
+func dirTree(writer io.Writer, s string, b bool) error {
+	file, err := os.Open(s)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	fstat, err := file.Stat()
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("fstat.IsDir() %#v\n", fstat.IsDir())
+	fmt.Printf("fstat.Size() (%+vb)\n", fstat.Size())
+	return nil
 }
