@@ -1,0 +1,29 @@
+WITH
+    T1 AS (
+      SELECT
+        SETTINGS.KEY,
+        SETTINGS.VALUE,
+        1
+      FROM
+        DASHBOARD_USER_SETTINGS AS SETTINGS
+      WHERE
+        SETTINGS.KEY = 'Widget1'
+        AND SETTINGS.USER_ID = 'userid3'
+  )
+SELECT
+  SETTINGS.KEY,
+  SETTINGS.VALUE,
+  2 AS PR
+FROM
+  DASHBOARD_SETTINGS AS SETTINGS
+WHERE
+  SETTINGS.KEY = 'Widget1'
+  AND NOT EXISTS(
+      SELECT *
+      FROM
+        T1
+  )
+UNION
+SELECT *
+FROM
+  T1;
