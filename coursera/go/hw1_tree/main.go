@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"io"
 	"os"
-	//"path/filepath"
+	"path/filepath"
 	//"strings"
+	"log"
 )
 
 func main() {
@@ -17,23 +18,34 @@ func main() {
 	printFiles := len(os.Args) == 3 && os.Args[2] == "-f"
 	err := dirTree(out, path, printFiles)
 	if err != nil {
-		panic(err.Error())
+		//panic(err.Error())
+		log.Println("aaa", err.Error())
 	}
 }
 
 func dirTree(writer io.Writer, s string, b bool) error {
+	_, err := fmt.Fprintf(writer, "received path - %+v\t, Base - %+v\n", s, filepath.Base(s))
+	checkErr(err)
+
 	file, err := os.Open(s)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
+	checkErr(err)
 
-	fstat, err := file.Stat()
-	if err != nil {
-		return err
-	}
+	w := new(filepath.WalkFunc)
+	err = filepath.Walk(file.Name(), *w)
+	checkErr(err)
 
-	fmt.Printf("fstat.IsDir() %#v\n", fstat.IsDir())
-	fmt.Printf("fstat.Size() (%+vb)\n", fstat.Size())
+	//if v.IsDir() {
+	//	_, err = fmt.Fprintf(writer, "├─── %+v\n", v.Name())
+	//	checkErr(err)
+	//}
+	err = file.Close()
+	checkErr(err)
+	//dirTree(writer, file.Name(), b)
 	return nil
+}
+
+func checkErr(err error) {
+	if err != nil {
+		log.Fatal("ERROR:", err)
+	}
 }
