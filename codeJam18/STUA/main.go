@@ -1,11 +1,9 @@
 package main
 
 import (
-	"bufio"
 	"bytes"
 	"fmt"
 	"log"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -15,13 +13,23 @@ func main() {
 		caseNumber int
 	)
 
-	file, err := os.Open("tst.txt")
+	var a int
+	fmt.Print("enter tc am:")
+	_, err := fmt.Scan(&a)
 	if err != nil {
-		log.Fatal(err)
+		log.Println("fmt.Scanln(&anb)", err)
 	}
-	defer file.Close()
+	var res []int
+	for i := 0; i < a; i++ {
+		fmt.Print("enter n and str:")
+		var r int
+		_, err = fmt.Scan(&r)
+		if err != nil {
+			log.Println("fmt.Scanln(&n):", err)
+		}
+		res = append(res, r)
+	}
 
-	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		//fmt.Println(scanner.Text())
 		readL := scanner.Bytes()
