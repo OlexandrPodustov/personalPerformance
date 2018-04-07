@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"math"
 )
 
 //1 ≤ T ≤ 20.
@@ -18,20 +19,22 @@ func main() {
 	//fmt.Print("T:")
 	fmt.Scanf("%d", &t)
 	for ij := 1; ij <= t; ij++ {
-
 		var i, j, n, c, r int
 		fmt.Scanf("%d", &n)
-
-		if n%3 == 0 {
-			r = n / 3
-			c = r
+		sqr := math.Sqrt(float64(n))
+		c = int(sqr)
+		if c*c == n {
+			r = c
+		} else if sqr > float64(c) {
+			r = c + 1
 		}
 
 		fmt.Println("n", n)
 		fmt.Println("r", r)
 		fmt.Println("c", c)
+		r0, c0 := 10, 10
 		for {
-			fmt.Println("10 10")
+			fmt.Println(r0, c0)
 			//fmt.Printf("i and j:")
 			fmt.Scanf("%d %d", &i, &j)
 			if i == 0 && j == 0 {
@@ -43,11 +46,11 @@ func main() {
 				matrix[i][j] = 1
 			}
 		}
-		rect := matrix[i : j+1]
+		rect := matrix[r0 : r0+r]
 		for ii := 0; ii < len(rect); ii++ {
-			rect[ii] = rect[ii][i : j+1]
+			rect[ii] = rect[ii][c0 : c0+c]
 		}
 		fmt.Println("rect", len(rect))
-		fmt.Println("rect", rect)
+		//fmt.Println("rect", rect)
 	}
 }
