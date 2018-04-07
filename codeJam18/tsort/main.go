@@ -1,18 +1,20 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"log"
-	"os"
 	"strconv"
 )
 
 func main() {
-	scanner, tc := openF()
+	var tc int
+	_, err := fmt.Scanln(&tc)
+	if err != nil {
+		log.Println("fmt.Scanln(&t)", err)
+	}
 
 	for i := 0; i < tc; i++ {
-		sliceToSort := loopTC(scanner)
+		sliceToSort := loopTC()
 
 		sliceToCheck := tSort(sliceToSort)
 
@@ -22,57 +24,54 @@ func main() {
 	}
 }
 
-func checkAscending(inSlice []byte) string {
+func tSort(res []int) []int {
+	var done bool
+	for !done {
+		done = true
+		for i := 0; i < len(res)-2; i++ {
+			if res[i] > res[i+2] {
+				//fmt.Println("bef", res)
+				res[i], res[i+2] = res[i+2], res[i]
+				//fmt.Println("after: ", res)
+				done = false
+			}
+		}
+	}
 
+	return res
+}
+
+func checkAscending(intSlice []int) string {
+	var done bool
+	for !done {
+		done = true
+		for i := 0; i < len(intSlice)-1; i++ {
+			if intSlice[i] > intSlice[i+1] {
+				//intSlice[i], intSlice[i+1] = intSlice[i+1], intSlice[i]
+				//fmt.Println("after 2: ", intSlice)
+				done = false
+				//fmt.Println("wrong index", i)
+				return strconv.Itoa(i)
+			}
+		}
+	}
 	return "OK"
 }
 
-func openF() (*bufio.Scanner, int) {
-	var tcAmnt int
-
-	file, err := os.Open("tst.txt")
+func loopTC() []int {
+	var a int
+	_, err := fmt.Scan(&a)
 	if err != nil {
-		log.Fatal(err)
+		log.Println("fmt.Scanln(&anb)", err)
 	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-	if scanner.Scan() {
-		aNumber := scanner.Text()
-		tcAmnt, err = strconv.Atoi(aNumber)
+	var res []int
+	for i := 0; i < a; i++ {
+		var r int
+		_, err = fmt.Scan(&r)
 		if err != nil {
-			log.Fatal(err)
+			log.Println("fmt.Scanln(&n):", err)
 		}
-		fmt.Println("tc amount", tcAmnt)
+		res = append(res, r)
 	}
-
-	return scanner, tcAmnt
-}
-
-func loopTC(scanner *bufio.Scanner) []byte {
-	scanner.Scan()
-	ds := scanner.Text()
-	size, err := strconv.Atoi(ds)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println("dataSet size", size)
-	scanner.Scan()
-	slsl := scanner.Bytes()
-	fmt.Printf("data to sort:%q \n", slsl)
-
-	return slsl
-}
-
-func tSort(L []byte) []byte {
-	var res []byte
-
-	for i := 0; i < len(L)-2; i++ {
-		if L[i] > L[i+2] {
-
-		}
-	}
-
 	return res
 }
