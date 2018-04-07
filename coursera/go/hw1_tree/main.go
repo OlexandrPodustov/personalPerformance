@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"path/filepath"
+	//"path/filepath"
 	//"strings"
 	"log"
 )
@@ -24,23 +24,22 @@ func main() {
 }
 
 func dirTree(writer io.Writer, s string, b bool) error {
-	_, err := fmt.Fprintf(writer, "received path - %+v\t, Base - %+v\n", s, filepath.Base(s))
-	checkErr(err)
-
 	file, err := os.Open(s)
 	checkErr(err)
-
-	w := new(filepath.WalkFunc)
-	err = filepath.Walk(file.Name(), *w)
-	checkErr(err)
-
-	//if v.IsDir() {
-	//	_, err = fmt.Fprintf(writer, "├─── %+v\n", v.Name())
-	//	checkErr(err)
-	//}
+	fileDirs, err := file.Readdir(0)
 	err = file.Close()
 	checkErr(err)
-	//dirTree(writer, file.Name(), b)
+
+	for _, v := range fileDirs {
+		if v.IsDir() {
+			_, err = fmt.Fprintf(writer, "|")
+			checkErr(err)
+			_, err = fmt.Fprintf(writer, "├─── %+v\n", v.Name())
+			checkErr(err)
+			dirTree(writer, v.Name(), b)
+			os.Chdir("..")
+		}
+	}
 	return nil
 }
 

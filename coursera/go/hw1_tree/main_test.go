@@ -5,7 +5,8 @@ import (
 	"testing"
 )
 
-const testFullResult = `├───project
+const (
+	testFullResult = `├───project
 │	├───file.txt (19b)
 │	└───gopher.png (70372b)
 ├───static
@@ -35,6 +36,20 @@ const testFullResult = `├───project
 │			└───gopher.png (70372b)
 └───zzfile.txt (empty)
 `
+	testDirResult = `├───project
+├───static
+│	├───a_lorem
+│	│	└───ipsum
+│	├───css
+│	├───html
+│	├───js
+│	└───z_lorem
+│		└───ipsum
+└───zline
+	└───lorem
+		└───ipsum
+`
+)
 
 func TestTreeFull(t *testing.T) {
 	out := new(bytes.Buffer)
@@ -48,19 +63,7 @@ func TestTreeFull(t *testing.T) {
 	}
 }
 
-const testDirResult = `├───project
-├───static
-│	├───a_lorem
-│	│	└───ipsum
-│	├───css
-│	├───html
-│	├───js
-│	└───z_lorem
-│		└───ipsum
-└───zline
-	└───lorem
-		└───ipsum
-`
+//const
 
 func TestTreeDir(t *testing.T) {
 	out := new(bytes.Buffer)
