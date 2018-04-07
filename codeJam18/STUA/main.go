@@ -9,55 +9,37 @@ import (
 )
 
 func main() {
-	var (
-		caseNumber int
-	)
+	var tCasesAmount int
+	var caseNumber int
 
-	var a int
-	fmt.Print("enter tc am:")
-	_, err := fmt.Scan(&a)
+	//fmt.Print("enter tc am:")
+	_, err := fmt.Scan(&tCasesAmount)
 	if err != nil {
-		log.Println("fmt.Scanln(&anb)", err)
+		log.Fatalln("fmt.Scanln(&anb)", err)
 	}
-	var res []int
-	for i := 0; i < a; i++ {
-		fmt.Print("enter n and str:")
+
+	for i := 0; i < tCasesAmount; i++ {
+		//fmt.Print("n and str:")
 		var r int
 		_, err = fmt.Scan(&r)
 		if err != nil {
-			log.Println("fmt.Scanln(&n):", err)
+			log.Fatalln("fmt.Scanln(&n):", err)
 		}
-		res = append(res, r)
-	}
+		//fmt.Println("n", r)
 
-	for scanner.Scan() {
-		//fmt.Println(scanner.Text())
-		readL := scanner.Bytes()
-		slsl := bytes.Split(readL, []byte(" "))
-		//fmt.Printf("%#v \n", len(slsl))
-		//if len(slsl) == 1 {
-		//	fmt.Println(string(slsl[0]))
-		//	testCasesAmount, err := strconv.Atoi(string(slsl[0]))
-		//	if err != nil {
-		//		log.Fatal(err)
-		//	}
-		//}
-		if len(slsl) == 2 {
-			caseNumber++
-			maxWithstand, err := strconv.Atoi(string(slsl[0]))
-			if err != nil {
-				log.Fatal(err)
-			}
-			result := calc(uint(maxWithstand), &slsl[1])
-			fmt.Printf("Case #%v: %v\n", caseNumber, result)
+		var st string
+		_, err = fmt.Scan(&st)
+		if err != nil {
+			log.Fatalln("fmt.Scanln(&n):", err)
 		}
-		if len(slsl) > 2 {
-			log.Fatal("\t len(slsl) > 2 - unexxpected string length")
+		//fmt.Println("st", st)
+		caseNumber++
+		var sliceB []byte
+		for _, v := range st {
+			sliceB = append(sliceB, byte(v))
 		}
-	}
-
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
+		result := calc(uint(r), &sliceB)
+		fmt.Printf("Case #%v: %v\n", caseNumber, result)
 	}
 }
 
@@ -107,7 +89,7 @@ func calc(maxWithstand uint, input *[]byte) string {
 func countDamage(input *[]byte) uint {
 	var damage uint = 1
 	var minTotalDamage uint
-	for i, v := range *input {
+	for _, v := range *input {
 		switch v {
 		case 'C':
 			damage = damage * 2
@@ -116,7 +98,7 @@ func countDamage(input *[]byte) uint {
 			minTotalDamage += damage
 			//fmt.Println("S - shoot: ", damage)
 		default:
-			fmt.Println("\t default case: ", i, v)
+			//fmt.Println("\t default case: ", i, v)
 		}
 	}
 
