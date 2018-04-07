@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func main() {
@@ -90,49 +91,26 @@ func calc(maxWithstand uint, input []byte) string {
 
 	// swap
 	var amountOfiterationsToDeactivate int
-	for j := len(input) - 1; j > 0; j-- {
+	for {
+		fmt.Println("\t minTotalDamage, damage", minTotalDamage, damage)
 		if minTotalDamage <= maxWithstand {
 			//fmt.Println("\t\t minTotalDamage <= maxWithstand. stop swapping. minTotalDamage:", strconv.Itoa(int(minTotalDamage)))
 			return strconv.Itoa(amountOfiterationsToDeactivate)
 		}
 
-		if input[j-1] < input[j] {
-			amountOfiterationsToDeactivate++
-			//fmt.Println("input j:", j-1, j, string(input[j-1]), string(input[j]), input[j-1], input[j])
-			//input[j], input[j-1] = input[j-1], input[j]
-			//fmt.Println("\tinput:", string(input))
-			damage -= damage / 2
-			minTotalDamage -= damage
+		combinationIndex := strings.LastIndex(string(input), "CS")
+		if combinationIndex == -1 {
+			break
 		}
-	}
 
-	//swap the whole array
-	l := len(input)
-	middle := l / 2
-	for i := 0; i < middle; i++ {
-		l--
-		input[i], input[l] = input[l], input[i]
-	}
+		//fmt.Println("\t combinationIndex", combinationIndex)
+		amountOfiterationsToDeactivate++
+		input[combinationIndex], input[combinationIndex+1] = input[combinationIndex+1], input[combinationIndex]
+		fmt.Println("\t new string(input):", string(input))
 
-	// find the first occurrence of SC though our slice is swapped
-	fmt.Println("\t string(input)", string(input))
-	combinationPresent := bytes.IndexAny(input, "SC")
-	fmt.Println("\t combinationPresent", combinationPresent)
-	//for {
-	//if found substr:
-	// {
-	//		amountOfiterationsToDeactivate++
-	//		//input[j], input[j-1] = input[j-1], input[j]
-	//		fmt.Println("input:", string(input))
-	//		damage -= damage / 2
-	//		minTotalDamage -= damage
-	//
-	//	}
-	//if substr is absent - break
-	//{
-	// break
-	// }
-	//}
+		damage -= damage / 2
+		minTotalDamage -= damage
+	}
 
 	if minTotalDamage > maxWithstand {
 		fmt.Println("IMPOSSIBLE input:", string(input))
