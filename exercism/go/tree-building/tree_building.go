@@ -3,7 +3,6 @@ package tree
 import (
 	"errors"
 	"fmt"
-	"log"
 )
 
 type Record struct {
@@ -21,81 +20,74 @@ func (m Mismatch) Error() string {
 	return "c"
 }
 
-func Build(inputDataRecords []Record) (*Node, error) {
-	if len(inputDataRecords) == 0 {
+func Build(records []Record) (*Node, error) {
+	if len(records) == 0 {
 		return nil, nil
 	}
-	rootNodePointer := &Node{}
-	todoSliceCurrentIteration := []*Node{rootNodePointer}
-
+	root := &Node{}
+	todo := []*Node{root}
 	n := 1
 	for {
-		log.Println("n", n)
-		log.Println("rootNodePointer", rootNodePointer)
-		log.Printf("%v - todoSliceCurrentIteration\n", todoSliceCurrentIteration)
-		log.Println(len(todoSliceCurrentIteration), "len(todoSliceCurrentIteration)")
-		if len(todoSliceCurrentIteration) == 0 {
-			log.Println("break\n\n")
+		if len(todo) == 0 {
 			break
 		}
 		newTodo := []*Node(nil)
-		for _, currentSliceValue := range todoSliceCurrentIteration {
-			for _, currentRecordValue := range inputDataRecords {
-				if currentRecordValue.Parent == currentSliceValue.ID {
-					if currentRecordValue.ID < currentSliceValue.ID {
+		for _, c := range todo {
+			for _, r := range records {
+				if r.Parent == c.ID {
+					if r.ID < c.ID {
 						return nil, errors.New("a")
-					} else if currentRecordValue.ID == currentSliceValue.ID {
-						if currentRecordValue.ID != 0 {
+					} else if r.ID == c.ID {
+						if r.ID != 0 {
 							return nil, fmt.Errorf("b")
 						}
 					} else {
 						n++
-						switch len(currentSliceValue.Children) {
+						switch len(c.Children) {
 						case 0:
-							nn := &Node{ID: currentRecordValue.ID}
-							currentSliceValue.Children = []*Node{nn}
+							nn := &Node{ID: r.ID}
+							c.Children = []*Node{nn}
 							newTodo = append(newTodo, nn)
 						case 1:
-							nn := &Node{ID: currentRecordValue.ID}
-							if currentSliceValue.Children[0].ID < currentRecordValue.ID {
-								currentSliceValue.Children = []*Node{currentSliceValue.Children[0], nn}
+							nn := &Node{ID: r.ID}
+							if c.Children[0].ID < r.ID {
+								c.Children = []*Node{c.Children[0], nn}
 								newTodo = append(newTodo, nn)
 							} else {
-								currentSliceValue.Children = []*Node{nn, currentSliceValue.Children[0]}
+								c.Children = []*Node{nn, c.Children[0]}
 								newTodo = append(newTodo, nn)
 							}
 						default:
-							nn := &Node{ID: currentRecordValue.ID}
+							nn := &Node{ID: r.ID}
 							newTodo = append(newTodo, nn)
 						breakpoint:
 							for range []bool{false} {
-								for i, cc := range currentSliceValue.Children {
-									if cc.ID > currentRecordValue.ID {
-										//try to create a slice outside all loops with a redundant capasity
-										a := make([]*Node, len(currentSliceValue.Children)+1)
-										copy(a, currentSliceValue.Children[:i])
-										copy(a[i+1:], currentSliceValue.Children[i:])
+								for i, cc := range c.Children {
+									if cc.ID > r.ID {
+										a := make([]*Node, len(c.Children)+1)
+										copy(a, c.Children[:i])
+										copy(a[i+1:], c.Children[i:])
 										copy(a[i:i+1], []*Node{nn})
-										currentSliceValue.Children = a
+										c.Children = a
 										break breakpoint
 									}
 								}
-								currentSliceValue.Children = append(currentSliceValue.Children, nn)
+								c.Children = append(c.Children, nn)
 							}
 						}
 					}
 				}
 			}
 		}
-		todoSliceCurrentIteration = newTodo
+		todo = newTodo
 	}
-	if n != len(inputDataRecords) {
+	if n != len(records) {
 		return nil, Mismatch{}
 	}
-	if err := chk(rootNodePointer, len(inputDataRecords)); err != nil {
+	if err := chk(root, len(records)); err != nil {
 		return nil, err
 	}
-	return rootNodePointer, nil
+	return root, nil
 }
 
 func chk(n *Node, m int) (err error) {
