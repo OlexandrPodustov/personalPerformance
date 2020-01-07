@@ -4,22 +4,6 @@ import "testing"
 
 const targetTestVersion = 1
 
-var testCases = []struct {
-	word     string
-	expected bool
-}{
-	{"duplicates", true},
-	{"eleven", false},
-	{"subdermatoglyphic", true},
-	{"Alphabet", false},
-	{"thumbscrew-japingly", true},
-	{"Hjelmqvist-Gryb-Zock-Pfund-Wax", true},
-	{"Heizölrückstoßabdämpfung", true},
-	{"the quick brown fox", false},
-	{"Emily Jung Schwartzkopf", true},
-	{"éléphant", false},
-}
-
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
@@ -28,11 +12,11 @@ func TestTestVersion(t *testing.T) {
 
 func TestIsIsogram(t *testing.T) {
 	for _, c := range testCases {
-		if IsIsogram(c.word) != c.expected {
-			t.Fatalf("FAIL: Word %q, expected %v, got %v", c.word, c.expected, !c.expected)
+		if IsIsogram(c.input) != c.expected {
+			t.Fatalf("FAIL: Word %q, expected %v, got %v", c.input, c.expected, !c.expected)
 		}
 
-		t.Logf("PASS: Word %q", c.word)
+		t.Logf("PASS: Word %q", c.input)
 	}
 }
 
@@ -42,7 +26,7 @@ func BenchmarkIsIsogram(b *testing.B) {
 		b.StartTimer()
 
 		for i := 0; i < b.N; i++ {
-			IsIsogram(c.word)
+			IsIsogram(c.input)
 		}
 
 		b.StopTimer()

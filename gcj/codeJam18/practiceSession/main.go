@@ -82,7 +82,6 @@ func main() {
 				b = val - 1
 			case answer == "CORRECT":
 				corr = true
-				break
 			default:
 				log.Println("default case")
 			}

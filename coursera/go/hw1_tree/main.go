@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"io"
 	"os"
-	//"path/filepath"
-	//"strings"
 	"log"
 )
 
@@ -27,6 +25,8 @@ func dirTree(writer io.Writer, s string, b bool) error {
 	file, err := os.Open(s)
 	checkErr(err)
 	fileDirs, err := file.Readdir(0)
+	checkErr(err)
+
 	err = file.Close()
 	checkErr(err)
 

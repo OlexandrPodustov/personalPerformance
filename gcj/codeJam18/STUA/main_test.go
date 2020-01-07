@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"git.4tree.de/UWF/uwf-vendor/github.com/matryer/is"
 	"testing"
+
+	"github.com/matryer/is"
 )
 
 type univ struct {

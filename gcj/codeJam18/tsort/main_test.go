@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"git.4tree.de/UWF/uwf-vendor/github.com/matryer/is"
+	"github.com/matryer/is"
 )
 
 type univ struct {
