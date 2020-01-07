@@ -18,7 +18,7 @@ func Range(min, max int) (res []Triplet) {
 }
 
 func Sum(in int) (resultTriplet []Triplet) {
-	var tripletMap map[[3]int]bool = make(map[[3]int]bool)
+	var tripletMap = make(map[[3]int]bool)
 	for i := 1; i <= 10; i++ {
 		for ii := i + 1; ii <= 10; ii++ {
 			a, b, c := check(ii, i)

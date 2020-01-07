@@ -19,7 +19,7 @@ func Valid(s string) (b bool) {
 			return
 		}
 	}
-	var sl []int = make([]int, len(s))
+	var sl = make([]int, len(s))
 
 	var nv int
 	for i, v := range s {
@@ -53,7 +53,7 @@ func Valid(s string) (b bool) {
 
 	var sum int
 	for _, v := range sl {
-		sum += int(v)
+		sum += v
 	}
 	if sum%10 == 0 {
 		b = true

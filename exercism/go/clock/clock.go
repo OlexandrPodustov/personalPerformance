@@ -26,7 +26,7 @@ func min2hr(min int) (h, m int) {
 		mm = 60*24 + min%(24*60)
 	}
 	hh = mm / 60
-	mm = mm % 60
+	mm %= 60
 	return hh, mm
 }
 

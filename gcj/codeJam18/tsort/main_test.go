@@ -1,10 +1,7 @@
 package main
 
 import (
-	"fmt"
 	"testing"
-
-	"github.com/matryer/is"
 )
 
 type univ struct {
@@ -30,25 +27,18 @@ var tt = []univ{
 }
 
 func TestRun(t *testing.T) {
-	it := is.New(t)
 	for _, test := range tt {
 		t.Log(test)
-		var b []byte
-		for _, v := range test.rawDataSet {
-			b = append(b, byte(v))
-		}
 
-		res := tSort(b)
+		res := tSort(test.rawDataSet)
 
 		actualResult := checkAscending(res)
 
-		it.Equal(test.expectedResult, actualResult) // test.expectedResult != actualResult
+		if test.expectedResult != actualResult {
+			t.Errorf("actualResult: %s", actualResult)
+			t.Fail()
+		}
+
 	}
 
-}
-
-func BenchmarkBbbbb(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		fmt.Sprintf("hello")
-	}
 }

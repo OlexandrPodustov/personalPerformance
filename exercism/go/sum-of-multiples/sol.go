@@ -3,7 +3,7 @@ package summultiples
 const testVersion = 2
 
 func SumMultiples(in int, list ...int) (res int) {
-	var ma map[int]bool = make(map[int]bool)
+	var ma = make(map[int]bool)
 	for iter := 1; iter < in; iter++ {
 		for _, digit := range list {
 			number := in - iter

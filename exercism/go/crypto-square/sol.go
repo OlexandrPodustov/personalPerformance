@@ -25,12 +25,12 @@ func Encode(m string) string {
 		c = int(intpart) + 1
 		r = int(intpart)
 		if c*r < le {
-			r = r + 1
+			r++
 		}
 		//log.Println("intpart2 - c, r", c, r, c*r, le)
 	}
 
-	var slsl []string = make([]string, r)
+	var slsl = make([]string, r)
 	//m = "splun"
 	for i := 0; i < r; i++ {
 

@@ -61,7 +61,7 @@ func Verses(i, n int) string {
 	var res string
 
 	for _, v := range sng[i : n+1] {
-		res += string(v) + "\n\n"
+		res += v + "\n\n"
 	}
 	res = res[:len(res)-2]
 	return res

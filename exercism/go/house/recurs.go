@@ -28,7 +28,7 @@ func Verse(in int) string {
 }
 
 var (
-	e string = `This is the house that Jack built.
+	e = `This is the house that Jack built.
 
 This is the malt
 that lay in the house that Jack built.

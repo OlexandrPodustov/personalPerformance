@@ -6,12 +6,6 @@ import (
 
 const targetTestVersion = 1
 
-type testCase struct {
-	input         string
-	expected      bool
-	failureReason string
-}
-
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)

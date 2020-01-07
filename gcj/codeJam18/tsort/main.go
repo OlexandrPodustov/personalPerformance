@@ -51,7 +51,7 @@ func checkAscending(intSlice []int) string {
 				//fmt.Println("after 2: ", intSlice)
 				done = false
 				//fmt.Println("wrong index", i)
-				return strconv.Itoa(i)
+				return strconv.Itoa(i + 1)
 			}
 		}
 	}

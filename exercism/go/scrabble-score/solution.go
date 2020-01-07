@@ -5,7 +5,7 @@ import "strings"
 
 const testVersion = 5
 
-var scores map[int][]string = map[int][]string{
+var scores = map[int][]string{
 	1:  []string{"A", "E", "I", "O", "U", "L", "N", "R", "S", "T"},
 	2:  []string{"D", "G"},
 	3:  []string{"B", "C", "M", "P"},
