@@ -19,7 +19,7 @@ func Frequency(s string) FreqMap {
 //ConcurrentFrequency is new func implemented by me. Speed is low. :todo -revise.
 func ConcurrentFrequency(in []string) (r FreqMap) {
 	r = make(FreqMap)
-	var c chan FreqMap = make(chan FreqMap, len(in))
+	var c = make(chan FreqMap, len(in))
 	var rrr sync.RWMutex
 	var wg sync.WaitGroup
 

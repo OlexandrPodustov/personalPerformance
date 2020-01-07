@@ -56,7 +56,7 @@ func decipher(input []int, alphabetMap map[int]string) string {
 		for v := range alphabetMap {
 			// fmt.Println("try prime from map: ", v)
 
-			if got := input[i] / v; int(got)*v == input[i] {
+			if got := input[i] / v; (got)*v == input[i] {
 				// fmt.Println(input[i], "divided by: ", v, " got ", got)
 				a = v
 				b = got
@@ -65,7 +65,7 @@ func decipher(input []int, alphabetMap map[int]string) string {
 		}
 
 		for v := range alphabetMap {
-			if got := input[i+1] / v; int(got)*v == input[i+1] {
+			if got := input[i+1] / v; (got)*v == input[i+1] {
 				// fmt.Println(input[i+1], "divided by: ", v, " got ", got)
 				c = v
 				d = got
@@ -101,7 +101,7 @@ func decipher(input []int, alphabetMap map[int]string) string {
 		// fmt.Println("input: ", input[i])
 		// fmt.Println("try prime from map: ", v)
 
-		if got := input[i] / lastInt; int(got)*lastInt == input[i] {
+		if got := input[i] / lastInt; (got)*lastInt == input[i] {
 			// fmt.Println(input[i], "divided by: ", lastInt, " got ", got)
 
 			result += fmt.Sprintf("%v", alphabetMap[got])

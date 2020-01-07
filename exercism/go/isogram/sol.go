@@ -7,7 +7,7 @@ const testVersion = 1
 
 // IsIsogram helps us to check whether the word is an isogram or not
 func IsIsogram(in string) (res bool) {
-	var countmap map[rune]int = make(map[rune]int)
+	var countmap = make(map[rune]int)
 	ns := strings.Replace(strings.ToLower(in), "-", "", -1)
 	ns = strings.Replace(strings.ToLower(ns), " ", "", -1)
 	for _, v := range ns {

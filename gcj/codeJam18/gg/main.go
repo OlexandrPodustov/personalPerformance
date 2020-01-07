@@ -10,7 +10,7 @@ import (
 //A = 20.
 func main() {
 	var t int
-	var size int = 1000
+	var size = 1000
 	var matrix = make([][]int, size)
 	for i := 0; i < size; i++ {
 		matrix[i] = make([]int, size)

@@ -53,7 +53,7 @@ func round(i float64) float64 {
 	dec := int(decimalpart * 10)
 	rv := roundedVal * 100
 	if dec+5 > 10 {
-		rv += 1
+		rv++
 	}
 	roundedVal = rv / 100
 	return roundedVal

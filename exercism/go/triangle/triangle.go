@@ -6,24 +6,24 @@ const testVersion = 3
 type Kind string
 
 // Pick values for the following identifiers used by the test program.
-var NaT Kind = "NaT" // not a triangle
-var Equ Kind = "Equ" // equilateral
-var Iso Kind = "Iso" // isosceles
-var Sca Kind = "Sca" // scalene
+var naT Kind = "NaT" // not a triangle
+var equ Kind = "Equ" // equilateral
+var iso Kind = "Iso" // isosceles
+var sca Kind = "Sca" // scalene
 
 func KindFromSides(a, b, c float64) Kind {
 	if a*0 != 0 || b*0 != 0 || c*0 != 0 {
-		return NaT
+		return naT
 	} else if a+b+c <= 0 {
-		return NaT
+		return naT
 	} else if a+b < c || a+c < b || b+c < a {
-		return NaT
+		return naT
 	} else if a == b && a == c {
-		return Equ
+		return equ
 	} else if a == b || a == c || b == c {
-		return Iso
+		return iso
 	} else if a != b && a != c && b != c {
-		return Sca
+		return sca
 	}
 
 	return "not defined yet"

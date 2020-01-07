@@ -92,7 +92,7 @@ func countDamage(input *[]byte) uint {
 	for _, v := range *input {
 		switch v {
 		case 'C':
-			damage = damage * 2
+			damage *= 2
 			//fmt.Println("C - charge: ", damage)
 		case 'S':
 			minTotalDamage += damage

@@ -25,7 +25,7 @@ func IntSliceToString(in []int) string {
 }
 
 func MergeSlices(inF []float32, inI []int32) []int {
-	var res []int = make([]int, len(inF))
+	var res = make([]int, len(inF))
 	for i, v := range inF {
 		res[i] = int(v)
 	}
@@ -43,7 +43,7 @@ func GetMapValuesSortedByKey(in map[int]string) []string {
 		rawKeys = append(rawKeys, i)
 	}
 
-	var ii int = 1
+	var ii = 1
 
 	for i := 0; i < len(rawKeys); i++ {
 		if rawKeys[ii] > rawKeys[i] {

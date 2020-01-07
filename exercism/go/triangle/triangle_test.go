@@ -14,25 +14,25 @@ type testCase struct {
 
 // basic test cases
 var testData = []testCase{
-	{Equ, 2, 2, 2},    // same length
-	{Equ, 10, 10, 10}, // a little bigger
-	{Iso, 3, 4, 4},    // last two sides equal
-	{Iso, 4, 3, 4},    // first and last sides equal
-	{Iso, 4, 4, 3},    // first two sides equal
-	{Iso, 10, 10, 2},  // again
-	{Iso, 2, 4, 2},    // a "triangle" that is just a line is still OK
-	{Sca, 3, 4, 5},    // no sides equal
-	{Sca, 10, 11, 12}, // again
-	{Sca, 5, 4, 2},    // descending order
-	{Sca, .4, .6, .3}, // small sides
-	{Sca, 1, 4, 3},    // a "triangle" that is just a line is still OK
-	{Sca, 5, 4, 6},    // 2a == b+c looks like equilateral, but isn't always.
-	{Sca, 6, 4, 5},    // 2a == b+c looks like equilateral, but isn't always.
-	{NaT, 0, 0, 0},    // zero length
-	{NaT, 3, 4, -5},   // negative length
-	{NaT, 1, 1, 3},    // fails triangle inequality
-	{NaT, 2, 5, 2},    // another
-	{NaT, 7, 3, 2},    // another
+	{equ, 2, 2, 2},    // same length
+	{equ, 10, 10, 10}, // a little bigger
+	{iso, 3, 4, 4},    // last two sides equal
+	{iso, 4, 3, 4},    // first and last sides equal
+	{iso, 4, 4, 3},    // first two sides equal
+	{iso, 10, 10, 2},  // again
+	{iso, 2, 4, 2},    // a "triangle" that is just a line is still OK
+	{sca, 3, 4, 5},    // no sides equal
+	{sca, 10, 11, 12}, // again
+	{sca, 5, 4, 2},    // descending order
+	{sca, .4, .6, .3}, // small sides
+	{sca, 1, 4, 3},    // a "triangle" that is just a line is still OK
+	{sca, 5, 4, 6},    // 2a == b+c looks like equilateral, but isn't always.
+	{sca, 6, 4, 5},    // 2a == b+c looks like equilateral, but isn't always.
+	{naT, 0, 0, 0},    // zero length
+	{naT, 3, 4, -5},   // negative length
+	{naT, 1, 1, 3},    // fails triangle inequality
+	{naT, 2, 5, 2},    // another
+	{naT, 7, 3, 2},    // another
 }
 
 // generate cases with NaN and Infs, append to basic cases
@@ -45,7 +45,7 @@ func init() {
 	for _, a := range []float64{3, nan, pinf, ninf} {
 		for _, b := range []float64{4, nan, pinf, ninf} {
 			for _, c := range []float64{5, nan, pinf, ninf} {
-				nf[i] = testCase{NaT, a, b, c}
+				nf[i] = testCase{naT, a, b, c}
 				i++
 			}
 		}
@@ -66,10 +66,10 @@ func TestKindsNotEqual(t *testing.T) {
 		kind Kind
 		name string
 	}{
-		{Equ, "Equ"},
-		{Iso, "Iso"},
-		{Sca, "Sca"},
-		{NaT, "NaT"},
+		{equ, "Equ"},
+		{iso, "Iso"},
+		{sca, "Sca"},
+		{naT, "NaT"},
 	}
 
 	for i, pair1 := range kindsAndNames {

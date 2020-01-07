@@ -3,7 +3,7 @@ package twelve
 
 const testVersion = 1
 
-var fullSong []string = []string{
+var fullSong = []string{
 	"On the first day of Christmas my true love gave to me, a Partridge in a Pear Tree.",
 	"On the second day of Christmas my true love gave to me, two Turtle Doves, and a Partridge in a Pear Tree.",
 	"On the third day of Christmas my true love gave to me, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.",

@@ -17,7 +17,6 @@ func main() {
 const testVersion = 4
 
 // You can find more details and hints in the test file.
-
 type Clock struct {
 	h int
 	m int
