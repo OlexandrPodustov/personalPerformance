@@ -3,6 +3,8 @@ package tree
 import (
 	"errors"
 	"fmt"
+
+	log "github.com/sirupsen/logrus"
 )
 
 type Record struct {
@@ -21,10 +23,13 @@ func (m Mismatch) Error() string {
 }
 
 func Build(records []Record) (*Node, error) {
+	log.Info("records: ", records)
+	root := &Node{}
+	defer log.Println()
+
 	if len(records) == 0 {
 		return nil, nil
 	}
-	root := &Node{}
 	todo := []*Node{root}
 	n := 1
 	for {
@@ -87,6 +92,9 @@ func Build(records []Record) (*Node, error) {
 	if err := chk(root, len(records)); err != nil {
 		return nil, err
 	}
+
+	log.Warn("result: ", root)
+
 	return root, nil
 }
 

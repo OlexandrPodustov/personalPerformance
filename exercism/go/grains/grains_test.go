@@ -6,23 +6,6 @@ import (
 
 const targetTestVersion = 1
 
-var squareTests = []struct {
-	input       int
-	expectedVal uint64
-	expectError bool
-}{
-	{1, 1, false},
-	{2, 2, false},
-	{3, 4, false},
-	{4, 8, false},
-	{16, 32768, false},
-	{32, 2147483648, false},
-	{64, 9223372036854775808, false},
-	{65, 0, true},
-	{0, 0, true},
-	{-1, 0, true},
-}
-
 func TestTestVersion(t *testing.T) {
 	if testVersion != targetTestVersion {
 		t.Fatalf("Found testVersion = %v, want %v.", testVersion, targetTestVersion)
