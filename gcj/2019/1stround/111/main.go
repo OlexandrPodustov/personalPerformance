@@ -10,7 +10,7 @@ func main() {
 	var iterations int
 	_, err := fmt.Scan(&iterations)
 	if err != nil {
-		log.Println("failed to parse testCasesAmount:", err)
+		log.Println("parse testCasesAmount:", err)
 	}
 
 	for ii := 1; ii <= iterations; ii++ {
@@ -24,7 +24,7 @@ func check(ii int) string {
 	var n int
 	_, err := fmt.Scan(&n)
 	if err != nil {
-		log.Println(ii, " failed to parse input:", err)
+		log.Println(ii, " parse input:", err)
 	}
 
 	words := []string{}
@@ -32,7 +32,7 @@ func check(ii int) string {
 		var word string
 		_, err := fmt.Scan(&word)
 		if err != nil {
-			log.Println(ii, " failed to parse input:", err)
+			log.Println(ii, " parse input:", err)
 		}
 		words = append(words, word)
 	}

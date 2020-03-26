@@ -11,7 +11,7 @@ func main() {
 	var iterations int
 	_, err := fmt.Scan(&iterations)
 	if err != nil {
-		log.Println("failed to parse testCasesAmount:", err)
+		log.Println("parse testCasesAmount:", err)
 	}
 
 	for ii := 1; ii <= iterations; ii++ {
@@ -19,14 +19,14 @@ func main() {
 		var tc string
 		_, err := fmt.Scan(&tc)
 		if err != nil {
-			log.Println(ii, " failed to parse input:", err)
+			log.Println(ii, " parse input:", err)
 		}
 
 		slint := make([]int, len(tc))
 		for i, v := range tc {
 			intVal, err := strconv.Atoi(string(v))
 			if err != nil {
-				log.Println(i, " failed to convert string into int:", err)
+				log.Println(i, " convert string into int:", err)
 			}
 
 			slint[i] = intVal
