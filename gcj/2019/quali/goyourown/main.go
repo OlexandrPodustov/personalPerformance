@@ -14,20 +14,20 @@ func main() {
 	var iterations int
 	_, err := fmt.Scan(&iterations)
 	if err != nil {
-		log.Println("failed to parse testCasesAmount:", err)
+		log.Println("parse testCasesAmount:", err)
 	}
 
 	for ii := 1; ii <= iterations; ii++ {
 		var dimensions int
 		_, err := fmt.Scan(&dimensions)
 		if err != nil {
-			log.Println(ii, " failed to parse input:", err)
+			log.Println(ii, " parse input:", err)
 		}
 
 		var lydaPath string
 		_, err = fmt.Scan(&lydaPath)
 		if err != nil {
-			log.Println(ii, " failed to parse input:", err)
+			log.Println(ii, " parse input:", err)
 		}
 
 		// if len(lydaPath) != 2*dimensions-2 {

@@ -10,14 +10,14 @@ func main() {
 	var iterations int
 	_, err := fmt.Scan(&iterations)
 	if err != nil {
-		log.Println("failed to parse testCasesAmount:", err)
+		log.Println("parse testCasesAmount:", err)
 	}
 
 	for ii := 1; ii <= iterations; ii++ {
 		var n, l int
 		_, err = fmt.Scan(&n, &l)
 		if err != nil {
-			log.Println(ii, " failed to parse input:", err)
+			log.Println(ii, " parse input:", err)
 		}
 
 		cypherSlice := make([]int, l)
@@ -25,7 +25,7 @@ func main() {
 			val := 0
 			_, err = fmt.Scan(&val)
 			if err != nil {
-				log.Println(ii, " failed to parse input:", err)
+				log.Println(ii, " parse input:", err)
 			}
 			cypherSlice[i] = val
 		}
