@@ -33,13 +33,7 @@ func main() {
 func zeroOrOne(input string) string {
 	fmt.Println("stringOfDigits:", input)
 
-	ss := strings.Split(input, "")
-
-	originalFinalPosition := make([][]string, len(ss))
-	for i, v := range ss {
-		originalFinalPosition[i] = []string{v}
-	}
-
+	originalFinalPosition := make([]int, len(input))
 	fmt.Printf("originalFinalPosition %v\n", originalFinalPosition)
 
 	result := ""
@@ -47,22 +41,10 @@ func zeroOrOne(input string) string {
 		v := ss[i]
 		if v == "0" {
 			result += v
-
-			old := originalFinalPosition[i][0]
-			originalFinalPosition[i][0] += ", " + old
 		} else {
 			result += fmt.Sprintf("(%s)", v)
 
-			old := originalFinalPosition[i][0]
-
-			oldPosition, err := strconv.Atoi(old)
-			if err != nil {
-				fmt.Println("convert old position:", oldPosition, old, err)
-				return ""
-			}
-
-			newPos := strconv.Itoa(1)
-			originalFinalPosition[i][0] += ", " + newPos
+			originalFinalPosition[i] = 1
 		}
 	}
 
