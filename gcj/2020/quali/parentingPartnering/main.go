@@ -31,7 +31,7 @@ func main() {
 func assign(activitiesToAssign int) string {
 	result := ""
 
-	act := make([]activity, 0)
+	act := make(As, 0)
 	for l := 0; l < activitiesToAssign; l++ {
 		var start, end int
 		_, err := fmt.Scan(&start, &end)
@@ -40,18 +40,15 @@ func assign(activitiesToAssign int) string {
 			return ""
 		}
 
-		act = append(act, activity{s: start, e: end})
+		act = append(act, Activity{S: start, E: end})
 	}
 
-	sort.SliceStable(act, func(i, j int) bool {
-		return act[i].s < act[j].s
-	})
-	// fmt.Println("sorted act:", act)
+	sort.Sort(act)
 
 	c, j := 0, 0
 	for _, v := range act {
-		s := v.s
-		e := v.e
+		s := v.S
+		e := v.E
 
 		if s >= c {
 			result += "C"
@@ -67,6 +64,12 @@ func assign(activitiesToAssign int) string {
 	return result
 }
 
-type activity struct {
-	s, e int
+type Activity struct {
+	S, E int
 }
+
+type As []Activity
+
+func (a As) Len() int           { return len(a) }
+func (a As) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a As) Less(i, j int) bool { return a[i].S < a[j].S }
