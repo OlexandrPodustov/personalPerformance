@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sort"
+	"strings"
 )
 
 func main() {
@@ -26,10 +27,9 @@ func main() {
 	}
 }
 
-// startDuplicates := make(map[int]int)
-// endddDuplicates := make(map[int]int)
 func assign(activitiesToAssign int) string {
-	result := ""
+	startDuplicates := make(map[int]int)
+	endddDuplicates := make(map[int]int)
 
 	act := make(As, 0)
 	for l := 0; l < activitiesToAssign; l++ {
@@ -40,32 +40,49 @@ func assign(activitiesToAssign int) string {
 			return ""
 		}
 
-		act = append(act, Activity{S: start, E: end})
+		startDuplicates[start]++
+		endddDuplicates[end]++
+
+		act = append(act, Activity{S: start, E: end, index: l})
+	}
+
+	for _, v := range startDuplicates {
+		if v > 2 {
+			return "IMPOSSIBLE"
+		}
+	}
+
+	for _, v := range endddDuplicates {
+		if v > 2 {
+			return "IMPOSSIBLE"
+		}
 	}
 
 	sort.Sort(act)
 
 	c, j := 0, 0
+	result := make([]string, len(act))
 	for _, v := range act {
 		s := v.S
 		e := v.E
+		idx := v.index
 
 		if s >= c {
-			result += "C"
+			result[idx] = "C"
 			c = e
 		} else if s >= j {
-			result += "J"
+			result[idx] = "J"
 			j = e
 		} else {
 			return "IMPOSSIBLE"
 		}
 	}
 
-	return result
+	return strings.Join(result, "")
 }
 
 type Activity struct {
-	S, E int
+	S, E, index int
 }
 
 type As []Activity
