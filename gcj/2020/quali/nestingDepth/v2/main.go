@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"strconv"
+	"strings"
 )
 
 func main() {
@@ -20,7 +22,43 @@ func main() {
 			return
 		}
 
-		result := zeroOrOne(stringOfDigits)
+		result := wrap(stringOfDigits)
 		fmt.Printf("Case #%v: %v\n", testCaseNumber, result)
 	}
+}
+
+func wrap(input string) string {
+	result := ""
+	ss := strings.Split(input, "")
+	for i := 0; i < len(ss); i++ {
+		v := ss[i]
+		intVal, err := strconv.Atoi(v)
+		if err != nil {
+			panic("intVal, err := strconv.Atoi(v):" + v + err.Error())
+		}
+
+		bef := strings.Repeat("(", intVal)
+		aft := strings.Repeat(")", intVal)
+		result += fmt.Sprintf("%s%s%s", bef, v, aft)
+	}
+
+	if len(input) > 1 {
+		result = trimRedundand(result)
+	}
+
+	return result
+}
+
+func trimRedundand(stringWithBraces string) string {
+
+	for {
+		oldLen := len(stringWithBraces)
+		stringWithBraces = strings.Replace(stringWithBraces, ")(", "", -1)
+
+		if oldLen == len(stringWithBraces) {
+			break
+		}
+	}
+
+	return stringWithBraces
 }
