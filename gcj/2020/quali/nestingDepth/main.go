@@ -32,12 +32,16 @@ func zeroOrOne(input string) string {
 	ss := strings.Split(input, "")
 	for i := 0; i < len(ss); i++ {
 		v := ss[i]
-		if v == "0" {
-			result += v
-		} else {
-			newPart := fmt.Sprintf("(%s)", v)
-			result += newPart
+		intVal, err := strconv.Atoi(v)
+		if err != nil {
+			panic("intVal, err := strconv.Atoi(v):" + v + err.Error())
+			return ""
 		}
+
+		bef := strings.Repeat("(", intVal)
+		aft := strings.Repeat(")", intVal)
+		newPart := fmt.Sprintf("%s%s%s", bef, v, aft)
+		result += newPart
 	}
 
 	if len(input) > 1 {
@@ -50,44 +54,84 @@ func zeroOrOne(input string) string {
 func trimRedundand(stringWithBraces string) string {
 	r := strings.NewReplacer("(", "", ")", "")
 	stringNoBraces := r.Replace(stringWithBraces)
-
-	fmt.Println("  stringNoBraces:", stringNoBraces)
-	fmt.Println("stringWithBraces:", stringWithBraces)
+	// fmt.Println("stringWithBraces:", stringWithBraces)
 
 	result := ""
 	for len(stringNoBraces) > 0 {
 		current := string(stringNoBraces[0])
 		if len(stringNoBraces) == 1 {
+			result += stringWithBraces
 			break
 		}
 		next := string(stringNoBraces[1])
 
 		currIndex := strings.Index(stringWithBraces, current)
 		if currIndex < 0 {
-			fmt.Println("currIndex:", currIndex, stringWithBraces, current)
+			panic("currIndex:" + strconv.Itoa(currIndex) + " stringWithBraces " + stringWithBraces + " current " + current)
 			break
 		}
 		nextIndex := strings.Index(stringWithBraces[currIndex+1:], next)
 		if nextIndex < 0 {
-			fmt.Println("nextIndex:", nextIndex, stringWithBraces, next)
+			panic("nextIndex:" + strconv.Itoa(nextIndex) + " stringWithBraces[currIndex+1:] " + stringWithBraces[currIndex+1:] + " next " + next)
 			break
 		}
 
-		cur, _ := strconv.Atoi(current)
-		nex, _ := strconv.Atoi(next)
-
-		if cur != 0 && nex != 0 && cur-nex == 0 {
-			fmt.Println(stringWithBraces, " - cur, n values", cur, nex, " - curr, n idx", currIndex, currIndex+nextIndex+1)
-			bef := stringWithBraces[:currIndex+1]
-			after := stringWithBraces[currIndex+nextIndex+1]
-			result += bef + string(after)
-		} else {
-			// result += stringWithBraces[:currIndex+1]
+		cur, err := strconv.Atoi(current)
+		if err != nil {
+			panic("cur, err := strconv.Atoi(current):" + err.Error())
+		}
+		nex, err := strconv.Atoi(next)
+		if err != nil {
+			panic("cur, err := strconv.Atoi(current):" + err.Error())
 		}
 
-		stringWithBraces = stringWithBraces[currIndex+1:]
+		// fmt.Println("A", stringWithBraces, " - cur, n values", cur, nex, " - curr, n idx", currIndex, currIndex+nextIndex+1)
+
+		// if cur-nex == 0 {
+		if cur != 0 && nex != 0 && cur-nex == 0 {
+			// fmt.Println("B", stringWithBraces, " - cur, n values", cur, nex, " - curr, n idx", currIndex, currIndex+nextIndex+1)
+			result += stringWithBraces[:currIndex+1]
+			stringWithBraces = stringWithBraces[currIndex+nextIndex+1:]
+			// } else if cur-nex != 0 {
+		} else if cur != 0 && nex != 0 && cur-nex != 0 {
+			// fmt.Println("C", stringWithBraces, " - cur, n values", cur, nex, " - curr, n idx", currIndex, currIndex+nextIndex+1)
+
+			intermidPart := stringWithBraces[currIndex+1 : currIndex+nextIndex+1]
+
+			for {
+				oldLen := len(intermidPart)
+				intermidPart = strings.Replace(intermidPart, ")(", "", -1)
+
+				if oldLen == len(intermidPart) {
+					break
+				}
+			}
+
+			before := stringWithBraces[:currIndex+1]
+			affter := stringWithBraces[currIndex+nextIndex+1:]
+
+			stringWithBraces = before + intermidPart + affter
+			// } else if cur == 0 && nex == 0 {
+		} else {
+			result += stringWithBraces[:1]
+			stringWithBraces = stringWithBraces[1:]
+		}
+		// fmt.Println("D", stringWithBraces)
+
 		stringNoBraces = stringNoBraces[1:]
+		// fmt.Println("stringNoBraces", stringNoBraces)
+		// fmt.Println()
 	}
 
 	return result
 }
+
+// 8
+// 0000
+// 101
+// 111000
+// 1
+// 021
+// 312
+// 4
+// 221
