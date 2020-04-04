@@ -49,19 +49,18 @@ func zeroOrOne(input string) string {
 
 func trimRedundand(stringWithBraces string) string {
 	r := strings.NewReplacer("(", "", ")", "")
-	stringWithoutBraces := r.Replace(stringWithBraces)
-	// originn := strings.Split(origin, "")
+	stringNoBraces := r.Replace(stringWithBraces)
 
-	fmt.Println("full origin:", stringWithoutBraces)
+	fmt.Println("  stringNoBraces:", stringNoBraces)
 	fmt.Println("stringWithBraces:", stringWithBraces)
 
 	result := ""
-	for len(stringWithoutBraces) > 0 {
-		current := string(stringWithoutBraces[0])
-		if len(stringWithoutBraces) == 1 {
+	for len(stringNoBraces) > 0 {
+		current := string(stringNoBraces[0])
+		if len(stringNoBraces) == 1 {
 			break
 		}
-		next := string(stringWithoutBraces[1])
+		next := string(stringNoBraces[1])
 
 		currIndex := strings.Index(stringWithBraces, current)
 		if currIndex < 0 {
@@ -87,7 +86,7 @@ func trimRedundand(stringWithBraces string) string {
 		}
 
 		stringWithBraces = stringWithBraces[currIndex+1:]
-		stringWithoutBraces = stringWithoutBraces[1:]
+		stringNoBraces = stringNoBraces[1:]
 	}
 
 	return result
