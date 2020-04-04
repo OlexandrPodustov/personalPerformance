@@ -68,5 +68,43 @@ func zeroOrOne(input string) string {
 
 	fmt.Printf("originalFinalPosition %v\n", originalFinalPosition)
 
+	if len(input) > 1 {
+		result = trimRedundand(input, result, originalFinalPosition)
+	}
+
+	return result
+}
+
+func trimRedundand(originalS, input string, ofp [][]string) string {
+	result := ""
+
+	var ossInt []int
+	oss := strings.Split(originalS, "")
+	for _, v := range oss {
+		intVal, err := strconv.Atoi(v)
+		if err != nil {
+			fmt.Println("convert intVal:", v, err)
+			return ""
+		}
+
+		ossInt = append(ossInt, intVal)
+	}
+
+	fmt.Println("ossInt:", ossInt)
+
+	for i := 0; i < len(ossInt); i++ {
+		current := ossInt[i]
+		if i+1 >= len(ossInt) {
+			break
+		}
+
+		next := ossInt[i+1]
+		if current != 0 && next != 0 && current-next == 0 {
+			padd := ofp[i]
+			currentIndex := i
+
+		}
+	}
+
 	return result
 }
