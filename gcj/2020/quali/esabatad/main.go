@@ -6,23 +6,21 @@ import (
 )
 
 func main() {
-	var iterations int
-	_, err := fmt.Scan(&iterations)
+	var testCasesAmount, numberOfBitsInArray int
+	_, err := fmt.Scan(&testCasesAmount, &numberOfBitsInArray)
 	if err != nil {
-		fmt.Println("parse testCasesAmount:", err)
-		return
+		panic("parse testCasesAmount:" + err.Error())
 	}
+	fmt.Println("testCasesAmount, numberOfBitsInArray:", testCasesAmount, numberOfBitsInArray)
 
-	for testCaseNumber := 1; testCaseNumber <= iterations; testCaseNumber++ {
+	for testCaseNumber := 1; testCaseNumber <= testCasesAmount; testCaseNumber++ {
 		var activitiesToAssign int
 		_, err := fmt.Scan(&activitiesToAssign)
 		if err != nil {
-			fmt.Println(testCaseNumber, " activitiesToAssign:", activitiesToAssign, err)
-			return
+			panic(testCaseNumber + " activitiesToAssign:" + activitiesToAssign + " " + err.Error())
 		}
 
-		// result := assign(activitiesToAssign)
-		result := "assign(activitiesToAssign)"
-		fmt.Printf("Case #%v: %v\n", testCaseNumber, result)
+		result := "1"
+		fmt.Println(result)
 	}
 }
