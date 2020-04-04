@@ -20,34 +20,59 @@ func main() {
 		}
 
 		var trace int
-		var rows [][]int
+		var rowsRepeatedElements int
+		columns := make([][]int, dimensions)
+		for rn := 0; rn < dimensions; rn++ {
+			col := make([]int, dimensions)
+			columns[rn] = col
+		}
+
 		for rn := 0; rn < dimensions; rn++ {
 			var row []int
 			for e := 0; e < dimensions; e++ {
-				var rowEl int
-				_, err := fmt.Scan(&rowEl)
+				var element int
+				_, err := fmt.Scan(&element)
 				if err != nil {
 					log.Println(testCaseNumber, " row:", err)
 				}
 
-				row = append(row, rowEl)
+				columns[e][rn] = element
+				fmt.Println("column", e, columns[e])
+
+				row = append(row, element)
 			}
 
-			rows = append(rows, row)
+			amnt := check(row)
+			rowsRepeatedElements += amnt
 
 			trace += row[rn]
 		}
 		fmt.Println("trace", trace)
+		fmt.Println("rowsRepeatedElements", rowsRepeatedElements)
 
-		for i, v := range rows {
-			fmt.Println("rows", i, v)
+		var columnRepeatedElements int
+		for i, col := range columns {
+			fmt.Println("col", i, col)
+
+			amnt := check(col)
+			columnRepeatedElements += amnt
 		}
+		fmt.Println("columnRepeatedElements", columnRepeatedElements)
 
-		// result, amnt := check()
 		// fmt.Printf("Case #%v: %v %v\n", testCaseNumber, result, amnt)
 	}
 }
 
-func check() (bool, int) {
-	return false, 0
+func check(input []int) int {
+	uniqueMap := make(map[int]struct{}, len(input))
+
+	for _, v := range input {
+		if _, ok := uniqueMap[v]; !ok {
+			uniqueMap[v] = struct{}{}
+		} else {
+			return 1
+		}
+	}
+
+	return 0
 }
