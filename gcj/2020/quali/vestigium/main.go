@@ -37,8 +37,6 @@ func main() {
 				}
 
 				columns[e][rn] = element
-				fmt.Println("column", e, columns[e])
-
 				row = append(row, element)
 			}
 
@@ -47,19 +45,14 @@ func main() {
 
 			trace += row[rn]
 		}
-		fmt.Println("trace", trace)
-		fmt.Println("rowsRepeatedElements", rowsRepeatedElements)
 
 		var columnRepeatedElements int
-		for i, col := range columns {
-			fmt.Println("col", i, col)
-
+		for _, col := range columns {
 			amnt := check(col)
 			columnRepeatedElements += amnt
 		}
-		fmt.Println("columnRepeatedElements", columnRepeatedElements)
 
-		// fmt.Printf("Case #%v: %v %v\n", testCaseNumber, result, amnt)
+		fmt.Printf("Case #%v: %v %v %v\n", testCaseNumber, trace, rowsRepeatedElements, columnRepeatedElements)
 	}
 }
 
