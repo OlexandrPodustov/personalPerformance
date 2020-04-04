@@ -14,9 +14,6 @@ func main() {
 		return
 	}
 
-	// r := strings.Repeat("(", 3)
-	// fmt.Println("repeat", r)
-
 	for testCaseNumber := 1; testCaseNumber <= iterations; testCaseNumber++ {
 		var stringOfDigits string
 		_, err := fmt.Scan(&stringOfDigits)
@@ -31,61 +28,66 @@ func main() {
 }
 
 func zeroOrOne(input string) string {
-	fmt.Println("stringOfDigits:", input)
-
-	originalFinalPosition := make([]int, len(input))
-	fmt.Printf("originalFinalPosition %v\n", originalFinalPosition)
-
 	result := ""
+	ss := strings.Split(input, "")
 	for i := 0; i < len(ss); i++ {
 		v := ss[i]
 		if v == "0" {
 			result += v
 		} else {
-			result += fmt.Sprintf("(%s)", v)
-
-			originalFinalPosition[i] = 1
+			newPart := fmt.Sprintf("(%s)", v)
+			result += newPart
 		}
 	}
 
-	fmt.Printf("originalFinalPosition %v\n", originalFinalPosition)
-
 	if len(input) > 1 {
-		result = trimRedundand(input, result, originalFinalPosition)
+		result = trimRedundand(result)
 	}
 
 	return result
 }
 
-func trimRedundand(originalS, input string, ofp [][]string) string {
+func trimRedundand(stringWithBraces string) string {
+	r := strings.NewReplacer("(", "", ")", "")
+	stringWithoutBraces := r.Replace(stringWithBraces)
+	// originn := strings.Split(origin, "")
+
+	fmt.Println("full origin:", stringWithoutBraces)
+	fmt.Println("stringWithBraces:", stringWithBraces)
+
 	result := ""
-
-	var ossInt []int
-	oss := strings.Split(originalS, "")
-	for _, v := range oss {
-		intVal, err := strconv.Atoi(v)
-		if err != nil {
-			fmt.Println("convert intVal:", v, err)
-			return ""
+	for len(stringWithoutBraces) > 0 {
+		current := string(stringWithoutBraces[0])
+		if len(stringWithoutBraces) == 1 {
+			break
 		}
+		next := string(stringWithoutBraces[1])
 
-		ossInt = append(ossInt, intVal)
-	}
-
-	fmt.Println("ossInt:", ossInt)
-
-	for i := 0; i < len(ossInt); i++ {
-		current := ossInt[i]
-		if i+1 >= len(ossInt) {
+		currIndex := strings.Index(stringWithBraces, current)
+		if currIndex < 0 {
+			fmt.Println("currIndex:", currIndex, stringWithBraces, current)
+			break
+		}
+		nextIndex := strings.Index(stringWithBraces[currIndex+1:], next)
+		if nextIndex < 0 {
+			fmt.Println("nextIndex:", nextIndex, stringWithBraces, next)
 			break
 		}
 
-		next := ossInt[i+1]
-		if current != 0 && next != 0 && current-next == 0 {
-			padd := ofp[i]
-			currentIndex := i
+		cur, _ := strconv.Atoi(current)
+		nex, _ := strconv.Atoi(next)
 
+		if cur != 0 && nex != 0 && cur-nex == 0 {
+			fmt.Println(stringWithBraces, " - cur, n values", cur, nex, " - curr, n idx", currIndex, currIndex+nextIndex+1)
+			bef := stringWithBraces[:currIndex+1]
+			after := stringWithBraces[currIndex+nextIndex+1]
+			result += bef + string(after)
+		} else {
+			// result += stringWithBraces[:currIndex+1]
 		}
+
+		stringWithBraces = stringWithBraces[currIndex+1:]
+		stringWithoutBraces = stringWithoutBraces[1:]
 	}
 
 	return result
