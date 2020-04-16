@@ -39,20 +39,17 @@ func solve(numberOfBitsInArray int) error {
 	return nil
 }
 
+type resp struct {
+	v1, v2, v3, v4 []int
+}
+
 func makeRequest(numberOfBitsInArray int) (string, error) {
 	response := make([]int, numberOfBitsInArray)
-
-	// requestLimit := 150 / numberOfBitsInArray
-	for i := 1; i <= numberOfBitsInArray; i++ {
-		fmt.Println(i)
-
-		var pByte int
-		if _, err := fmt.Scan(&pByte); err != nil {
-			return "", fmt.Errorf("scan. received: %T, %#v, %v", pByte, pByte, err)
-		}
-
-		response[i-1] = pByte
+	// for i := 0; i < 4; i++ {
+	for j := 1; j <= numberOfBitsInArray; j++ {
+		response[j-1] = getNthByte(j)
 	}
+	// }
 
 	r := ""
 	for _, v := range response {
@@ -60,4 +57,20 @@ func makeRequest(numberOfBitsInArray int) (string, error) {
 	}
 
 	return r, nil
+}
+
+// func swap()           {}
+// func complement()     {}
+// func swapComplement() {}
+
+func getNthByte(position int) int {
+	fmt.Println(position)
+
+	var pByte int
+	if _, err := fmt.Scan(&pByte); err != nil {
+		errVal := fmt.Sprintf("scan. received: %T, %#v, %v", pByte, pByte, err)
+		panic(errVal)
+	}
+
+	return pByte
 }
