@@ -31,6 +31,7 @@ func main() {
 func check(numberOfPatternsToMatch int) string {
 	distinctPatterns := make(map[string]struct{})
 	patternByLength := make(map[int]string)
+	res := ""
 	for i := 0; i < numberOfPatternsToMatch; i++ {
 		var pattern string
 		_, err := fmt.Scan(&pattern)
@@ -46,9 +47,13 @@ func check(numberOfPatternsToMatch int) string {
 			if _, okk := patternByLength[len(pattern)]; !okk {
 				patternByLength[len(pattern)] = pattern
 			} else {
-				return "*"
+				res = "*"
 			}
 		}
+	}
+
+	if len(res) > 0 {
+		return "*"
 	}
 	// fmt.Println("distinctPatterns", distinctPatterns)
 	// fmt.Println("patternByLength", patternByLength)
