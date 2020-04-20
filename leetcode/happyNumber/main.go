@@ -17,10 +17,6 @@ func main() {
 var limit int
 
 func isHappy(n int) bool {
-	// limit++
-	// if limit > 20 {
-	// 	return false
-	// }
 	if n%145 == 0 {
 		return false
 	}
@@ -34,7 +30,6 @@ func isHappy(n int) bool {
 
 	res := 0
 	for _, v := range nts {
-		// fmt.Println(v)
 		nn, _ := strconv.Atoi(v)
 		res += nn * nn
 	}
