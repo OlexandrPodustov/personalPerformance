@@ -24,7 +24,7 @@ func composeLl(sl []int) ListNode {
 		if i == 0 {
 			linkedList.Val = v
 			linkedList.Next = &ListNode{}
-		} else{ 
+		} else {
 			curLast := linkedList.Next
 			// fmt.Println("curLast", v, curLast)
 
@@ -41,8 +41,7 @@ func composeLl(sl []int) ListNode {
 			}
 
 		}
-		// fmt.Println(i, v, linkedList)
-		// spew.Dump(i, v, linkedList)
+		spew.Dump(i, v, linkedList)
 	}
 
 	fmt.Println()
@@ -53,6 +52,7 @@ func composeLl(sl []int) ListNode {
 	return linkedList
 }
 
+// ListNode ...
 type ListNode struct {
 	Val  int
 	Next *ListNode
