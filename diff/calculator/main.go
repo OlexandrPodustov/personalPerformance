@@ -83,42 +83,6 @@ func calc(input string) ([]int, error) {
 	return nil, nil
 }
 
-func calcOld(input string) ([]int, error) {
-	// parse highest level input
-	// call calc again untill this is the lowest level operation
-
-	if strings.ContainsAny(input, "[]") {
-		log.Println("perform recursive call", input)
-
-		result, err := calc(input)
-		if err != nil {
-			return nil, err
-		}
-		log.Println("recursive call result", result)
-	}
-
-	log.Println("perform simple operation", input)
-
-	// var operation, args string
-	// switch operation {
-	// case "SUM":
-	// // log.Printf("find sum", input)
-	// // sum(args)
-	// case "DIF":
-	// 	// diff(args)
-	// case "INT":
-	// 	// intersect(args)
-	// }
-
-	// result, err := sum(input)
-	// if err != nil {
-	// 	return nil, err
-	// }
-
-	// return result, nil
-	return nil, nil
-}
-
 func sum(input string) ([]int, error) {
 	args := strings.Split(input, " ")
 	parts, err := read(args...)
