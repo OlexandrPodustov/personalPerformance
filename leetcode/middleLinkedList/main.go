@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/davecgh/go-spew/spew"
 )
 
 func main() {
@@ -41,13 +39,13 @@ func composeLl(sl []int) ListNode {
 			}
 
 		}
-		spew.Dump(i, v, linkedList)
+		// spew.Dump(i, v, linkedList)
 	}
 
 	fmt.Println()
 	fmt.Println()
 	fmt.Println()
-	spew.Dump(linkedList)
+	// spew.Dump(linkedList)
 
 	return linkedList
 }

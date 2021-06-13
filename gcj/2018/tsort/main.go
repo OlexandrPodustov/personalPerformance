@@ -30,9 +30,7 @@ func tSort(res []int) []int {
 		done = true
 		for i := 0; i < len(res)-2; i++ {
 			if res[i] > res[i+2] {
-				//fmt.Println("bef", res)
 				res[i], res[i+2] = res[i+2], res[i]
-				//fmt.Println("after: ", res)
 				done = false
 			}
 		}
@@ -47,10 +45,7 @@ func checkAscending(intSlice []int) string {
 		done = true
 		for i := 0; i < len(intSlice)-1; i++ {
 			if intSlice[i] > intSlice[i+1] {
-				//intSlice[i], intSlice[i+1] = intSlice[i+1], intSlice[i]
-				//fmt.Println("after 2: ", intSlice)
 				done = false
-				//fmt.Println("wrong index", i)
 				return strconv.Itoa(i + 1)
 			}
 		}

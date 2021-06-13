@@ -3,8 +3,6 @@ package tree
 import (
 	"errors"
 	"fmt"
-
-	log "github.com/sirupsen/logrus"
 )
 
 // Record ...
@@ -27,9 +25,9 @@ func (m Mismatch) Error() string {
 
 // Build ...
 func Build(records []Record) (*Node, error) {
-	log.Info("records: ", records)
+	fmt.Println("records: ", records)
 	root := &Node{}
-	defer log.Println()
+	defer fmt.Println()
 
 	if len(records) == 0 {
 		return nil, nil
@@ -97,7 +95,7 @@ func Build(records []Record) (*Node, error) {
 		return nil, err
 	}
 
-	log.Warn("result: ", root)
+	fmt.Println("result: ", root)
 
 	return root, nil
 }

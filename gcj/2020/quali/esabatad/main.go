@@ -39,10 +39,6 @@ func solve(numberOfBitsInArray int) error {
 	return nil
 }
 
-type resp struct {
-	v1, v2, v3, v4 []int
-}
-
 func makeRequest(numberOfBitsInArray int) (string, error) {
 	response := make([]int, numberOfBitsInArray)
 	// for i := 0; i < 4; i++ {
