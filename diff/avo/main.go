@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -23,11 +22,6 @@ var keyValue = struct {
 }
 
 func main() {
-	fmt.Println([]byte("hello"))
-	fmt.Println([]byte("world"))
-	keyValue.m["2"] = []byte{104, 101, 108, 108, 111}
-	fmt.Println("sss", keyValue.m["2"])
-
 	setupRoutes(basePath)
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
@@ -35,51 +29,8 @@ func main() {
 }
 
 func setupRoutes(apiBasePath string) {
-	hkvs := http.HandlerFunc(handleMultiple)
 	hkv := http.HandlerFunc(handleOne)
-	http.Handle(fmt.Sprintf("%s/%s", apiBasePath, storagePath), hkvs)
 	http.Handle(fmt.Sprintf("%s/%s/", apiBasePath, storagePath), hkv)
-}
-
-func handleMultiple(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("handleMultiple")
-
-	switch r.Method {
-	case http.MethodGet:
-		fmt.Println("handleMultiple get all")
-
-		allData := getAll()
-		ad, err := json.Marshal(allData)
-		if err != nil {
-			log.Print(err)
-			w.WriteHeader(http.StatusBadRequest)
-			return
-		}
-
-		if _, err := w.Write(ad); err != nil {
-			log.Print(err)
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-	case http.MethodPost:
-		fmt.Println("handleMultiple create batch")
-
-		var batch storage
-		if err := json.NewDecoder(r.Body).Decode(&batch); err != nil {
-			log.Print(err)
-			w.WriteHeader(http.StatusBadRequest)
-			return
-		}
-		upsertMany(batch)
-		w.WriteHeader(http.StatusCreated)
-
-	case http.MethodOptions:
-		return
-
-	default:
-		w.WriteHeader(http.StatusMethodNotAllowed)
-	}
 }
 
 func handleOne(w http.ResponseWriter, r *http.Request) {
@@ -134,18 +85,6 @@ func handleOne(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func getAll() storage {
-	keyValue.RLock()
-	defer keyValue.RUnlock()
-
-	elements := make(storage, len(keyValue.m))
-	for key, value := range keyValue.m {
-		elements[key] = value
-	}
-
-	return elements
-}
-
 func getOne(k string) []byte {
 	keyValue.RLock()
 	defer keyValue.RUnlock()
@@ -165,13 +104,4 @@ func removeOne(key string) {
 	defer keyValue.Unlock()
 
 	delete(keyValue.m, key)
-}
-
-func upsertMany(in storage) {
-	keyValue.Lock()
-	defer keyValue.Unlock()
-
-	for k, v := range in {
-		keyValue.m[k] = v
-	}
 }
