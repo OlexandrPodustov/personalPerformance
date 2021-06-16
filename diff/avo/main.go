@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"strings"
@@ -22,6 +23,11 @@ var keyValue = struct {
 }
 
 func main() {
+	fmt.Println([]byte("hello"))
+	fmt.Println([]byte("world"))
+	keyValue.m["2"] = []byte{104, 101, 108, 108, 111}
+	fmt.Println("sss", keyValue.m["2"])
+
 	setupRoutes(basePath)
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
@@ -36,8 +42,12 @@ func setupRoutes(apiBasePath string) {
 }
 
 func handleMultiple(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("handleMultiple")
+
 	switch r.Method {
 	case http.MethodGet:
+		fmt.Println("handleMultiple get all")
+
 		allData := getAll()
 		ad, err := json.Marshal(allData)
 		if err != nil {
@@ -53,6 +63,8 @@ func handleMultiple(w http.ResponseWriter, r *http.Request) {
 		}
 
 	case http.MethodPost:
+		fmt.Println("handleMultiple create batch")
+
 		var batch storage
 		if err := json.NewDecoder(r.Body).Decode(&batch); err != nil {
 			log.Print(err)
@@ -71,6 +83,8 @@ func handleMultiple(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleOne(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("handleOne")
+
 	urlPathSegments := strings.Split(r.URL.Path, fmt.Sprintf("%s/", storagePath))
 	if len(urlPathSegments[1:]) > 1 {
 		w.WriteHeader(http.StatusBadRequest)
@@ -81,33 +95,35 @@ func handleOne(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 	case http.MethodGet:
+		fmt.Println("handleOne getOne")
+
 		element := getOne(key)
 		if element == nil {
 			w.WriteHeader(http.StatusNotFound)
 			return
 		}
-		ed, err := json.Marshal(element)
-		if err != nil {
-			log.Print(err)
-			w.WriteHeader(http.StatusBadRequest)
-			return
-		}
-		if _, err = w.Write(ed); err != nil {
+		if _, err := w.Write(element); err != nil {
 			log.Print(err)
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
 
 	case http.MethodPut:
-		var val []byte
-		if err := json.NewDecoder(r.Body).Decode(&val); err != nil {
+		fmt.Println("handleOne put one")
+
+		bts, err := ioutil.ReadAll(r.Body)
+		if err != nil {
 			log.Print(err)
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
-		upsertOne(key, val)
+		fmt.Println("handleOne put one bts", bts)
+
+		upsertOne(key, bts)
 
 	case http.MethodDelete:
+		fmt.Println("handleOne removeOne")
+
 		removeOne(key)
 
 	case http.MethodOptions:
