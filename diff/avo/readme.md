@@ -1,0 +1,12 @@
+improvements:
+- make server tls
+- provide docs for the API
+- add logging
+- add tracing
+- add metrics
+- add authorization & authentication
+- db connection pool
+- graceful shutdown
+- pagination (or some other mechanism to limit allData return)
+- add tests
+- add benchmarks
