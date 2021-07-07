@@ -21,14 +21,26 @@ var keyValue = struct {
 	m: make(map[string][]byte),
 }
 
+type storer interface {
+	// add methods
+}
+
 func main() {
-	setupRoutes(basePath)
+	stg := make(map[string]struct{})
+
+	ns := newStorage(stg)
+	setupRoutes(ns, basePath)
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func setupRoutes(apiBasePath string) {
+func newStorage(s storer) storer {
+
+	return nil
+}
+
+func setupRoutes(s storer, apiBasePath string) {
 	hkv := http.HandlerFunc(handleOne)
 	http.Handle(fmt.Sprintf("%s/%s/", apiBasePath, storagePath), hkv)
 }
