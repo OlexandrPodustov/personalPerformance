@@ -13,7 +13,8 @@ func main() {
 
 	res, err := collectURLS(url)
 	if err != nil {
-		return log.Fatal(err)
+		log.Fatal(err)
+		return
 	}
 	// we need to print the results in descending order
 
