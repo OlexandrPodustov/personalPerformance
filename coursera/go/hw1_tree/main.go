@@ -1,8 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"os"
+	"path"
+	"strings"
 )
 
 func main() {
@@ -10,6 +13,7 @@ func main() {
 	if !(len(os.Args) == 2 || len(os.Args) == 3) {
 		panic("usage go run main.go . [-f]")
 	}
+
 	path := os.Args[1]
 	printFiles := len(os.Args) == 3 && os.Args[2] == "-f"
 	err := dirTree(out, path, printFiles)
@@ -18,7 +22,36 @@ func main() {
 	}
 }
 
-func dirTree(out io.Writer, path string, printFiles bool) error {
+func dirTree(out io.Writer, pathStr string, printFiles bool) error {
+	return walk(0, out, pathStr, printFiles)
+}
+
+func walk(depth int, out io.Writer, pathStr string, printFiles bool) error {
+	depth++
+
+	f, err := os.Open(pathStr)
+	if err != nil {
+		return err
+	}
+	// fmt.Println("depth name", depth, f.Name())
+	// defer fmt.Println()
+
+	files, err := f.Readdir(-1)
+	if err != nil {
+		return err
+	}
+
+	for _, v := range files {
+		if v.IsDir() {
+			// fmt.Println(pathStr, "dir name", v.Name())
+			fmt.Println("├", strings.Repeat("───", depth), v.Name())
+
+			p := path.Join(pathStr, string(os.PathSeparator), v.Name())
+			if err := walk(depth, out, p, printFiles); err != nil {
+				return err
+			}
+		}
+	}
 
 	return nil
 }
