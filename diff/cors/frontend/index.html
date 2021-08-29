@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Fixing Common Issues with CORS</title>
+    <script src="control.js"></script>
+</head>
+
+<body>
+    <h1>Fixing Common Issues with CORS</h1>
+    <div>
+        <textarea id="messages" name="messages" rows="10" cols="50">Messages</textarea><br />
+        <form id="form1">
+            <input type="button" value="Get v1" onclick="onGet('v1')" />
+            <input type="button" value="Get v2" onclick="onGet('v2')" />
+            <input type="button" value="Get v3" onclick="onGet('v3')" />
+            <input type="button" value="Get v4" onclick="console.log('--------------------');" />
+        </form>
+
+        <form id="form2">
+            <input type="text" id="puttext" name="puttext" />
+            <input type="button" value="Put v1" onclick="onPut('v1')" />
+            <input type="button" value="Put v2" onclick="onPut('v2')" />
+        </form>
+
+        <textarea id="headers" name="headers" rows="10" cols="50">Headers</textarea><br />
+
+
+    </div>
+</body>
+
+</html>

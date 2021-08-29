@@ -130,6 +130,7 @@ func (o *OpAnd) search() (row, error) {
 	// for _, v := o.Bar{
 	//
 	// }
+	return row{}, nil
 }
 
 // Bar: [1,3,2]
