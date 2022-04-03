@@ -24,9 +24,6 @@ func main() {
 }
 
 func solution(given int) int {
-	if given == 0 {
-		return 90
-	}
 	var sum int
 	str := strconv.Itoa(given)
 	for i := 0; i < len(str); i++ {
@@ -39,14 +36,13 @@ func solution(given int) int {
 
 	var newStr string
 	rem := 9 - sum%9
-	if rem == 9 {
-		rem = 0
-	}
 	if len(str) == 1 && given > rem {
 		newStr = fmt.Sprint(rem, str)
 		// println("1 newStr ", newStr)
 	} else {
-
+		if rem == 9 {
+			rem = 0
+		}
 		// println("str", str, rem)
 		newStr = fmt.Sprint(str, rem)
 		// println("newStr", newStr)
