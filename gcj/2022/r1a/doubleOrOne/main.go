@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"log"
+	"sort"
+	"strings"
 )
 
 func main() {
@@ -22,5 +24,24 @@ func main() {
 
 func solve(inp string) string {
 	println("inp", inp)
+
+	generateAllCombinations(inp)
 	return ""
+}
+
+func generateAllCombinations(inp string) []string {
+	set := []string{
+		inp,
+	}
+
+	fmt.Println("       set", set)
+	set = sort.StringSlice(set)
+	fmt.Println("sorted set", set)
+
+	res := "PEEEEL, PEEEELL, PEEEL, PEEELL, PEEL, PEELL, PPEEEEL, PPEEEELL, PPEEEL, PPEEELL, PPEEL, PPEELL"
+	result := strings.Split(res, ", ")
+	fmt.Println("result", len(result))
+	fmt.Println("result", result)
+
+	return nil
 }
