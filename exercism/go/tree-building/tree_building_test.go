@@ -17,12 +17,12 @@ var successTestCases = []struct {
 	expected *Node
 }{
 	{
-		name:     "empty input",
+		name:     "empty_input",
 		input:    []Record{},
 		expected: nil,
 	},
 	{
-		name: "one node",
+		name: "one_node",
 		input: []Record{
 			{ID: 0},
 		},
@@ -31,7 +31,7 @@ var successTestCases = []struct {
 		},
 	},
 	{
-		name: "three nodes in order",
+		name: "three_nodes_in_order",
 		input: []Record{
 			{ID: 0},
 			{ID: 1, Parent: 0},
@@ -46,7 +46,7 @@ var successTestCases = []struct {
 		},
 	},
 	{
-		name: "three nodes in reverse order",
+		name: "three_nodes_in_reverse_order",
 		input: []Record{
 			{ID: 2, Parent: 0},
 			{ID: 1, Parent: 0},
@@ -61,7 +61,7 @@ var successTestCases = []struct {
 		},
 	},
 	{
-		name: "more than two children",
+		name: "more_than_two_children",
 		input: []Record{
 			{ID: 3, Parent: 0},
 			{ID: 2, Parent: 0},
@@ -78,7 +78,7 @@ var successTestCases = []struct {
 		},
 	},
 	{
-		name: "binary tree",
+		name: "binary_tree",
 		input: []Record{
 			{ID: 5, Parent: 1},
 			{ID: 3, Parent: 2},
@@ -109,7 +109,7 @@ var successTestCases = []struct {
 		},
 	},
 	{
-		name: "unbalanced tree",
+		name: "unbalanced_tree",
 		input: []Record{
 			{ID: 5, Parent: 2},
 			{ID: 3, Parent: 2},
