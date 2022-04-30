@@ -1,6 +1,9 @@
 package tree
 
-import "sort"
+import (
+	"fmt"
+	"sort"
+)
 
 type Record struct {
 	ID     int
@@ -17,7 +20,7 @@ func Build(records []Record) (*Node, error) {
 	}
 	nrecords, root := lookForRoot(records)
 	if root == nil {
-		return nil, nil
+		return nil, fmt.Errorf("no root")
 	}
 	sort.SliceStable(nrecords, func(i, j int) bool {
 		return nrecords[i].ID < nrecords[j].ID
