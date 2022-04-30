@@ -146,7 +146,7 @@ var failureTestCases = []struct {
 	input []Record
 }{
 	{
-		name: "root node has parent",
+		name: "root_node_has_parent",
 		input: []Record{
 			{ID: 0, Parent: 1},
 			{ID: 1, Parent: 0},
@@ -183,7 +183,7 @@ var failureTestCases = []struct {
 		},
 	},
 	{
-		name: "cycle directly",
+		name: "cycle_directly",
 		input: []Record{
 			{ID: 5, Parent: 2},
 			{ID: 3, Parent: 2},
@@ -195,7 +195,7 @@ var failureTestCases = []struct {
 		},
 	},
 	{
-		name: "cycle indirectly",
+		name: "cycle_indirectly",
 		input: []Record{
 			{ID: 5, Parent: 2},
 			{ID: 3, Parent: 2},
@@ -207,7 +207,7 @@ var failureTestCases = []struct {
 		},
 	},
 	{
-		name: "higher id parent of lower id",
+		name: "higher_id_parent_of_lower_id",
 		input: []Record{
 			{ID: 0},
 			{ID: 2, Parent: 0},
