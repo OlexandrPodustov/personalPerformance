@@ -28,14 +28,25 @@ func Build(records []Record) (*Node, error) {
 	currentNode := root
 	for i := range nrecords {
 		cur := nrecords[i]
+		fmt.Println("processing record ", i, cur)
+		fmt.Println("tree before", root)
+
 		if cur.Parent == currentNode.ID {
 			child := &Node{
 				ID: cur.ID,
 			}
 			currentNode.Children = append(currentNode.Children, child)
 		} else {
-			lookAndAttach(root.Children, cur)
+			if cur.ID == cur.Parent {
+				return nil, fmt.Errorf("direct cycle ID == Parent: %v %v", cur.ID, cur.Parent)
+			}
+
+			if err := lookAndAttach(root.Children, cur); err != nil {
+				return nil, err
+			}
 		}
+		fmt.Println("tree after", root)
+		fmt.Println()
 	}
 	return root, nil
 }
@@ -62,12 +73,19 @@ func isRoot(record Record) bool {
 	return record.ID == record.Parent
 }
 
-func lookAndAttach(children []*Node, record Record) {
+func lookAndAttach(children []*Node, record Record) error {
 	for i := range children {
+		if record.ID == record.Parent {
+			return fmt.Errorf("lookAndAttach direct cycle ID == Parent: %v %v", record.ID, record.Parent)
+		}
 		if children[i].ID == record.Parent {
 			children[i].Children = append(children[i].Children, &Node{ID: record.ID})
 		} else {
-			lookAndAttach(children[i].Children, record)
+			if err := lookAndAttach(children[i].Children, record); err != nil {
+				return err
+			}
 		}
 	}
+
+	return nil
 }

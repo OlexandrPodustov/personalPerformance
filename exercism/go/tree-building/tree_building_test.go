@@ -245,6 +245,7 @@ func TestMakeTreeFailure(t *testing.T) {
 				t.Fatalf("Build for test case %q returned %s but was expected to fail.",
 					tt.name, actual)
 			}
+			t.Logf("test case %q failed as expected and returned %s", tt.name, err)
 		})
 	}
 }
