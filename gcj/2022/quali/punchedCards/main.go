@@ -5,9 +5,11 @@ import (
 	"log"
 )
 
-const dot string = "."
-const plus string = "+"
-const pillar string = "|"
+const (
+	dot    string = "."
+	plus   string = "+"
+	pillar string = "|"
+)
 
 func main() {
 	var testCasesAmount int

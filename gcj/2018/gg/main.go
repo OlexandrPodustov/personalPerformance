@@ -6,17 +6,16 @@ import (
 	"math"
 )
 
-//1 ≤ T ≤ 20.
-//A = 20.
+// 1 ≤ T ≤ 20.
+// A = 20.
 func main() {
 	var t int
-	var size = 1000
-	var matrix = make([][]int, size)
+	size := 1_000
+	matrix := make([][]int, size)
 	for i := 0; i < size; i++ {
 		matrix[i] = make([]int, size)
 	}
-	//fmt.Println("m:", matrix)
-	//fmt.Print("T:")
+
 	fmt.Scanf("%d", &t)
 	for ij := 1; ij <= t; ij++ {
 		var i, j, n, c, r int
@@ -35,7 +34,7 @@ func main() {
 		r0, c0 := 10, 10
 		for {
 			fmt.Println(r0, c0)
-			//fmt.Printf("i and j:")
+			// fmt.Printf("i and j:")
 			fmt.Scanf("%d %d", &i, &j)
 			if i == 0 && j == 0 {
 				break
@@ -51,6 +50,6 @@ func main() {
 			rect[ii] = rect[ii][c0 : c0+c]
 		}
 		fmt.Println("rect", len(rect))
-		//fmt.Println("rect", rect)
+		// fmt.Println("rect", rect)
 	}
 }

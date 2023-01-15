@@ -24,33 +24,31 @@ type Clock struct {
 
 func New(hour, minute int) Clock {
 	var c Clock
-	//var newhh, newmm int
+	// var newhh, newmm int
 
-	//handling minutes
+	// handling minutes
 	if minute > 0 {
 		c.m = minute % 60
 	} else if minute < 0 {
 		c.m = 60 + minute%60
 		hour--
 	}
-	//if there are more minutes than 59
+	// if there are more minutes than 59
 	if math.Abs(float64(minute)) > 59 {
 		hour += minute / 60
 	}
 
-	//handling hours
+	// handling hours
 	if hour < 0 {
 		c.h = 24 + c.h%24
 	} else {
 		c.h = hour
 	}
 	return c
-
 }
 
 func (c Clock) String() string {
-
-	//adding zero before hour or minute
+	// adding zero before hour or minute
 	var hh, m string
 	if c.m%60 < 10 {
 		m = "0" + strconv.Itoa(c.m%60)
@@ -66,7 +64,6 @@ func (c Clock) String() string {
 
 	s := hh + ":" + m
 	return s
-
 }
 
 func (c Clock) Add(minutes int) Clock {

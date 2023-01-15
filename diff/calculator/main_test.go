@@ -12,7 +12,7 @@ func TestCalc(t *testing.T) {
 		want []int
 	}
 
-	var testCases = []c{
+	testCases := []c{
 		{
 			in:   "[ SUM [ SUM a.txt b.txt ] [ SUM b.txt c.txt ] ]",
 			want: []int{1, 2, 3, 4, 5},
@@ -34,6 +34,7 @@ func TestCalc(t *testing.T) {
 		}
 	}
 }
+
 func TestSum(t *testing.T) {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
@@ -42,7 +43,7 @@ func TestSum(t *testing.T) {
 		want []int
 	}
 
-	var testCases = []c{
+	testCases := []c{
 		{
 			in:   "a.txt b.txt",
 			want: []int{1, 2, 3, 4},
@@ -70,7 +71,7 @@ func TestDif(t *testing.T) {
 		want []int
 	}
 
-	var testCases = []c{
+	testCases := []c{
 		{
 			in:   "a.txt b.txt c.txt",
 			want: []int{1},
@@ -98,7 +99,7 @@ func TestIntersect(t *testing.T) {
 		in   string
 		want []int
 	}
-	var testCases = []c{
+	testCases := []c{
 		{
 			in:   "b.txt c.txt",
 			want: []int{3, 4},

@@ -122,7 +122,6 @@ func (o *OpAnd) Next() bool {
 }
 
 func (o *OpAnd) Scan() (row, error) {
-
 	return row{}, nil
 }
 

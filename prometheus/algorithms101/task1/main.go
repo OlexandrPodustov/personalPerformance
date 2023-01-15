@@ -8,13 +8,11 @@ import (
 )
 
 func main() {
-
 }
 
 var iteration int
 
 func multiply(x, y uint64) uint64 {
-
 	iteration++
 	a, b, n1 := divide(x)
 	c, d, n2 := divide(y)

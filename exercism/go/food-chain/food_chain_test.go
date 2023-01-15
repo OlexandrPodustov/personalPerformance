@@ -8,7 +8,8 @@ import (
 
 const targetTestVersion = 3
 
-var ref = []string{``,
+var ref = []string{
+	``,
 
 	`I know an old lady who swallowed a fly.
 I don't know why she swallowed the fly. Perhaps she'll die.`,

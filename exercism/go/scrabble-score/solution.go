@@ -1,4 +1,4 @@
-//Package scrabble helps us to calculate a scrabble score
+// Package scrabble helps us to calculate a scrabble score
 package scrabble
 
 import "strings"
@@ -6,16 +6,16 @@ import "strings"
 const testVersion = 5
 
 var scores = map[int][]string{
-	1:  []string{"A", "E", "I", "O", "U", "L", "N", "R", "S", "T"},
-	2:  []string{"D", "G"},
-	3:  []string{"B", "C", "M", "P"},
-	4:  []string{"F", "H", "V", "W", "Y"},
-	5:  []string{"K"},
-	8:  []string{"J", "X"},
-	10: []string{"Q", "Z"},
+	1:  {"A", "E", "I", "O", "U", "L", "N", "R", "S", "T"},
+	2:  {"D", "G"},
+	3:  {"B", "C", "M", "P"},
+	4:  {"F", "H", "V", "W", "Y"},
+	5:  {"K"},
+	8:  {"J", "X"},
+	10: {"Q", "Z"},
 }
 
-//Score calculates scrabble score
+// Score calculates scrabble score
 func Score(word string) (res int) {
 	newScoresMap := refactorScoreboard(scores)
 	for _, inputLetter := range strings.ToLower(word) {

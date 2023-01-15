@@ -11,7 +11,6 @@ func Test_solution(t *testing.T) {
 		args args
 		want int
 	}{
-
 		// {
 		// 	name: "AAAEEEUUUHCCKRP",
 		// 	args: args{

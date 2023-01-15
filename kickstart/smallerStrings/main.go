@@ -33,6 +33,5 @@ func main() {
 }
 
 func check(n, k int, str string) string {
-
 	return "" // modulo 10^9+7
 }

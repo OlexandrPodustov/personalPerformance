@@ -54,7 +54,7 @@ func solve(printers []printer) string {
 func findCommonMax(printers []printer) printer {
 	max := getMax()
 
-	var maxCyan, maxMagenta, maxYellow, maxBlack = max, max, max, max
+	maxCyan, maxMagenta, maxYellow, maxBlack := max, max, max, max
 
 	for _, v := range printers {
 		if v.cyan < maxCyan {

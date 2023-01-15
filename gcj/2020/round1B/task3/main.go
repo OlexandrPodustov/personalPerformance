@@ -36,7 +36,6 @@ func check(rank, suit int) (int, []string) {
 			// ussl = append(ussl, []int{r, s})
 			ussl = append(ussl, r)
 		}
-
 	}
 	fmt.Println()
 	fmt.Println("ussl", ussl)

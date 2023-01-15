@@ -14,7 +14,6 @@ func Test_extractColumns(t *testing.T) {
 		args args
 		want []string
 	}{
-
 		{
 			name: "",
 			args: args{

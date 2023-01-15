@@ -4,13 +4,14 @@ import "fmt"
 
 func newClosures() (func(), func() int) {
 	a := 0
-	// Your code here!
+
 	return func() {
 			a = 5
 		}, func() int {
 			return a * 7
 		}
 }
+
 func main() {
 	f1, f2 := newClosures()
 	f1()      // sets "a" to 5

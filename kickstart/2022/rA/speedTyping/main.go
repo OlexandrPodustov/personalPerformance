@@ -58,7 +58,6 @@ func solution(ideal, fact string) int {
 			amountToDelete++
 			fi++
 		}
-
 	}
 	if amountToDelete > len(fact)-len(ideal) {
 		return -1

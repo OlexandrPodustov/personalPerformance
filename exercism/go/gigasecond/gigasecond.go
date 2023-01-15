@@ -7,5 +7,4 @@ const testVersion = 4
 
 func AddGigasecond(it time.Time) time.Time {
 	return it.Add(time.Second * 1000 * 1000 * 1000)
-
 }

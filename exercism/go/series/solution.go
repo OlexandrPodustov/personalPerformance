@@ -29,5 +29,4 @@ func First(n int, s string) (string, bool) {
 		return s, false
 	}
 	return all[0], true
-
 }

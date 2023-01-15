@@ -10,9 +10,7 @@
 # Output of the go coverage tool
 *.out
 
-# Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
 .glide/
 .idea/
 .gitignore
-.exercism/
 sandbox/

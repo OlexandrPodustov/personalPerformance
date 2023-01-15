@@ -9,8 +9,10 @@ import (
 	"sync"
 )
 
-const basePath = "/api"
-const storagePath = "storage"
+const (
+	basePath    = "/api"
+	storagePath = "storage"
+)
 
 type storage map[string][]byte
 
@@ -36,7 +38,6 @@ func main() {
 }
 
 func newStorage(s storer) storer {
-
 	return nil
 }
 

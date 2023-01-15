@@ -10,7 +10,6 @@ import (
 )
 
 func hourglassSum(arr [][]int32) int32 {
-
 	return 0
 }
 

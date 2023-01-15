@@ -19,7 +19,7 @@ func Valid(s string) (b bool) {
 			return
 		}
 	}
-	var sl = make([]int, len(s))
+	sl := make([]int, len(s))
 
 	var nv int
 	for i, v := range s {

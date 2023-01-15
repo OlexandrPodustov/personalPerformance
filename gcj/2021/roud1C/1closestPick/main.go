@@ -39,7 +39,6 @@ func main() {
 }
 
 func check(n, k int) string {
-
 	res := ""
 	return res
 }

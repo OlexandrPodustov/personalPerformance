@@ -41,7 +41,6 @@ func main() {
 var regexxx = regexp.MustCompile(`([B]+)\.`)
 
 func checkResult(input string) string {
-
 	freeLilypads := strings.Index(input, ".")
 	betaFrogsExist := strings.Index(input, "B")
 

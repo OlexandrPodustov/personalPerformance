@@ -46,7 +46,6 @@ func (c Clock) String() string {
 
 	s := hh + ":" + m
 	return s
-
 }
 
 func (c Clock) Add(minutes int) Clock {

@@ -57,6 +57,5 @@ type ListNode struct {
 }
 
 func middleNode(head *ListNode) *ListNode {
-
 	return head
 }

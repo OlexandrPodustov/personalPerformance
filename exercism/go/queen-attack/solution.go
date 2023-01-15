@@ -34,21 +34,21 @@ func CanQueenAttack(b, w string) (res bool, err error) {
 		return
 	}
 
-	//check board boundaries
+	// check board boundaries
 	if intBlack < 1 || intWhite < 1 || intBlack > 8 || intWhite > 8 {
 		err = errors.New("some or even both of input values are bigger or smaller than chessboard")
 	}
-	//horisontal check
+	// horisontal check
 	if letterBlack == letterWhite {
 		res = true
 		return
 	}
-	//vertical check
+	// vertical check
 	if intBlack == intWhite {
 		res = true
 		return
 	}
-	//diagonal check
+	// diagonal check
 	for i := 0; i < 8; i++ {
 		if letterWhite == letterBlack+i || letterBlack == letterWhite+i {
 			if intWhite == intBlack+i || intBlack == intWhite+i {

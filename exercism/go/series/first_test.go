@@ -1,4 +1,4 @@
-// +build first
+//go:build first
 
 package series
 
