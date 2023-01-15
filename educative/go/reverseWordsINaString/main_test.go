@@ -11,16 +11,27 @@ func Test_reverseWords(t *testing.T) {
 		args args
 		want string
 	}{
-		// {
-		// 	name: "1",
-		// 	args: args{sentence: "The quick brown fox jumped over a lazy dog"},
-		// 	want: "dog lazy a over jumped fox brown quick The",
-		// },
+		{
+			name: "1",
+			args: args{sentence: "The quick brown fox jumped over a lazy dog"},
+			want: "dog lazy a over jumped fox brown quick The",
+		},
 
 		{
 			name: "2",
 			args: args{sentence: "We love Go"},
 			want: "Go love We",
+		},
+
+		{
+			name: "3",
+			args: args{sentence: "Hello     World  ab"},
+			want: "ab World Hello",
+		},
+		{
+			name: "4",
+			args: args{sentence: "Hello     World  a"},
+			want: "a World Hello",
 		},
 	}
 	for _, tt := range tests {
