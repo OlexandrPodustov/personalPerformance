@@ -1,4 +1,4 @@
-//Package letter is pretty hard task when it comes to performance
+// Package letter is pretty hard task when it comes to performance
 package letter
 
 import "sync"
@@ -7,7 +7,7 @@ const testVersion = 1
 
 type FreqMap map[rune]int
 
-//Frequency was implemented
+// Frequency was implemented
 func Frequency(s string) FreqMap {
 	m := FreqMap{}
 	for _, r := range s {
@@ -16,10 +16,10 @@ func Frequency(s string) FreqMap {
 	return m
 }
 
-//ConcurrentFrequency is new func implemented by me. Speed is low. :todo -revise.
+// ConcurrentFrequency is new func implemented by me. Speed is low. :todo -revise.
 func ConcurrentFrequency(in []string) (r FreqMap) {
 	r = make(FreqMap)
-	var c = make(chan FreqMap, len(in))
+	c := make(chan FreqMap, len(in))
 	var rrr sync.RWMutex
 	var wg sync.WaitGroup
 

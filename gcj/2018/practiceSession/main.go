@@ -17,7 +17,7 @@ func main() {
 	if err != nil {
 		log.Println("fmt.Scanln(&t)", err)
 	}
-	//log.Println("testCasesAmount:", t)
+	// log.Println("testCasesAmount:", t)
 
 	for i := 0; i < t; i++ {
 		var a, b, n int
@@ -42,7 +42,7 @@ func main() {
 		if err != nil {
 			log.Println("fmt.Scanln(&anb)", err)
 		}
-		//log.Println("a and b given: ", a, b)
+		// log.Println("a and b given: ", a, b)
 
 		// scan line with n
 		fmt.Print("amount of attempts to guess:")
@@ -50,18 +50,18 @@ func main() {
 		if err != nil {
 			log.Println("fmt.Scanln(&n):", err)
 		}
-		//log.Println("amount of attempts to guess given: ", n)
+		// log.Println("amount of attempts to guess given: ", n)
 
 		// try to guess
 
-		//for i := a; i <= b; i++ {
+		// for i := a; i <= b; i++ {
 		corr = false
 		for i := 0; i < n; i++ {
 			if corr {
 				break
 			}
 			log.Println(i, "th attempt ", a, b)
-			var val = (a + 1 + b) / 2 // exclusive lower bound
+			val := (a + 1 + b) / 2 // exclusive lower bound
 			fmt.Println(val)
 
 			// coordinate following flow
@@ -71,7 +71,7 @@ func main() {
 			if err != nil {
 				log.Println("fmt.Scanln(&answer)", err)
 			}
-			//log.Println("answer for coordination:", answer)
+			// log.Println("answer for coordination:", answer)
 
 			switch {
 			case answer == "WRONG_ANSWER":

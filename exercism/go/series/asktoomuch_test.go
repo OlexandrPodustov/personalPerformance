@@ -1,4 +1,4 @@
-// +build asktoomuch
+//go:build asktoomuch
 
 package series
 

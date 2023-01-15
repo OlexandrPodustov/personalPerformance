@@ -27,7 +27,6 @@ func main() {
 }
 
 func reverseArray(a []int32) []int32 {
-
 	// container/list
 	lst := list.New()
 	lst.Init()

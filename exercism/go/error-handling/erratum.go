@@ -36,7 +36,6 @@ func Use(f func() (Resource, error), s string) (rr error) {
 				r1, ee = f()
 			}
 			if ee != nil {
-				//log.Println("1", e)
 				return errors.New(fmt.Sprint(ee))
 			}
 			r1.Frob(s)

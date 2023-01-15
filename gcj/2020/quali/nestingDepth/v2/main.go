@@ -50,7 +50,6 @@ func wrap(input string) string {
 }
 
 func trimRedundand(stringWithBraces string) string {
-
 	for {
 		oldLen := len(stringWithBraces)
 		stringWithBraces = strings.Replace(stringWithBraces, ")(", "", -1)

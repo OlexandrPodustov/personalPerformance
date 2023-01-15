@@ -3,7 +3,7 @@ package pascal
 const testVersion = 1
 
 func Triangle(in int) [][]int {
-	var res = make([][]int, in)
+	res := make([][]int, in)
 	res[0] = []int{1}
 
 	for i := 1; i < in; i++ {
@@ -15,7 +15,7 @@ func Triangle(in int) [][]int {
 }
 
 func fillSlice(in []int) []int {
-	var newSlice = make([]int, len(in)+1)
+	newSlice := make([]int, len(in)+1)
 	copy(newSlice, in)
 
 	for i := 1; i < len(in); i++ {

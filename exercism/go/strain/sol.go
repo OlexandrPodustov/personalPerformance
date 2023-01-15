@@ -2,9 +2,11 @@ package strain
 
 const testVersion = 1
 
-type Ints []int
-type Lists [][]int
-type Strings []string
+type (
+	Ints    []int
+	Lists   [][]int
+	Strings []string
+)
 
 func (i Ints) Keep(in func(int) bool) (res Ints) {
 	for _, value := range i {

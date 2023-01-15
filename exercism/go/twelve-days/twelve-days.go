@@ -1,4 +1,3 @@
-//
 package twelve
 
 const testVersion = 1
@@ -25,6 +24,7 @@ func Song() string {
 	}
 	return res
 }
+
 func Verse(in int) string {
 	if in <= 0 || in > 12 {
 		return "aaa"

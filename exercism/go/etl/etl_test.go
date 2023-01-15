@@ -4,8 +4,10 @@ import "testing"
 
 const targetTestVersion = 1
 
-type given map[int][]string
-type expectation map[string]int
+type (
+	given       map[int][]string
+	expectation map[string]int
+)
 
 var transformTests = []struct {
 	input  given

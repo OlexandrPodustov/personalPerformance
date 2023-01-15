@@ -59,7 +59,7 @@ func TestTestVersion(t *testing.T) {
 }
 
 func TestSong(t *testing.T) {
-	var expected = ""
+	expected := ""
 	for _, test := range testCases {
 		expected += test.expected + "\n"
 	}

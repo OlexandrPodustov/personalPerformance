@@ -17,7 +17,6 @@ func main() {
 		result := check(ii)
 		fmt.Printf("Case #%v: %v\n", ii, result)
 	}
-
 }
 
 func check(ii int) string {

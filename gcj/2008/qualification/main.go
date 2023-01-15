@@ -12,7 +12,6 @@ func main() {
 	f, err := os.Open(filename)
 	if err != nil {
 		log.Fatalln("open file "+filename+"failed, err:", err)
-
 	}
 
 	scanner := bufio.NewScanner(f)

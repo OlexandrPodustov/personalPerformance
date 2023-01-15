@@ -19,7 +19,6 @@ const (
 type Planet string
 
 func Age(s float64, p Planet) (a float64) {
-
 	switch {
 	case p == "Earth":
 		a = s / Es

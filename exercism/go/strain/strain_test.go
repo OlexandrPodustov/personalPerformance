@@ -31,18 +31,26 @@ var keepTests = []struct {
 	list Ints
 	want Ints
 }{
-	{lt10,
+	{
+		lt10,
 		nil,
-		nil},
-	{lt10,
+		nil,
+	},
+	{
+		lt10,
 		Ints{1, 2, 3},
-		Ints{1, 2, 3}},
-	{odd,
 		Ints{1, 2, 3},
-		Ints{1, 3}},
-	{even,
+	},
+	{
+		odd,
+		Ints{1, 2, 3},
+		Ints{1, 3},
+	},
+	{
+		even,
 		Ints{1, 2, 3, 4, 5},
-		Ints{2, 4}},
+		Ints{2, 4},
+	},
 }
 
 var discardTests = []struct {
@@ -50,18 +58,26 @@ var discardTests = []struct {
 	list Ints
 	want Ints
 }{
-	{lt10,
+	{
+		lt10,
 		nil,
-		nil},
-	{gt10,
+		nil,
+	},
+	{
+		gt10,
 		Ints{1, 2, 3},
-		Ints{1, 2, 3}},
-	{odd,
 		Ints{1, 2, 3},
-		Ints{2}},
-	{even,
+	},
+	{
+		odd,
+		Ints{1, 2, 3},
+		Ints{2},
+	},
+	{
+		even,
 		Ints{1, 2, 3, 4, 5},
-		Ints{1, 3, 5}},
+		Ints{1, 3, 5},
+	},
 }
 
 func TestTestVersion(t *testing.T) {

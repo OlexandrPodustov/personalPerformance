@@ -5,7 +5,6 @@ const testVersion = 1
 type Triplet [3]int
 
 func Range(min, max int) (res []Triplet) {
-
 	for i := 1; i <= max; i++ {
 		for ii := i + 1; ii <= max; ii++ {
 			a, b, c := check(ii, i)
@@ -18,7 +17,7 @@ func Range(min, max int) (res []Triplet) {
 }
 
 func Sum(in int) (resultTriplet []Triplet) {
-	var tripletMap = make(map[[3]int]bool)
+	tripletMap := make(map[[3]int]bool)
 	for i := 1; i <= 10; i++ {
 		for ii := i + 1; ii <= 10; ii++ {
 			a, b, c := check(ii, i)

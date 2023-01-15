@@ -39,7 +39,7 @@ func main() {
 }
 
 func check(slint []int) ([]int, []int) {
-	var n1, n2 = make([]int, len(slint)), make([]int, len(slint))
+	n1, n2 := make([]int, len(slint)), make([]int, len(slint))
 	for i, v := range slint {
 		n1[i] = v
 		if v == 4 {

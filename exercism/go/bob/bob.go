@@ -21,7 +21,6 @@ func Hey(inn string) string {
 		uc := strings.ToUpper(string(lastSymb))
 		if uc >= string(65) && uc <= string(90) {
 			resArrs = append(resArrs, v)
-
 		}
 		sym := string(v)
 		if sym == "" || sym == " " || sym == "\t" || sym == "\n" || sym == "\r" {

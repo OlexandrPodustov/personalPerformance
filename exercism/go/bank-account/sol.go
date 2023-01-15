@@ -1,5 +1,3 @@
-//Package account is about doing things with bank accounts
-//Somewhy it hangs on windows env, on linux tests finishes successfully
 package account
 
 import "sync"
@@ -12,7 +10,7 @@ type Account struct {
 	open    bool
 }
 
-//Open opens account
+// Open opens account
 func Open(in int64) (res *Account) {
 	if in >= 0 {
 		res = new(Account)
@@ -23,7 +21,7 @@ func Open(in int64) (res *Account) {
 	return res
 }
 
-//Balance retrieves amount on account
+// Balance retrieves amount on account
 func (a *Account) Balance() (balance int64, ok bool) {
 	a.Lock()
 	defer a.Unlock()
@@ -36,7 +34,7 @@ func (a *Account) Balance() (balance int64, ok bool) {
 	return
 }
 
-//Close closes account
+// Close closes account
 func (a *Account) Close() (payout int64, ok bool) {
 	a.Lock()
 	defer a.Unlock()
@@ -52,7 +50,7 @@ func (a *Account) Close() (payout int64, ok bool) {
 	return
 }
 
-//Deposit deposits account
+// Deposit deposits account
 func (a *Account) Deposit(in int64) (int64, bool) {
 	a.Lock()
 	defer a.Unlock()
@@ -60,7 +58,6 @@ func (a *Account) Deposit(in int64) (int64, bool) {
 		return 0, false
 	}
 	if a.balance+in < 0 {
-
 		return 0, false
 	}
 	a.balance += in

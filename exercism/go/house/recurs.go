@@ -2,12 +2,12 @@ package house
 
 const testVersion int = 1
 
-//Song returns a complete song
+// Song returns a complete song
 func Song() string {
 	return e
 }
 
-//Verse returns a chunk from song
+// Verse returns a chunk from song
 func Verse(in int) string {
 	var cnt, start int
 	var result string
@@ -27,8 +27,7 @@ func Verse(in int) string {
 	return result
 }
 
-var (
-	e = `This is the house that Jack built.
+var e = `This is the house that Jack built.
 
 This is the malt
 that lay in the house that Jack built.
@@ -117,4 +116,3 @@ that worried the cat
 that killed the rat
 that ate the malt
 that lay in the house that Jack built.`
-)

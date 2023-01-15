@@ -21,7 +21,6 @@ func main() {
 		_, err := fmt.Scanln(&n, &k, &v)
 		if err != nil {
 			fmt.Println("fmt.Scanln - n,k,v - err: ", err)
-
 		}
 		fmt.Printf("#"+strconv.Itoa(caseNumber)+" N:%v, K:%v, V:%v \n", n, k, v)
 
@@ -34,7 +33,7 @@ func main() {
 			}
 			campusesOriginalOrder[i] = campus
 		}
-		//fmt.Println("final result campusesOriginalOrder - ", campusesOriginalOrder)
+		// fmt.Println("final result campusesOriginalOrder - ", campusesOriginalOrder)
 
 		if n == k {
 			fmt.Println("Case #"+strconv.Itoa(caseNumber)+":", strings.Join(campusesOriginalOrder, " "))
@@ -61,8 +60,7 @@ func main() {
 
 		}
 
-		//final result
+		// final result
 		fmt.Println("Case #"+strconv.Itoa(caseNumber)+":", strings.Join(campusesOriginalOrder, " "))
 	}
-
 }
