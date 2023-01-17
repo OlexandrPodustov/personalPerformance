@@ -20,7 +20,6 @@ func happyNumber(num int) bool {
 
 		fmt.Println("slow, fast", slow, fast)
 	}
-
 	fmt.Println("cycle detected")
 
 	return false
