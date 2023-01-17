@@ -14,7 +14,6 @@ func maxProfit(prices []int) int {
 	defer fmt.Println("")
 
 	fmt.Println("min, max", min, max)
-
 	for i := len(prices) - 1; i > 1; i-- {
 		fmt.Println("i, prices[i], prices[i-1]", i, "aa", prices[i], prices[i-1])
 
