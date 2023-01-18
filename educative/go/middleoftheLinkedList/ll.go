@@ -2,25 +2,6 @@ package main
 
 import "fmt"
 
-func detectCycle(head *EduLinkedListNode) bool {
-	slow, fast := head, head
-
-	for {
-		if fast == nil || fast.next == nil {
-			return true
-		}
-
-		slow = slow.next
-		fast = fast.next.next
-
-		if slow == fast {
-			break
-		}
-	}
-
-	return false
-}
-
 type EduLinkedListNode struct {
 	data int
 	next *EduLinkedListNode
@@ -82,4 +63,26 @@ func (l *EduLinkedList) DisplayLinkedList() {
 		}
 	}
 	fmt.Print("]")
+}
+
+func traverseLinkedList(head *EduLinkedListNode) {
+	current := head
+	next := new(EduLinkedListNode)
+	next = nil
+	for current != nil {
+		next = current.next
+		current = next
+	}
+}
+
+func ReverseList(slowPtr *EduLinkedListNode) *EduLinkedListNode {
+	reverse := new(EduLinkedListNode)
+	reverse = nil
+	for slowPtr != nil {
+		next := slowPtr.next
+		slowPtr.next = reverse
+		reverse = slowPtr
+		slowPtr = next
+	}
+	return reverse
 }
