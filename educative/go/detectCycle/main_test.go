@@ -24,6 +24,10 @@ func Test_detectCycle(t *testing.T) {
 					el.DisplayLinkedList()
 					fmt.Println()
 
+					// el.InsertNodeAtHead(el.head)
+					el.DisplayLinkedList()
+					fmt.Println()
+
 					return el.head
 				}(),
 			},

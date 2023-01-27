@@ -1,23 +1,45 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
+// func detectCycle(head *EduLinkedListNode) bool {
+// 	slow, fast := head, head
+
+// 	for fast != nil && fast.next != nil {
+// 		slow = slow.next
+// 		fast = fast.next.next
+
+// 		if slow == fast {
+// 			break
+// 		}
+// 	}
+
+// 	return false
+// }
 
 func detectCycle(head *EduLinkedListNode) bool {
-	slow, fast := head, head
+	slow := head
+	fast := head
+	i, j := 0, 0
 
-	for {
-		if fast == nil || fast.next == nil {
-			return true
-		}
-
+	// Run the loop until we reach the end of the linked list or find a cycle
+	for fast != nil && fast.next != nil {
 		slow = slow.next
 		fast = fast.next.next
 
-		if slow == fast {
+		i += 1
+		j += 2
+
+		// Break the loop if the fast pointer reach the end of the linked list
+		if fast == nil {
 			break
 		}
+		if slow == fast {
+			return true
+		}
 	}
-
 	return false
 }
 
