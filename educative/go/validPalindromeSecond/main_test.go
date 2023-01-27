@@ -11,7 +11,6 @@ func Test_validPalindrome(t *testing.T) {
 		args args
 		want bool
 	}{
-
 		{
 			name: "1",
 			args: args{
