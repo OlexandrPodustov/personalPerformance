@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestMultiply(t *testing.T) {
+func TestMultiply1(t *testing.T) {
 	tcs := getCases()
 
 	for _, tc := range tcs {

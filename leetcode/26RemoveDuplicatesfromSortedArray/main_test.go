@@ -38,6 +38,7 @@ func Test_removeDuplicates(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := removeDuplicates(tt.args.nums); got != tt.want {
 				t.Errorf("removeDuplicates() = %v, want %v", got, tt.want)
+				t.FailNow()
 			}
 		})
 	}

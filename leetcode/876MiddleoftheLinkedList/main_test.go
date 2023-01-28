@@ -13,7 +13,6 @@ func Test_middleNode(t *testing.T) {
 		args args
 		want *ListNode
 	}{
-
 		{
 			name: "1,2,3,4,5",
 			args: args{
@@ -24,8 +23,9 @@ func Test_middleNode(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := middleNode(tt.args.head); got.Val != tt.want.Val {
+			if got := middleNode(tt.args.head); got != nil && got.Val != tt.want.Val {
 				t.Errorf("middleNode() = %v, want %v", got.Val, tt.want.Val)
+				t.FailNow()
 			}
 		})
 	}

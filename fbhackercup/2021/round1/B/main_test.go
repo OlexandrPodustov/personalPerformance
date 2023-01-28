@@ -63,6 +63,7 @@ func Test_solution(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := solution(tt.args.nRows, tt.args.mCols, tt.args.aTopLeft, tt.args.bTopRight); got != tt.want {
 				t.Errorf("solution() = \n%q\n%q", got, tt.want)
+				t.FailNow()
 			}
 		})
 	}

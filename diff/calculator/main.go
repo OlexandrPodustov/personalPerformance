@@ -45,7 +45,7 @@ func main() {
 }
 
 func calc(input string) ([]int, error) {
-	log.Println("input", input)
+	// log.Println("input", input)
 
 	reg := regexp.MustCompile(`\[(.*)\]`)
 	sliceSubmatches := reg.FindAllStringSubmatch(input, -1)

@@ -38,6 +38,7 @@ func Test_reverseWords(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := reverseWords(tt.args.sentence); got != tt.want {
 				t.Errorf("reverseWords() = %q, want %v", got, tt.want)
+				t.FailNow()
 			}
 		})
 	}

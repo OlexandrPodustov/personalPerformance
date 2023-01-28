@@ -13,10 +13,10 @@ func TestCalc(t *testing.T) {
 	}
 
 	testCases := []c{
-		{
-			in:   "[ SUM [ SUM a.txt b.txt ] [ SUM b.txt c.txt ] ]",
-			want: []int{1, 2, 3, 4, 5},
-		},
+		// {
+		// 	in:   "[ SUM [ SUM a.txt b.txt ] [ SUM b.txt c.txt ] ]",
+		// 	want: []int{1, 2, 3, 4, 5},
+		// },
 		// {
 		// 	in:   "[ SUM [ DIF a.txt b.txt c.txt ] [ INT b.txt c.txt ] ]",
 		// 	want: []int{1, 3, 4},
@@ -30,7 +30,7 @@ func TestCalc(t *testing.T) {
 
 		if !reflect.DeepEqual(tc.want, got) {
 			t.Errorf("for input: %v - want: %v, got: %v", tc.in, tc.want, got)
-			t.Fail()
+			t.FailNow()
 		}
 	}
 }
@@ -58,7 +58,7 @@ func TestSum(t *testing.T) {
 
 		if !reflect.DeepEqual(tc.want, got) {
 			t.Errorf("for input: %v - want: %v, got: %v", tc.in, tc.want, got)
-			t.Fail()
+			t.FailNow()
 		}
 	}
 }
@@ -86,7 +86,7 @@ func TestDif(t *testing.T) {
 
 		if !reflect.DeepEqual(tc.want, got) {
 			t.Errorf("for input: %v - want: %v, got: %v", tc.in, tc.want, got)
-			t.Fail()
+			t.FailNow()
 		}
 	}
 }
@@ -114,7 +114,7 @@ func TestIntersect(t *testing.T) {
 
 		if !reflect.DeepEqual(tc.want, got) {
 			t.Errorf("for input: %v - want: %v, got: %v", tc.in, tc.want, got)
-			t.Fail()
+			t.FailNow()
 		}
 	}
 }

@@ -244,6 +244,7 @@ func Test_palindrome(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := palindrome(tt.args.head); got != tt.want {
 				t.Errorf("palindrome() = %v, want %v", got, tt.want)
+				t.FailNow()
 			}
 		})
 	}

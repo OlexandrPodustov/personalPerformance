@@ -27,7 +27,7 @@ func TestRun(t *testing.T) {
 		actualResult := checkAscending(res)
 		if test.expectedResult != actualResult {
 			t.Errorf("actualResult: %s", actualResult)
-			t.Fail()
+			t.FailNow()
 		}
 	}
 }
