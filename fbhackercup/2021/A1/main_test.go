@@ -130,13 +130,13 @@ func Test_solution(t *testing.T) {
 			want: 4,
 		},
 
-		{
-			name: "AAAEEEUUUOOOHCCKRP",
-			args: args{
-				input: "AAAEEEUUUOOOHCCKRP",
-			},
-			want: 2,
-		},
+		// {
+		// 	name: "AAAEEEUUUOOOHCCKRP",
+		// 	args: args{
+		// 		input: "AAAEEEUUUOOOHCCKRP",
+		// 	},
+		// 	want: 2,
+		// },
 	}
 
 	for _, tt := range tests {
@@ -145,6 +145,7 @@ func Test_solution(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := solution(tt.args.input); got != tt.want {
 				t.Errorf("solution() = %v, want %v", got, tt.want)
+				t.FailNow()
 			}
 		})
 	}

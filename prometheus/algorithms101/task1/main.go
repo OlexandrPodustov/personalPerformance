@@ -7,9 +7,6 @@ import (
 	"strings"
 )
 
-func main() {
-}
-
 var iteration int
 
 func multiply(x, y uint64) uint64 {

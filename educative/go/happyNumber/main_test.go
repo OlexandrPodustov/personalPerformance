@@ -30,13 +30,14 @@ func Test_happyNumber(t *testing.T) {
 			args: args{
 				num: 2147483646,
 			},
-			want: true,
+			want: false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := happyNumber(tt.args.num); got != tt.want {
 				t.Errorf("happyNumber() = %v, want %v", got, tt.want)
+				t.FailNow()
 			}
 		})
 	}

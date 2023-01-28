@@ -94,6 +94,7 @@ func Test_solution(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := solution(tt.args.input); got != tt.want {
 				t.Errorf("solution() = %v, want %v", got, tt.want)
+				t.FailNow()
 			}
 		})
 	}

@@ -19,7 +19,7 @@ func Hey(inn string) string {
 	for _, v := range in {
 		lastSymb = v
 		uc := strings.ToUpper(string(lastSymb))
-		if uc >= string(65) && uc <= string(90) {
+		if uc >= "A" && uc <= "Z" {
 			resArrs = append(resArrs, v)
 		}
 		sym := string(v)

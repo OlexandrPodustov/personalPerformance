@@ -37,6 +37,7 @@ func Test_hasNonConsecutiveRepetitiveLetters(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := hasNonConsecutiveRepetitiveLetters(tt.args.word); got != tt.want {
 				t.Errorf("hasNonConsecutiveRepetitiveLetters() = %v, want %v", got, tt.want)
+				t.FailNow()
 			}
 		})
 	}

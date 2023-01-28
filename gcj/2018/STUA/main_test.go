@@ -63,7 +63,7 @@ func TestRun(t *testing.T) {
 		ff := []byte(test.ss)
 		actualResult := calc(test.maxWithstand, &ff)
 		if test.expectedResult != actualResult {
-			t.Fail()
+			t.FailNow()
 		}
 	}
 }
