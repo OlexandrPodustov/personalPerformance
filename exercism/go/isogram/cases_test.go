@@ -1,8 +1,9 @@
 package isogram
 
+// This is an auto-generated file. Do not change it manually. Run the generator to update the file.
+// See https://github.com/exercism/go#synchronizing-tests-and-instructions
 // Source: exercism/problem-specifications
-// Commit: f9e0ebb isogram: Update canonical-data.json as in #919 (#920)
-// Problem Specifications Version: 1.2.0
+// Commit: d137db1 Format using prettier (#1917)
 
 var testCases = []struct {
 	description string
@@ -25,6 +26,11 @@ var testCases = []struct {
 		expected:    false,
 	},
 	{
+		description: "word with one duplicated character from the end of the alphabet",
+		input:       "zzyzx",
+		expected:    false,
+	},
+	{
 		description: "longest reported english isogram",
 		input:       "subdermatoglyphic",
 		expected:    true,
@@ -35,9 +41,19 @@ var testCases = []struct {
 		expected:    false,
 	},
 	{
+		description: "word with duplicated character in mixed case, lowercase first",
+		input:       "alphAbet",
+		expected:    false,
+	},
+	{
 		description: "hypothetical isogrammic word with hyphen",
 		input:       "thumbscrew-japingly",
 		expected:    true,
+	},
+	{
+		description: "hypothetical word with duplicated character following hyphen",
+		input:       "thumbscrew-jappingly",
+		expected:    false,
 	},
 	{
 		description: "isogram with duplicated hyphen",
@@ -52,6 +68,16 @@ var testCases = []struct {
 	{
 		description: "duplicated character in the middle",
 		input:       "accentor",
+		expected:    false,
+	},
+	{
+		description: "same first and last characters",
+		input:       "angola",
+		expected:    false,
+	},
+	{
+		description: "word with duplicated character and with two hyphens",
+		input:       "up-to-date",
 		expected:    false,
 	},
 }
