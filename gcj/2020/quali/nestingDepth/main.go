@@ -34,8 +34,7 @@ func zeroOrOne(input string) string {
 		v := ss[i]
 		intVal, err := strconv.Atoi(v)
 		if err != nil {
-			panic("intVal, err := strconv.Atoi(v):" + v + err.Error())
-			return ""
+			return fmt.Sprintf("intVal, err := strconv.Atoi(v): %v, %v", v, err)
 		}
 
 		bef := strings.Repeat("(", intVal)
@@ -67,22 +66,24 @@ func trimRedundand(stringWithBraces string) string {
 
 		currIndex := strings.Index(stringWithBraces, current)
 		if currIndex < 0 {
-			panic("currIndex:" + strconv.Itoa(currIndex) + " stringWithBraces " + stringWithBraces + " current " + current)
+			fmt.Println("currIndex:" + strconv.Itoa(currIndex) + " stringWithBraces " + stringWithBraces + " current " + current)
 			break
 		}
 		nextIndex := strings.Index(stringWithBraces[currIndex+1:], next)
 		if nextIndex < 0 {
-			panic("nextIndex:" + strconv.Itoa(nextIndex) + " stringWithBraces[currIndex+1:] " + stringWithBraces[currIndex+1:] + " next " + next)
+			fmt.Println("nextIndex:" + strconv.Itoa(nextIndex) + " stringWithBraces[currIndex+1:] " + stringWithBraces[currIndex+1:] + " next " + next)
 			break
 		}
 
 		cur, err := strconv.Atoi(current)
 		if err != nil {
-			panic("cur, err := strconv.Atoi(current):" + err.Error())
+			fmt.Println("cur, err := strconv.Atoi(current):", err)
+			return ""
 		}
 		nex, err := strconv.Atoi(next)
 		if err != nil {
-			panic("cur, err := strconv.Atoi(current):" + err.Error())
+			fmt.Println("cur, err := strconv.Atoi(current):", err)
+			return ""
 		}
 
 		// fmt.Println("A", stringWithBraces, " - cur, n values", cur, nex, " - curr, n idx", currIndex, currIndex+nextIndex+1)

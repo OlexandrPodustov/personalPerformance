@@ -9,13 +9,15 @@ import (
 func main() {
 	var testCasesAmount int
 	if _, err := fmt.Scan(&testCasesAmount); err != nil {
-		panic("parse testCasesAmount:" + err.Error())
+		fmt.Println("parse testCasesAmount:", err)
+		return
 	}
 
 	for testCaseNumber := 1; testCaseNumber <= testCasesAmount; testCaseNumber++ {
 		var rows, columns, horizontal, vertical int
 		if _, err := fmt.Scan(&rows, &columns, &horizontal, &vertical); err != nil {
-			panic("&rows, &columns, &horizontal, &vertical:" + err.Error())
+			fmt.Println("&rows, &columns, &horizontal, &vertical:", err)
+			return
 		}
 
 		var ca int

@@ -36,7 +36,8 @@ func main() {
 		}
 
 		if len(arrRow) != 6 {
-			panic("Bad input")
+			fmt.Println("Bad input")
+			return
 		}
 
 		arr = append(arr, arrRow)
@@ -60,6 +61,6 @@ func readLine(reader *bufio.Reader) string {
 
 func checkError(err error) {
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 }

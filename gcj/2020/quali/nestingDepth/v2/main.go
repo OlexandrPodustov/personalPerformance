@@ -34,7 +34,8 @@ func wrap(input string) string {
 		v := ss[i]
 		intVal, err := strconv.Atoi(v)
 		if err != nil {
-			panic("intVal, err := strconv.Atoi(v):" + v + err.Error())
+			fmt.Println("intVal, err := strconv.Atoi(v):", v, err)
+			return ""
 		}
 
 		bef := strings.Repeat("(", intVal)

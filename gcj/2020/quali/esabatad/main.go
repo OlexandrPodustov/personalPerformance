@@ -9,7 +9,8 @@ import (
 func main() {
 	var testCasesAmount, numberOfBitsInArray int
 	if _, err := fmt.Scan(&testCasesAmount, &numberOfBitsInArray); err != nil {
-		panic("parse testCasesAmount:" + err.Error())
+		fmt.Println("parse testCasesAmount:", err)
+		return
 	}
 
 	for testCaseNumber := 1; testCaseNumber <= testCasesAmount; testCaseNumber++ {
@@ -64,8 +65,8 @@ func getNthByte(position int) int {
 
 	var pByte int
 	if _, err := fmt.Scan(&pByte); err != nil {
-		errVal := fmt.Sprintf("scan. received: %T, %#v, %v", pByte, pByte, err)
-		panic(errVal)
+		fmt.Printf("scan. received: %T, %#v, %v\n", pByte, pByte, err)
+		return -1
 	}
 
 	return pByte
