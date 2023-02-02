@@ -80,11 +80,13 @@ func divide(x uint64) (uint64, uint64, int) {
 
 	y, err := strconv.ParseUint(yy, 10, 0)
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
+		return 0, 0, 0
 	}
 	z, err := strconv.ParseUint(zz, 10, 0)
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
+		return 0, 0, 0
 	}
 
 	return y, z, len(str)

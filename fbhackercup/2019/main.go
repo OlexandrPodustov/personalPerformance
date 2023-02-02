@@ -65,8 +65,8 @@ func checkResult(input string) string {
 	return checkResult(input)
 }
 
-func check(e error) {
-	if e != nil {
-		panic(e)
+func check(err error) {
+	if err != nil {
+		fmt.Println(err)
 	}
 }

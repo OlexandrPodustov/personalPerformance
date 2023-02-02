@@ -108,7 +108,7 @@ func Test_findMaxSlidingWindow(t *testing.T) {
 		{
 			name: "1,2",
 			args: args{
-				nums:       []int{1,2},
+				nums:       []int{1, 2},
 				windowSize: 2,
 			},
 			want: []int{2},
