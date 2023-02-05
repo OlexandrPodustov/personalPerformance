@@ -3,28 +3,31 @@ package main
 func findMaxSlidingWindow(nums []int, windowSize int) []int {
 	result := make([]int, 0)
 
-	deq := NewDeque()
-	for _, v := range nums {
-		if deq.Len() < windowSize {
-			deq.PushBack(v)
-			continue
-		}
-		result = append(result, deq.currentTop())
-		deq.PopFront()
-		deq.PushBack(v)
+	if windowSize > len(nums) {
+		windowSize = len(nums)
 	}
-	result = append(result, deq.currentTop())
+
+	deq := NewDeque()
+	for i := 0; i < windowSize; i++ {
+		for !deq.Empty() && nums[i] >= nums[deq.Back()] {
+			deq.PopBack()
+		}
+		deq.PushBack(i)
+	}
+	result = append(result, nums[deq.Front()])
+
+	for i := windowSize; i < len(nums); i++ {
+		for !deq.Empty() && nums[i] >= nums[deq.Back()] {
+			deq.PopBack()
+		}
+
+		if !deq.Empty() && deq.Front() <= (i-windowSize) {
+			deq.PopFront()
+		}
+
+		deq.PushBack(i)
+		result = append(result, nums[deq.Front()])
+	}
 
 	return result
-}
-
-func (s *Deque) currentTop() int {
-	maxVal := -99_999
-	for _, v := range s.items {
-		if v > maxVal {
-			maxVal = v
-		}
-	}
-
-	return maxVal
 }
