@@ -23,23 +23,23 @@ func Test_minWindow(t *testing.T) {
 			want: "bcde",
 		},
 
-		// {
-		// 	name: "fgrqsqsnodwmxzkzxwqegkndaa",
-		// 	args: args{
-		// 		str1: "fgrqsqsnodwmxzkzxwqegkndaa",
-		// 		str2: "kzed",
-		// 	},
-		// 	want: "",
-		// },
+		{
+			name: "fgrqsqsnodwmxzkzxwqegkndaa",
+			args: args{
+				str1: "fgrqsqsnodwmxzkzxwqegkndaa",
+				str2: "kzed",
+			},
+			want: "kzxwqegknd",
+		},
 
-		// {
-		// 	name: "michmznaitnjdnjkdsnmichmznait",
-		// 	args: args{
-		// 		str1: "michmznaitnjdnjkdsnmichmznait",
-		// 		str2: "michmznait",
-		// 	},
-		// 	want: "",
-		// },
+		{
+			name: "michmznaitnjdnjkdsnmichmznait",
+			args: args{
+				str1: "michmznaitnjdnjkdsnmichmznait",
+				str2: "michmznait",
+			},
+			want: "michmznait",
+		},
 
 		{
 			name: "afgegrwgwga",
