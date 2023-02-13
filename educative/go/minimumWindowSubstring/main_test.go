@@ -26,7 +26,7 @@ func Test_minWindow(t *testing.T) {
 		{
 			name: "XYZYX",
 			args: args{
-				str1: "XYZYX",
+				str1: "XYZYUX",
 				str2: "XYZ",
 			},
 			want: "XYZ",
