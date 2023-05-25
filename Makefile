@@ -1,3 +1,5 @@
+all: test fmt
+
 lint: 
 	which ${GOPATH}/bin/golangci-lint || go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.50.1
 	${GOPATH}/bin/golangci-lint run
@@ -9,10 +11,7 @@ fmt:
 	find . -type f -name '*.go' -exec gogroup -order std,other,prefix=github.com/OlexandrPodustov -rewrite {} \;
 
 test: 
-	go test -count=1 ./...
+	go test ./...
 
 vulncheck: 
 	govulncheck ./...
-
-all:
-	test lint vulncheck fmt
