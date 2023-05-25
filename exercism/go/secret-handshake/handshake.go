@@ -31,5 +31,6 @@ func Handshake(in uint) []string {
 			result = append(result, "wink")
 		}
 	}
+
 	return result
 }

@@ -28,5 +28,6 @@ func IsPangram(in string) bool {
 			res = true
 		}
 	}
+
 	return res
 }

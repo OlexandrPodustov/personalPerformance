@@ -39,6 +39,7 @@ func solution(input string) int {
 			min = v
 		}
 	}
+
 	return min
 }
 
