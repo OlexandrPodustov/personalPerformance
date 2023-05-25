@@ -15,5 +15,6 @@ func SumMultiples(in int, list ...int) (res int) {
 	for ind := range ma {
 		res += ind
 	}
+
 	return res
 }

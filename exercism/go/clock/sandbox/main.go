@@ -44,6 +44,7 @@ func New(hour, minute int) Clock {
 	} else {
 		c.h = hour
 	}
+
 	return c
 }
 
@@ -63,6 +64,7 @@ func (c Clock) String() string {
 	}
 
 	s := hh + ":" + m
+
 	return s
 }
 

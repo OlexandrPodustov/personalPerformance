@@ -7,3 +7,12 @@ fmt:
 	gofumpt -w .
 	which ${GOPATH}/bin/gogroup  || go install github.com/vasi-stripe/gogroup/cmd/gogroup@v0.0.0-20200806161525-b5d7f67a97b5
 	find . -type f -name '*.go' -exec gogroup -order std,other,prefix=github.com/OlexandrPodustov -rewrite {} \;
+
+test: 
+	go test -count=1 ./...
+
+vulncheck: 
+	govulncheck ./...
+
+all:
+	test lint vulncheck fmt

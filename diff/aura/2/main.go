@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"regexp"
@@ -69,11 +68,6 @@ func getURLs(result map[string]int, urls ...string) ([]string, error) {
 			return nil, nil
 		}
 
-		rb, err := ioutil.ReadAll(resp.Body)
-		if err != nil {
-			return nil, err
-		}
-		_ = rb
 		// 1. look for href tag
 		// href.
 

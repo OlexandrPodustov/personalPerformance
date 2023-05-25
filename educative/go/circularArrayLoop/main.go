@@ -43,6 +43,7 @@ func circularArrayLoop(arr []int) bool {
 			return true
 		}
 	}
+
 	return false
 }
 

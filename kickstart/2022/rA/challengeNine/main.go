@@ -52,5 +52,6 @@ func solution(given int) int {
 	if err != nil {
 		log.Fatal("final waaaaat", err)
 	}
+
 	return result
 }

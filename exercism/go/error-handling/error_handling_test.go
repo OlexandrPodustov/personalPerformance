@@ -65,11 +65,11 @@ func TestKeepTryOpenOnTransient(t *testing.T) {
 			nthCall++
 			return mockResource{}, TransientError{errors.New("some error")}
 		}
+
 		return mr, nil
 	}
 	inp := "hello"
-	err := Use(opener, inp)
-	if err != nil {
+	if err := Use(opener, inp); err != nil {
 		t.Fatalf("Unexpected error from Use: %v", err)
 	}
 	if frobInput != inp {

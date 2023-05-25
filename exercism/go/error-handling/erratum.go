@@ -46,5 +46,6 @@ func Use(f func() (Resource, error), s string) (rr error) {
 
 	r.Frob(s)
 	r.Close()
+
 	return nil
 }

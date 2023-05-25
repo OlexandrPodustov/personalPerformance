@@ -48,6 +48,7 @@ func Build(records []Record) (*Node, error) {
 		fmt.Println("tree after", root)
 		fmt.Println()
 	}
+
 	return root, nil
 }
 

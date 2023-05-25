@@ -21,5 +21,6 @@ func Abbreviate(in string) string {
 			}
 		}
 	}
+
 	return s
 }

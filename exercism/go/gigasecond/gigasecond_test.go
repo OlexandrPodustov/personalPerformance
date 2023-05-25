@@ -56,6 +56,7 @@ func parse(s string, t *testing.T) time.Time {
 				"Please file an issue at https://github.com/exercism/go.)")
 		}
 	}
+
 	return tt
 }
 
