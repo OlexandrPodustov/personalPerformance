@@ -51,5 +51,6 @@ func Hey(inn string) string {
 	} else {
 		res = "Whatever."
 	}
+
 	return res
 }

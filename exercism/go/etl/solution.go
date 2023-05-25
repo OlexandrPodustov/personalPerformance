@@ -16,5 +16,6 @@ func Transform(in map[int][]string) (res map[string]int) {
 			}
 		}
 	}
+
 	return res
 }

@@ -8,6 +8,7 @@ func SquareOfSums(in int) int {
 		sum += i
 	}
 	res := sum * sum
+
 	return res
 }
 
@@ -25,5 +26,6 @@ func Difference(in ...int) int {
 	for _, v := range in {
 		res = SquareOfSums(v) - SumOfSquares(v)
 	}
+
 	return res
 }

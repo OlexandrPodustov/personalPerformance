@@ -38,6 +38,7 @@ func solve(numbers []int, maxNumbersAdd int) string {
 		return result
 	}
 	result = strconv.Itoa(res)
+
 	return result
 }
 

@@ -522,7 +522,7 @@ linters-settings: # sorted alphabetically. linter doesn't work if settings are p
     # Size of the block (including return statement that is still "OK")
     # so no return split required.
     # Default: 1
-    block-size: 2
+    block-size: 10
   nolintlint:
     # Enable to ensure that nolint directives are all used. Default is true.
     allow-unused: false

@@ -50,6 +50,7 @@ func checkAscending(intSlice []int) string {
 			}
 		}
 	}
+
 	return "OK"
 }
 
@@ -68,5 +69,6 @@ func loopTC() []int {
 		}
 		res = append(res, r)
 	}
+
 	return res
 }

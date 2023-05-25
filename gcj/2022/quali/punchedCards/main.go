@@ -34,6 +34,7 @@ func build(rows, columns int) string {
 		result += rowData(i, columns) + "\n"
 	}
 	result += lineDivider(10, columns)
+
 	return result
 }
 
@@ -50,6 +51,7 @@ func lineDivider(row, columnsAmount int) string {
 		}
 		body += "-" + plus
 	}
+
 	return fmt.Sprintf("%v%v", startEndDivider, body)
 }
 
@@ -62,5 +64,6 @@ func rowData(row, columnsAmount int) string {
 		}
 		body += pillar + dot
 	}
+
 	return body + pillar
 }

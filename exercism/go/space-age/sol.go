@@ -41,6 +41,7 @@ func Age(s float64, p Planet) (a float64) {
 		a = 0
 	}
 	a = round(a)
+
 	return a
 }
 
@@ -55,5 +56,6 @@ func round(i float64) float64 {
 		rv++
 	}
 	roundedVal = rv / 100
+
 	return roundedVal
 }

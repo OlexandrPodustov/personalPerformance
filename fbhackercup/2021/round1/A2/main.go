@@ -59,5 +59,6 @@ func solution(input string) int {
 	modulo := 1_000_000_007
 	result %= modulo
 	fmt.Println("result2", result)
+
 	return result
 }

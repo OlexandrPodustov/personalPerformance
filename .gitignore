@@ -13,5 +13,4 @@
 .glide/
 .idea/
 .gitignore
-sandbox/
 node_modules

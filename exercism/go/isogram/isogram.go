@@ -15,5 +15,6 @@ func IsIsogram(word string) bool {
 			return false
 		}
 	}
+
 	return true
 }

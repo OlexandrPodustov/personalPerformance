@@ -40,6 +40,7 @@ func detectCycle(head *EduLinkedListNode) bool {
 			return true
 		}
 	}
+
 	return false
 }
 
