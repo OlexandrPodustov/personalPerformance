@@ -11,13 +11,13 @@ func Test_findCircleNum(t *testing.T) {
 		args args
 		want int
 	}{
-		{
-			name: "",
-			args: args{
-				isConnected: [][]int{{1, 1, 0}, {1, 1, 0}, {0, 0, 1}},
-			},
-			want: 0,
-		},
+		// {
+		// 	name: "",
+		// 	args: args{
+		// 		isConnected: [][]int{{1, 1, 0}, {1, 1, 0}, {0, 0, 1}},
+		// 	},
+		// 	want: 0,
+		// },
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

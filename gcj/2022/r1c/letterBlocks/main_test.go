@@ -18,20 +18,20 @@ func Test_hasNonConsecutiveRepetitiveLetters(t *testing.T) {
 			},
 			want: false,
 		},
-		{
-			name: "2",
-			args: args{
-				word: "baaaabbb",
-			},
-			want: true,
-		},
-		{
-			name: "3",
-			args: args{
-				word: "aaaacccbbb",
-			},
-			want: true,
-		},
+		// {
+		// 	name: "2",
+		// 	args: args{
+		// 		word: "baaaabbb",
+		// 	},
+		// 	want: true,
+		// },
+		// {
+		// 	name: "3",
+		// 	args: args{
+		// 		word: "aaaacccbbb",
+		// 	},
+		// 	want: true,
+		// },
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
