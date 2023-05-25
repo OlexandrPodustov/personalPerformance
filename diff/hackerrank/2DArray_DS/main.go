@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func hourglassSum(arr [][]int32) int32 {
+func hourglassSum(arr [][]int) int {
 	return 0
 }
 
@@ -23,15 +23,14 @@ func main() {
 
 	writer := bufio.NewWriterSize(stdout, 16*1024*1024)
 
-	var arr [][]int32
+	var arr [][]int
 	for i := 0; i < 6; i++ {
 		arrRowTemp := strings.Split(strings.TrimRight(readLine(reader), " \t\r\n"), " ")
 
-		var arrRow []int32
+		var arrRow []int
 		for _, arrRowItem := range arrRowTemp {
-			arrItemTemp, err := strconv.ParseInt(arrRowItem, 10, 64)
+			arrItem, err := strconv.Atoi(arrRowItem)
 			checkError(err)
-			arrItem := int32(arrItemTemp)
 			arrRow = append(arrRow, arrItem)
 		}
 

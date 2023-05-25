@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func plusMinus(arr []int32) {
+func plusMinus(arr []int) {
 	divider := float64(len(arr))
 
 	var positive, negative, zero float64
@@ -31,19 +31,15 @@ func plusMinus(arr []int32) {
 
 func main() {
 	reader := bufio.NewReaderSize(os.Stdin, 16*1024*1024)
-
-	nTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
+	nTemp, err := strconv.Atoi(strings.TrimSpace(readLine(reader)))
 	checkError(err)
-	n := int32(nTemp)
 
 	arrTemp := strings.Split(strings.TrimSpace(readLine(reader)), " ")
 
-	var arr []int32
-
-	for i := 0; i < int(n); i++ {
-		arrItemTemp, err := strconv.ParseInt(arrTemp[i], 10, 64)
+	var arr []int
+	for i := 0; i < nTemp; i++ {
+		arrItem, err := strconv.Atoi(arrTemp[i])
 		checkError(err)
-		arrItem := int32(arrItemTemp)
 		arr = append(arr, arrItem)
 	}
 
