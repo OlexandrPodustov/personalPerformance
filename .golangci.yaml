@@ -824,6 +824,3 @@ issues:
     - path: perror
       linters:
         - goerr113
-    - path: graphql.resolvers.go
-      linters:
-        - revive
