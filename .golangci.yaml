@@ -610,7 +610,7 @@ linters-settings: # sorted alphabetically. linter doesn't work if settings are p
       - name: if-return
       - name: increment-decrement
       - name: var-naming # []string
-      - name: package-comments
+      # - name: package-comments
       - name: range
       - name: receiver-naming
       - name: indent-error-flow

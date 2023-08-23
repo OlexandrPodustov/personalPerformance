@@ -4,63 +4,65 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"math"
 	"os"
 	"strconv"
 	"strings"
-	"sync"
 )
+
+const modlo = 1000000007
+
+func main() {
+	oneKibibyte := 1024
+	reader := bufio.NewReaderSize(os.Stdin, 16*oneKibibyte*oneKibibyte)
+
+	stdout, err := os.Create(os.Getenv("OUTPUT_PATH"))
+	checkError(err)
+	defer checkError(stdout.Close())
+
+	powerCount, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 0)
+	checkError(err)
+
+	var power []int32
+	for i := 0; i < int(powerCount); i++ {
+		powerItem, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 32)
+		checkError(err)
+		power = append(power, int32(powerItem))
+	}
+
+	writer := bufio.NewWriterSize(stdout, 16*oneKibibyte*oneKibibyte)
+	fmt.Fprintf(writer, "%d\n", findTotalPower(power))
+
+	checkError(writer.Flush())
+}
 
 func findTotalPower(power []int32) int32 {
 	fmt.Println("len power", len(power))
-	// fmt.Println("power", power)
 	lenPower := len(power)
 
-	resChan := make(chan uint64, lenPower)
-	// mem := make(map[string]uint64, 0)
-	// var overallSum uint64
-	wg := sync.WaitGroup{}
+	results := make([]uint64, 0, lenPower)
 	for i := 0; i < lenPower; i++ {
 		for j := 0; j < lenPower; j++ {
 			if i <= j {
-				// key := fmt.Sprint(power[i : j+1])
-				// // fmt.Println("key", key)
-				// if mm, ok := mem[key]; ok {
-				//     overallSum += mm
-				// } else {
-				// }
-				wg.Add(1)
-				go getMinSum(&wg, power[i:j+1], resChan)
-				// fmt.Println("i:j", i, j, ms, power[i:j])
+				results = append(results, getMinSum(power[i:j+1]))
 			}
 		}
 	}
 
-	ovsCh := make(chan uint64, 1)
-	go newFunction(ovsCh, resChan)
-	wg.Wait()
-	close(resChan)
+	var overallSum uint64
+	for _, v := range results {
+		overallSum += v
+	}
 
-	overallSum := <-ovsCh
-	osm := overallSum % 1000000007
+	osm := overallSum % modlo
 	overallSum32 := int32(osm)
 	fmt.Println("overallSum32", overallSum, osm, overallSum32)
 
 	return overallSum32
 }
 
-func newFunction(ovsCh, resChan chan uint64) {
-	var overallSum uint64
-	for v := range resChan {
-		overallSum += v
-	}
-
-	ovsCh <- overallSum
-}
-
-func getMinSum(wg *sync.WaitGroup, powerChunk []int32, resChan chan uint64) {
-	defer wg.Done()
-	min := uint64(2147483647)
-
+func getMinSum(powerChunk []int32) uint64 {
+	min := uint64(math.MaxUint64)
 	var localSum uint64
 	for i := 0; i < len(powerChunk); i++ {
 		cur := uint64(powerChunk[i])
@@ -70,41 +72,7 @@ func getMinSum(wg *sync.WaitGroup, powerChunk []int32, resChan chan uint64) {
 		}
 	}
 
-	// fmt.Println("min", min)
-	// fmt.Println("localSum", localSum)
-	// fmt.Println("msum", msum)
-	// fmt.Println("msum % 1000000007", msum%1000000007)
-
-	resChan <- min * localSum
-}
-
-func main() {
-	reader := bufio.NewReaderSize(os.Stdin, 16*1024*1024)
-
-	stdout, err := os.Create(os.Getenv("OUTPUT_PATH"))
-	checkError(err)
-
-	defer stdout.Close()
-
-	writer := bufio.NewWriterSize(stdout, 16*1024*1024)
-
-	powerCount, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
-	checkError(err)
-
-	var power []int32
-
-	for i := 0; i < int(powerCount); i++ {
-		powerItemTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
-		checkError(err)
-		powerItem := int32(powerItemTemp)
-		power = append(power, powerItem)
-	}
-
-	result := findTotalPower(power)
-
-	fmt.Fprintf(writer, "%d\n", result)
-
-	writer.Flush()
+	return min * localSum
 }
 
 func readLine(reader *bufio.Reader) string {

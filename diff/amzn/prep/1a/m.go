@@ -69,41 +69,36 @@ func numberOfItems(s string, startIndices []int32, endIndices []int32) []int32 {
 
 func main() {
 	reader := bufio.NewReaderSize(os.Stdin, 16*1024*1024)
-
 	stdout, err := os.Create(os.Getenv("OUTPUT_PATH"))
 	checkError(err)
-
-	defer stdout.Close()
-
-	writer := bufio.NewWriterSize(stdout, 16*1024*1024)
+	defer checkError(stdout.Close())
 
 	s := readLine(reader)
 
-	startIndicesCount, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
+	startIndicesCount, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 0)
 	checkError(err)
 
 	var startIndices []int32
-
 	for i := 0; i < int(startIndicesCount); i++ {
-		startIndicesItemTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
+		startIndicesItemTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 32)
 		checkError(err)
 		startIndicesItem := int32(startIndicesItemTemp)
 		startIndices = append(startIndices, startIndicesItem)
 	}
 
-	endIndicesCount, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
+	endIndicesCount, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 0)
 	checkError(err)
 
 	var endIndices []int32
-
 	for i := 0; i < int(endIndicesCount); i++ {
-		endIndicesItemTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
+		endIndicesItemTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 32)
 		checkError(err)
 		endIndicesItem := int32(endIndicesItemTemp)
 		endIndices = append(endIndices, endIndicesItem)
 	}
 
 	result := numberOfItems(s, startIndices, endIndices)
+	writer := bufio.NewWriterSize(stdout, 16*1024*1024)
 
 	for i, resultItem := range result {
 		fmt.Fprintf(writer, "%d", resultItem)
@@ -112,10 +107,9 @@ func main() {
 			fmt.Fprintf(writer, "\n")
 		}
 	}
-
 	fmt.Fprintf(writer, "\n")
 
-	writer.Flush()
+	checkError(writer.Flush())
 }
 
 func readLine(reader *bufio.Reader) string {
