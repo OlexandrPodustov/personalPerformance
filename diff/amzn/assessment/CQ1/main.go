@@ -26,32 +26,27 @@ func getMinimumDays(parcels []int32) int32 {
 }
 
 func main() {
-	reader := bufio.NewReaderSize(os.Stdin, 16*1024*1024)
+	oneKibibyte := 1024
+	reader := bufio.NewReaderSize(os.Stdin, 16*oneKibibyte*oneKibibyte)
 
 	stdout, err := os.Create(os.Getenv("OUTPUT_PATH"))
 	checkError(err)
+	defer checkError(stdout.Close())
 
-	defer stdout.Close()
-
-	writer := bufio.NewWriterSize(stdout, 16*1024*1024)
-
-	parcelsCount, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
+	parcelsCount, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 0)
 	checkError(err)
 
 	var parcels []int32
-
 	for i := 0; i < int(parcelsCount); i++ {
-		parcelsItemTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
+		parcelsItemTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 32)
 		checkError(err)
 		parcelsItem := int32(parcelsItemTemp)
 		parcels = append(parcels, parcelsItem)
 	}
 
-	result := getMinimumDays(parcels)
-
-	fmt.Fprintf(writer, "%d\n", result)
-
-	writer.Flush()
+	writer := bufio.NewWriterSize(stdout, 16*oneKibibyte*oneKibibyte)
+	fmt.Fprintf(writer, "%d\n", getMinimumDays(parcels))
+	checkError(writer.Flush())
 }
 
 func readLine(reader *bufio.Reader) string {
