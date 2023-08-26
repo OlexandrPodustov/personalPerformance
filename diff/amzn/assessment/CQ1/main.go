@@ -38,10 +38,9 @@ func main() {
 
 	var parcels []int32
 	for i := 0; i < int(parcelsCount); i++ {
-		parcelsItemTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 32)
+		parcelsItem, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 32)
 		checkError(err)
-		parcelsItem := int32(parcelsItemTemp)
-		parcels = append(parcels, parcelsItem)
+		parcels = append(parcels, int32(parcelsItem))
 	}
 
 	writer := bufio.NewWriterSize(stdout, 16*oneKibibyte*oneKibibyte)
