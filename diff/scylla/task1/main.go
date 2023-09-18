@@ -31,7 +31,12 @@ func main() {
 		return
 	}
 
-	file, err := os.Create("wget-result.iso")
+	if resp.StatusCode != 200 {
+		log.Fatal(err)
+		return
+	}
+
+	file, err := os.Create("wget-result.iso") // check if such file exists. try to get it from - Content-Disposition: attachment; filename="filename.jpg"
 	if err != nil {
 		log.Fatal(err)
 		return
