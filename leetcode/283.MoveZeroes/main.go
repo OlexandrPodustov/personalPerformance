@@ -6,13 +6,15 @@ func moveZeroes(nums []int) {
 		return
 	}
 
-	for i := 0; i < ln; i++ {
-		if nums[i] == 0 {
-			for j := i; j < ln; j++ {
-				if nums[j] != 0 {
-					nums[i], nums[j] = nums[j], nums[i]
-					break
-				}
+	j := 0
+	for i := 0; i < ln && j < ln; i++ {
+		if nums[i] != 0 {
+			continue
+		}
+		for j = i + 1; j < ln; j++ {
+			if nums[j] != 0 {
+				nums[i], nums[j] = nums[j], nums[i]
+				break
 			}
 		}
 	}
