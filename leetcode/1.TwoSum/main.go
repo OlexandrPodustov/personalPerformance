@@ -1,20 +1,15 @@
 package main
 
 func twoSum(nums []int, target int) []int {
-	numberIndex := make(map[int]int, len(nums))
-	for i, v := range nums {
-		numberIndex[v] = i
-	}
+	diffs := make(map[int]int)
 
-	result := make([]int, 0, 2)
+	result := []int{}
 	for i, v := range nums {
-		j, ok := numberIndex[target-v]
-		if ok && i != j {
-			result = append(result, i)
-			result = append(result, j)
-
+		if val, ok := diffs[v]; ok {
+			result = []int{val, i}
 			break
 		}
+		diffs[target-v] = i
 	}
 
 	return result
