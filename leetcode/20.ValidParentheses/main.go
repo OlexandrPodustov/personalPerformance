@@ -15,3 +15,5 @@ func isValid(s string) bool {
 
 	return s == ""
 }
+
+// todo: implement with stack
