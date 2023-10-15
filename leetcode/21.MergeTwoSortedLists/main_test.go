@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"reflect"
 	"testing"
 )
@@ -115,14 +114,14 @@ func Test_mergeTwoLists(t *testing.T) {
 				}(),
 				list2: func() *ListNode {
 					var liRes *ListNode
-					liRes = appendToEnd(liRes, 0)
+					liRes = appendToEnd(liRes, 22)
 
 					return liRes
 				}(),
 			},
 			want: func() *ListNode {
 				var liRes *ListNode
-				liRes = appendToEnd(liRes, 0)
+				liRes = appendToEnd(liRes, 22)
 
 				return liRes
 			}(),
@@ -132,14 +131,27 @@ func Test_mergeTwoLists(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := mergeTwoLists(tt.args.list1, tt.args.list2); !reflect.DeepEqual(got, tt.want) {
 				got1, _ := json.Marshal(got)
-				fmt.Println()
-				fmt.Println("got1", string(got1))
+				// fmt.Println("got1", string(got1))
 				waaa, _ := json.Marshal(tt.want)
-				fmt.Println("waaa", string(waaa))
-				fmt.Println()
+				// fmt.Println("waaa", string(waaa))
 
-				t.Errorf("mergeTwoLists() = %v, want %v", got, tt.want)
+				t.Errorf("mergeTwoLists() got\n%v\nwant\n%v", string(got1), string(waaa))
 			}
 		})
 	}
+}
+
+func appendToEnd(head *ListNode, val int) *ListNode {
+	newNode := &ListNode{Val: val, Next: nil}
+	if head == nil { // initial step - used once
+		return newNode
+	}
+
+	current := head
+	for current.Next != nil {
+		current = current.Next
+	}
+	current.Next = newNode
+
+	return head
 }
