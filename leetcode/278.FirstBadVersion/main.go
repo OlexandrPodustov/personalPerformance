@@ -16,15 +16,11 @@ func isBadVersion(version int) bool {
 }
 
 func firstBadVersion(n int) int {
-	if n == 1 {
-		return 1
-	}
 	lp := 1
 	rp := n
-	firstBadVersion := n / 2
 
 	for lp < rp {
-		// fmt.Println("firstBadVersion, wasBadIndex", firstBadVersion,wasBadIndex)
+		firstBadVersion := lp + (rp-lp)/2
 		bad := isBadVersion(firstBadVersion)
 
 		if bad && isBadVersion(firstBadVersion-1) == false {
@@ -33,12 +29,13 @@ func firstBadVersion(n int) int {
 
 		if bad {
 			rp = firstBadVersion
-			firstBadVersion = lp/2 + firstBadVersion/2
 		} else {
-			lp = firstBadVersion
-			firstBadVersion = firstBadVersion/2 + rp/2 + 1
+			lp = firstBadVersion + 1
 		}
 	}
+	if lp == rp {
+		return lp
+	}
 
-	return 1
+	return 0
 }
