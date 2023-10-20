@@ -1,11 +1,21 @@
 package main
 
 func climbStairs(n int) int {
-	if n <= 3 {
-		return n
+	switch n {
+	case 1:
+		return 1
+	case 2:
+		return 2
 	}
-	if n == 4 {
-		return 5
+
+	first, second := 1, 2
+	res := first + second
+	for i := 3; i < n; i++ {
+		first = second
+		second = res
+
+		res = first + second
 	}
-	return climbStairs(n-1) + climbStairs(n-2)
+
+	return res
 }
