@@ -20,7 +20,7 @@ func isBalanced(root *TreeNode) bool {
 		return false
 	}
 
-	return true
+	return isBalanced(root.Left) && isBalanced(root.Right)
 }
 
 func findHeight(root *TreeNode) int {
