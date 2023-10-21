@@ -6,13 +6,7 @@ type ListNode struct {
 }
 
 func middleNode(head *ListNode) *ListNode {
-	if head == nil {
-		return nil
-	}
-
-	slow := head
-	fast := head
-
+	slow, fast := head, head
 	for fast != nil && fast.Next != nil {
 		slow = slow.Next
 		fast = fast.Next.Next
@@ -30,11 +24,4 @@ func composeLl(list []int) *ListNode {
 	}
 
 	return linkedList
-}
-
-func printList(head *ListNode) {
-	place := head
-	for place != nil {
-		place = place.Next
-	}
 }
