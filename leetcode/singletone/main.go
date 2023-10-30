@@ -2,11 +2,12 @@ package main
 
 import "sync"
 
-type connector struct {
-}
+type connector struct{}
 
-var lock sync.Mutex
-var instance *connector
+var (
+	lock     sync.Mutex
+	instance *connector
+)
 
 func GetInstance() *connector {
 	if instance == nil {
