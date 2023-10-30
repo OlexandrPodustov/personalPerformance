@@ -22,7 +22,6 @@ func Walk(t *tree.Tree, ch chan int) {
 	if t.Right != nil {
 		Walk(t.Right, ch)
 	}
-
 }
 
 // Same determines whether the trees
