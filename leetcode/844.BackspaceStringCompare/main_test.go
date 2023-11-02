@@ -28,6 +28,22 @@ func Test_backspaceCompare(t *testing.T) {
 			},
 			want: true,
 		},
+		{
+			name: "3",
+			args: args{
+				s: "a##c",
+				t: "#a#c",
+			},
+			want: true,
+		},
+		{
+			name: "4",
+			args: args{
+				s: "y#fo##f",
+				t: "y#f#o##f",
+			},
+			want: true,
+		},
 	}
 	for _, tt := range tests {
 		tt := tt
