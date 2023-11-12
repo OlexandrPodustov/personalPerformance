@@ -24,7 +24,7 @@ func findMin(nums []int) int {
 	return min(nums[start], nums[end])
 }
 
-// [4,5,6,7,0,1,2]
+//[4,5,6,7,0,1,2]
 // -5000 <= n <= 5000
 // 1 <= len(nums) <= 5000
 
