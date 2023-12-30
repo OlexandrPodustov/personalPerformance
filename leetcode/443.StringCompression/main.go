@@ -14,8 +14,6 @@ func compress(chars []byte) int {
 	prevChar := chars[0]
 	amount := 0
 	for _, v := range chars {
-		// fmt.Println("v, prevChar", v, prevChar)
-
 		if v == prevChar {
 			amount++
 		} else {
@@ -23,7 +21,6 @@ func compress(chars []byte) int {
 				result += string(prevChar)
 			} else {
 				result += fmt.Sprintf("%v%d", string(prevChar), amount)
-				// fmt.Println("result", result)
 				prevChar = 0
 				amount = 1
 			}
