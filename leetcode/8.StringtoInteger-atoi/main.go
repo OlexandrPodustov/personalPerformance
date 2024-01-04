@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -44,12 +43,11 @@ func myAtoi(s string) int {
 		if isInteger {
 			integersMet = true
 			resultSet = append(resultSet, int(vi))
+			if len(resultSet) > 0 && resultSet[0] == 0 {
+				resultSet = resultSet[1:]
+			}
 		}
 	}
-
-	fmt.Println("resultSet 1", resultSet)
-	resultSet = trimLeadingZeroes(resultSet)
-	fmt.Println("resultSet 2", resultSet)
 
 	outOfBound := false
 	if len(resultSet) > 10 {
@@ -79,16 +77,4 @@ func myAtoi(s string) int {
 
 	}
 	return result
-}
-
-func trimLeadingZeroes(list []int) []int {
-	i := 0
-	for i < len(list) {
-		if list[i] != 0 {
-			break
-		}
-		list = list[1:]
-	}
-
-	return list
 }
