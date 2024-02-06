@@ -1,26 +1,27 @@
 package main
 
-import (
-	"fmt"
-	"sort"
-	"strings"
-)
-
 func groupAnagrams(strs []string) [][]string {
-	groups := make(map[string][]string)
+	data := map[[26]uint16][]string{}
 
-	for _, str := range strs {
-		s := strings.Split(str, "")
-		sort.Strings(s)
-		keyStr := fmt.Sprint(s)
-
-		groups[keyStr] = append(groups[keyStr], str)
+	for _, w := range strs {
+		stats := wordStats(w)
+		data[stats] = append(data[stats], w)
 	}
 
-	result := make([][]string, 0)
-	for _, grp := range groups {
-		result = append(result, grp)
+	res := make([][]string, len(data))
+	var i int
+	for _, val := range data {
+		res[i] = val
+		i++
+	}
+	return res
+}
+
+func wordStats(w string) [26]uint16 {
+	res := [26]uint16{}
+	for _, c := range w {
+		res[c-'a']++
 	}
 
-	return result
+	return res
 }
