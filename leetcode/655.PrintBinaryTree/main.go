@@ -14,7 +14,7 @@ type TreeNode struct {
 
 func printTree(root *TreeNode) [][]string {
 	h := findHeight(root)
-	columnsAmount := 1<<h - 1
+	columnsAmount := 1<<(h+1) - 1
 	result := initMatrix(h+1, columnsAmount)
 
 	fmt.Println("h", h)
