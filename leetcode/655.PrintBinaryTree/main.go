@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -17,28 +16,34 @@ func printTree(root *TreeNode) [][]string {
 	columnsAmount := 1<<(h+1) - 1
 	result := initMatrix(h+1, columnsAmount)
 
-	fmt.Println("h", h)
 	fillMatrix(root, result, h, columnsAmount)
-	fmt.Println("result", result)
 
 	return result
 }
 
 func fillMatrix(root *TreeNode, result [][]string, h, columnsAmount int) {
 	r, c := 0, (columnsAmount-1)/2
+	var fm func(root *TreeNode, result [][]string, h, columnsAmount int)
 
-	if root == nil {
-		return
+	fm = func(root *TreeNode, result [][]string, h, columnsAmount int) {
+		if root == nil {
+			return
+		}
+		if r == 0 {
+			result[r][c] = strconv.Itoa(root.Val) // root node placement
+		}
+		shift := h - r - 1
+		if root.Left != nil {
+			result[r+1][c-1<<shift] = strconv.Itoa(root.Left.Val)
+		}
+		if root.Right != nil {
+			result[r+1][c+1<<shift] = strconv.Itoa(root.Right.Val)
+		}
+		r++
+		fm(root, result, h, columnsAmount)
 	}
-	if r == 0 {
-		result[r][c] = strconv.Itoa(root.Val) // root node placement
-	}
-	if root.Left != nil {
-		result[r+1][max(c-1<<(h-r-1), 0)] = strconv.Itoa(root.Left.Val)
-	}
-	if root.Right != nil {
-		result[r+1][c+1<<(h-r-1)] = strconv.Itoa(root.Right.Val)
-	}
+
+	fm(root, result, h, columnsAmount)
 }
 
 func initMatrix(h, columnsAmount int) [][]string {
