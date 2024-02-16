@@ -13,37 +13,26 @@ type TreeNode struct {
 
 func printTree(root *TreeNode) [][]string {
 	h := findHeight(root)
-	columnsAmount := 1<<(h+1) - 1
-	result := initMatrix(h+1, columnsAmount)
+	columnsAmount := 1<<h - 1
+	result := initMatrix(h, columnsAmount)
 
-	fillMatrix(root, result, h, columnsAmount)
+	fillMatrix(root, result, h-1, 0, columnsAmount/2)
 
 	return result
 }
 
-func fillMatrix(root *TreeNode, result [][]string, h, columnsAmount int) {
-	r, c := 0, (columnsAmount-1)/2
-	var fm func(root *TreeNode, result [][]string, h, columnsAmount int)
-
-	fm = func(root *TreeNode, result [][]string, h, columnsAmount int) {
-		if root == nil {
-			return
-		}
-		if r == 0 {
-			result[r][c] = strconv.Itoa(root.Val) // root node placement
-		}
-		shift := h - r - 1
-		if root.Left != nil {
-			result[r+1][c-1<<shift] = strconv.Itoa(root.Left.Val)
-		}
-		if root.Right != nil {
-			result[r+1][c+1<<shift] = strconv.Itoa(root.Right.Val)
-		}
-		r++
-		fm(root, result, h, columnsAmount)
+func fillMatrix(root *TreeNode, result [][]string, height, row, col int) {
+	if root == nil {
+		return
 	}
+	result[row][col] = strconv.Itoa(root.Val)
 
-	fm(root, result, h, columnsAmount)
+	if root.Left != nil {
+		fillMatrix(root.Left, result, height, row+1, col-1<<(max(height-row-1, 0)))
+	}
+	if root.Right != nil {
+		fillMatrix(root.Right, result, height, row+1, col+1<<(max(height-row-1, 0)))
+	}
 }
 
 func initMatrix(h, columnsAmount int) [][]string {
@@ -59,17 +48,9 @@ func initMatrix(h, columnsAmount int) [][]string {
 }
 
 func findHeight(root *TreeNode) int {
-	if root.Left == nil && root.Right == nil {
+	if root == nil {
 		return 0
 	}
 
-	var lh, rh int
-	if root.Left != nil {
-		lh = findHeight(root.Left) + 1
-	}
-	if root.Right != nil {
-		rh = findHeight(root.Right) + 1
-	}
-
-	return max(lh, rh)
+	return max(findHeight(root.Left), findHeight(root.Right)) + 1
 }
