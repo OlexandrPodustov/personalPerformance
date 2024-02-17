@@ -37,9 +37,9 @@ func fillMatrix(root *TreeNode, result [][]string, height, row, col int) {
 
 func initMatrix(h, columnsAmount int) [][]string {
 	result := make([][]string, 0, h)
-	for i := 0; i < h; i++ {
+	for range h {
 		res := make([]string, 0, columnsAmount)
-		for i := 0; i < columnsAmount; i++ {
+		for range columnsAmount {
 			res = append(res, "")
 		}
 		result = append(result, res)
