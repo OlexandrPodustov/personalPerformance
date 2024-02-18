@@ -1,4 +1,4 @@
-package bandwidththrottle
+package main
 
 import (
 	"net"

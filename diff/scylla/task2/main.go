@@ -27,13 +27,12 @@ import (
 	"net"
 	"time"
 
-	"github.com/olexandrPodustov/diff/scylla/task2/bandwidththrottle"
 	"golang.org/x/time/rate"
 )
 
 func main() {
 	// Create a BandwidthThrottle with a global rate of 1024 bytes per second.
-	bt := bandwidththrottle.NewBandwidthThrottle(rate.Limit(1024))
+	bt := NewBandwidthThrottle(rate.Limit(1024))
 
 	// Create a TCP server.
 	listener, err := net.Listen("tcp", ":8080")
