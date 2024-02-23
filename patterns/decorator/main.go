@@ -3,15 +3,14 @@ package main
 import "fmt"
 
 func main() {
-
 	pizza := &VeggieMania{}
 
-	//Add cheese topping
+	// Add cheese topping
 	pizzaWithCheese := &CheeseTopping{
 		pizza: pizza,
 	}
 
-	//Add tomato topping
+	// Add tomato topping
 	pizzaWithCheeseAndTomato := &TomatoTopping{
 		pizza: pizzaWithCheese,
 	}
@@ -23,8 +22,7 @@ type IPizza interface {
 	getPrice() int
 }
 
-type VeggieMania struct {
-}
+type VeggieMania struct{}
 
 func (p *VeggieMania) getPrice() int {
 	return 15

@@ -1,0 +1,112 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+ 
+Vagrant.configure("2") do |config|
+  config.vm.define "cpp" do |cpp|
+    cpp.vm.box = "generic/ubuntu2004"
+    cpp.vm.hostname = 'cpp'
+    # cpp.vm.box_url = "generic/ubuntu2004"
+
+    cpp.vm.network :private_network, ip: "10.0.3.21"
+    cpp.vm.network :forwarded_port, guest: 22, host: 10422, id: "ssh"
+
+    # cpp.vm.synced_folder ".", "/home/vagrant"
+    
+    cpp.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y apache2
+    sudo apt install net-tools
+    sudo apt-get install bash-completion vim -y
+
+    sudo swapoff -a
+    alias c='clear'
+
+    cp LFD259/SOLUTIONS/s_02/k8scp.sh .
+    # bash k8scp.sh | tee $HOME/cp.out
+   
+
+  SHELL
+
+    cpp.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 8192]
+      v.customize ["modifyvm", :id, "--cpus", 2]
+      v.customize ["modifyvm", :id, "--name", "cpp"]
+    end
+  end
+
+  config.vm.define "worker2" do |worker2|
+    worker2.vm.box = "generic/ubuntu2004"
+    worker2.vm.hostname = 'worker2'
+    # worker2.vm.box_url = "generic/ubuntu2004"
+
+    worker2.vm.network :private_network, ip: "10.0.3.22"
+    worker2.vm.network :forwarded_port, guest: 22, host: 10322, id: "ssh"
+
+    # worker2.vm.synced_folder "./SOLUTIONS", "/home/vagrant/SOLUTIONS"
+
+    worker2.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y apache2
+    sudo apt install net-tools
+
+    sudo swapoff -a
+    alias c='clear'
+
+    cp LFD259/SOLUTIONS/s_02/k8sWorker.sh .
+    # bash k8sWorker.sh | tee worker.out
+   
+
+  SHELL
+
+
+    worker2.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 8192]
+      v.customize ["modifyvm", :id, "--cpus", 2]
+      v.customize ["modifyvm", :id, "--name", "worker2"]
+    end
+  end
+end
+
+
+# source <(kubectl completion bash)
+# echo "source <(kubectl completion bash)" >> $HOME/.bashrc
+
+
+# strace -eopenat kubectl version
+# kubectl get node
+# kubectl --help
+# kubectl taint --help
+# kubectl describe nodes | grep -i taint
+# kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+# kubectl describe nodes | grep -i taint
+# kubectl get nodes
+
+# Configure the cluster
+# kubeadm reset
+# sudo kubeadm init --apiserver-advertise-address 10.0.3.21 --pod-network-cidr=192.168.0.0/16 | sudo tee -a /var/log/kubeinit2.log
+# sudo kubeadm join 10.0.3.21:6443 --token m7b7po.jvb2rz5c4ihmzcto --discovery-token-ca-cert-hash sha256:b12d54c06e1a72a8920285445537b39f620d79a92558d11f28ba29c117df06e5 --v=5
+
+# kubectl api-resources 
+# curl 91.123.150.195:31084
+# curl 10.0.3.21:31084
+
+# kubectl delete pod basicpod ; kubectl create -f basic.yaml
+
+
+
+# questions:
+# Which of the plugins allow vxlans?
+# Which are layer 2 plugins?
+# Which are layer 3?
+# Which Kubernetes plugins allow network policies?
+# Which Kubernetes plugins can encrypt all TCP and UDP traffic?
+
+# Multi-container Pod ConsiderationsUsing the information learned from this chapter, consider the following questions:
+# 1.  Which deployment method would allow the most flexibility, multiple applications per pod or one per pod?
+# 2.  Which deployment method allows for the most granular scalability?
+# 3.  Which have the best performance?
+# 4.  How many IP addresses are assigned per pod?
+# 5.  What are some ways containers can communicate within the same pod?
+# 6.  What are some reasons you should have multiple containers per pod?
