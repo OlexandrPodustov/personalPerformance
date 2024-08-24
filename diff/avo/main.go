@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"strings"
@@ -75,7 +75,7 @@ func handleOne(w http.ResponseWriter, r *http.Request) {
 	case http.MethodPut:
 		fmt.Println("handleOne put one")
 
-		bts, err := ioutil.ReadAll(r.Body)
+		bts, err := io.ReadAll(r.Body)
 		if err != nil {
 			log.Print(err)
 			w.WriteHeader(http.StatusBadRequest)
