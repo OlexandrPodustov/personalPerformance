@@ -1,6 +1,6 @@
 package main
 
-func sortedSquares(nums []int) []int {
+func sortedSquares(nums []int) []int { // retry with two pointers
 	if len(nums) == 1 {
 		nums[0] *= nums[0]
 		return nums
