@@ -1,8 +1,8 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	"io"
 	"log"
 	"net/http"
 	"strings"
@@ -25,6 +25,10 @@ var keyValue = struct {
 
 type storer interface {
 	// add methods
+}
+
+type StoreRequest struct {
+	Data string `json:"data,omitempty"`
 }
 
 func main() {
@@ -75,15 +79,20 @@ func handleOne(w http.ResponseWriter, r *http.Request) {
 	case http.MethodPut:
 		fmt.Println("handleOne put one")
 
-		bts, err := io.ReadAll(r.Body)
-		if err != nil {
+		var req StoreRequest
+		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 			log.Print(err)
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
-		fmt.Println("handleOne put one bts", bts)
+		fmt.Println("handleOne put one req data", req.Data)
 
-		upsertOne(key, bts)
+		if req.Data == "" {
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+
+		upsertOne(key, []byte(req.Data))
 
 	case http.MethodDelete:
 		fmt.Println("handleOne removeOne")
