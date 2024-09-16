@@ -31,7 +31,6 @@ func Test_duplicateZeros(t *testing.T) {
 		{
 			name: "3",
 			args: args{
-
 				arr: []int{0, 4, 1, 0, 0, 8, 0, 0, 3},
 			},
 
