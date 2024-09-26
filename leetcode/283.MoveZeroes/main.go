@@ -1,16 +1,15 @@
 package main
 
 func moveZeroes(nums []int) {
-	ln := len(nums)
-	if ln < 2 {
-		return
-	}
+	insertAt := 0
 
-	lastNonZeroFoundAt := 0
-	for cur := 0; cur < ln; cur++ {
-		if nums[cur] != 0 {
-			nums[lastNonZeroFoundAt], nums[cur] = nums[cur], nums[lastNonZeroFoundAt]
-			lastNonZeroFoundAt++
+	for i := 0; i < len(nums); i++ {
+		if nums[i] != 0 {
+			nums[insertAt] = nums[i]
+			insertAt++
 		}
+	}
+	for i := insertAt; i < len(nums); i++ {
+		nums[i] = 0
 	}
 }
