@@ -1,33 +1,15 @@
 package main
 
 func removeElement(nums []int, val int) int {
-	if len(nums) == 1 {
-		if nums[0] == val {
-			return 0
-		}
+	insertAt := 0
 
-		return 1
-	}
-
-	amountOfUnmatched := 0
-	left := 0
-	right := len(nums) - 1
-
-	for left <= right {
-		if nums[left] != val {
-			amountOfUnmatched++
-			left++
+	for i, v := range nums {
+		if v == val {
 			continue
 		}
-		if nums[right] == val {
-			right--
-			continue
-		}
-
-		nums[left], nums[right] = nums[right], nums[left]
-		left++
-		amountOfUnmatched++
+		nums[insertAt] = nums[i]
+		insertAt++
 	}
 
-	return amountOfUnmatched
+	return insertAt
 }

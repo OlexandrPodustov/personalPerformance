@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func Test_removeElement(t *testing.T) {
 	type args struct {
@@ -49,7 +52,7 @@ func Test_removeElement(t *testing.T) {
 				val:  2,
 			},
 			want:     5,
-			wantData: []int{0, 1, 4, 0, 3},
+			wantData: []int{0, 1, 3, 0, 4},
 		},
 		{
 			name: "5",
@@ -73,8 +76,12 @@ func Test_removeElement(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := removeElement(tt.args.nums, tt.args.val); got != tt.want {
+			got := removeElement(tt.args.nums, tt.args.val)
+			if got != tt.want {
 				t.Errorf("removeElement() = %v, want %v", got, tt.want)
+			}
+			if !reflect.DeepEqual(tt.args.nums[:got], tt.wantData) {
+				t.Errorf("removeElement() = %v, want %v", tt.args.nums[:got], tt.wantData)
 			}
 		})
 	}
