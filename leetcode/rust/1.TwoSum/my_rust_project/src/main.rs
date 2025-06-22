@@ -41,5 +41,3 @@ fn run_solution(numbers: Vec<i32>, target_val: i32) {
     let result = Solution::two_sum(numbers, target_val);
     println!("Result: {:?}", result);
 }
-
-
