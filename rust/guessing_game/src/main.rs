@@ -2,6 +2,9 @@ use rand::Rng;
 use std::io;
 fn main() {
     println!("Guess the number!");
+
+    let sec = rand::thread_rng().gen_range(1..=100);
+
     println!("Please input your guess.");
 
     let mut guess = String::new();
@@ -10,11 +13,9 @@ fn main() {
         .expect("Failed to read line");
     println!("You guessed: {}", guess);
 
-    let mut rnd = rand::thread_rng();
-    let sec = rnd.gen_range(1..=100);
-
-    if guess == sec.to_string() {
+    if guess.trim() == sec.to_string() {
         println!("You guessed it right!");
+        return;
     }
-    println!("You failed to guess it - {}", sec);
+    println!("You failed to guess it");
 }
