@@ -12,33 +12,20 @@ impl Point {
     fn rotate(&mut self, direction: &str, distance: i32) -> i32 {
         let mut pointed_to_zero: i32 = 0;
 
-        println!("before points_to: {}", self.points_to);
-
         let distance_mod = distance % 100;
 
         if direction == "L" {
-            pointed_to_zero += (self.points_to - distance) / 100;
-            if (self.points_to - distance) == 0 {
-                pointed_to_zero += 1;
+            if self.points_to == 0 {
+                // Starting at 0, need full rotation to reach 0 again
+                pointed_to_zero += distance / 100;
+            } else if distance >= self.points_to {
+                // Cross 0 once, then every 100 steps after
+                pointed_to_zero += 1 + (distance - self.points_to) / 100;
             }
 
-            println!(
-                "pointed_to_zero {} while rotating left from: {} - {} = {}",
-                pointed_to_zero,
-                self.points_to,
-                distance,
-                self.points_to - distance,
-            );
             self.points_to -= distance_mod;
         } else {
             pointed_to_zero += (self.points_to + distance) / 100;
-            println!(
-                "pointed_to_zero {} while rotating right from: {} + {} = {}",
-                pointed_to_zero,
-                self.points_to,
-                distance,
-                self.points_to + distance,
-            );
 
             self.points_to += distance_mod;
         }
@@ -48,13 +35,6 @@ impl Point {
             self.points_to -= 100;
         }
 
-        // if self.points_to - distance < 0 {
-        //     pointed_to_zero += 1;
-        // }
-
-        println!("pointed_to_zero times: {}", pointed_to_zero);
-        println!("after points_to: {}", self.points_to);
-
         pointed_to_zero
     }
 }
@@ -62,14 +42,16 @@ impl Point {
 fn main() -> io::Result<()> {
     let mut result = 0;
     let mut current_point: Point = Point::new();
+    let mut row_number = 1;
 
     let stdin = io::stdin();
     for line in stdin.lock().lines() {
         let input_line = line?;
         if input_line.trim().is_empty() {
-            // break the loop on empty line
             break;
         }
+
+        println!("row_number: {}", row_number);
 
         let (direction, distance) = input_line.split_at(1);
         let distance_int = distance.parse::<i32>().unwrap();
@@ -82,6 +64,7 @@ fn main() -> io::Result<()> {
         result += zero_times;
         println!("result accumulated: {}", result);
         println!(" ------------------- ");
+        row_number += 1;
     }
 
     println!("result: {}", result);
