@@ -1,0 +1,9 @@
+{
+  "rust-analyzer.linkedProjects": [
+    "coursera/rust/t1/Cargo.toml",
+    "coursera/rust/t2/Cargo.toml",
+    "rust/minigrep/Cargo.toml",
+    "rust/guessing_game/Cargo.toml",
+    "leetcode/rust/1.TwoSum/my_rust_project/Cargo.toml"
+  ]
+}
