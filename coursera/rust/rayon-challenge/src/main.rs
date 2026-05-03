@@ -59,10 +59,10 @@ fn main() {
     let unique_threads = thread_ids.lock().unwrap().clone();
 
     println!("=== Parallel ===");
-    println!("  Time:           {:?}", parallel_time);
-    println!("  Sum:            {}", parallel_sum);
+    println!("  Time:           {parallel_time:?}");
+    println!("  Sum:            {parallel_sum}");
     println!("  Threads used:   {}", unique_threads.len());
-    println!("  Thread IDs:     {:?}", unique_threads);
+    println!("  Thread IDs:     {unique_threads:?}");
 
     // --- Sequential run ---
     let start = Instant::now();
@@ -70,8 +70,8 @@ fn main() {
     let sequential_time = start.elapsed();
 
     println!("\n=== Sequential ===");
-    println!("  Time:           {:?}", sequential_time);
-    println!("  Sum:            {}", sequential_sum);
+    println!("  Time:           {sequential_time:?}");
+    println!("  Sum:            {sequential_sum}");
     println!("  Threads used:   1 (main thread only)");
 
     // --- Summary ---
@@ -80,7 +80,7 @@ fn main() {
     println!("  Rayon threads spawned:  {}", unique_threads.len());
 
     let ratio = sequential_time.as_nanos() as f64 / parallel_time.as_nanos() as f64;
-    println!("  Speedup (seq/par):      {:.2}x", ratio);
+    println!("  Speedup (seq/par):      {ratio:.2}x");
 
     if ratio < 1.0 {
         println!("  → Parallel was SLOWER (overhead > benefit at this data size)");

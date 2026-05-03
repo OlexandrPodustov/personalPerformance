@@ -58,7 +58,7 @@ fn largest(numbers: &[i32]) -> Option<i32> {
 fn main() {
     let nums = vec![3, 7, 2, 9, 1];
     match largest(&nums) {
-        Some(n) => println!("Largest: {}", n),
+        Some(n) => println!("Largest: {n}"),
         None => println!("Empty list"),
     }
 }

@@ -33,11 +33,8 @@ fn main() {
 
 // Vec<i32>, target: i32
 fn run_solution(numbers: Vec<i32>, target_val: i32) {
-    println!(
-        "Calling two_sum with numbers: {:?} and target: {}",
-        numbers, target_val
-    );
+    println!("Calling two_sum with numbers: {numbers:?} and target: {target_val}");
 
     let result = Solution::two_sum(numbers, target_val);
-    println!("Result: {:?}", result);
+    println!("Result: {result:?}");
 }
