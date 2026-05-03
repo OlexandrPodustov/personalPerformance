@@ -1,10 +1,9 @@
 use colored::*;
-use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
 
 fn main() {
-    let sec = rand::thread_rng().gen_range(1..=101);
+    let sec = rand::rng().random_range(1..=101);
     // println!("The secret number is: {sec}");
 
     println!("Guess the number!");

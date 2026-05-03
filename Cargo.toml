@@ -1,9 +1,19 @@
 [workspace]
-members = ["coursera/rust/rayon-challenge"
-,"coursera/rust/t1"
-,"coursera/rust/t2"
-,"rust/minigrep"
-,"rust/minigrep"
-,"rust/guessing_game"
-,"leetcode/rust/1.TwoSum/my_rust_project"
+resolver = "3"
+members = [
+    "coursera/rust/rayon-challenge",
+    "coursera/rust/t1",
+    "coursera/rust/t2",
+    "rust/minigrep",
+    "rust/guessing_game",
+    "leetcode/rust/1.TwoSum/my_rust_project",
 ]
+
+[workspace.package]
+edition = "2024"
+version = "0.1.0"
+
+[workspace.dependencies]
+rand = "0.10.1"
+colored = "3.1.1"
+rayon = "1.11.0"

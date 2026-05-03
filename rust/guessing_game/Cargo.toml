@@ -1,8 +1,9 @@
 [package]
 name = "guessing_game"
-version = "0.1.0"
-edition = "2024"
+version.workspace = true
+edition.workspace = true
 
 [dependencies]
-colored = "3.1.1"
-rand = "0.8.5"
+colored.workspace = true
+rand.workspace = true
+
