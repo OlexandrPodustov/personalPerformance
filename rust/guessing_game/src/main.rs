@@ -3,8 +3,7 @@ use std::cmp::Ordering;
 use std::io;
 
 fn main() {
-    let sec = rand::rng().random_range(1..=101);
-    // println!("The secret number is: {sec}");
+    let sec = rand::random_range(1..=101);
 
     println!("Guess the number!");
     println!("Please input your guess.");

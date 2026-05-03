@@ -6,7 +6,6 @@ members = [
     "coursera/rust/t2",
     "rust/minigrep",
     "rust/guessing_game",
-    "leetcode/rust/1.TwoSum/my_rust_project",
 ]
 
 [workspace.package]
