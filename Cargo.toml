@@ -4,6 +4,7 @@ members = [
     "coursera/rust/*",
     "rust/*",
 ]
+exclude = ["rust/exercises"]
 
 [workspace.package]
 edition = "2024"
