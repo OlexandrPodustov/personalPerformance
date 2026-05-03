@@ -1,11 +1,8 @@
 [workspace]
 resolver = "3"
 members = [
-    "coursera/rust/rayon-challenge",
-    "coursera/rust/t1",
-    "coursera/rust/t2",
-    "rust/minigrep",
-    "rust/guessing_game",
+    "coursera/rust/*",
+    "rust/*",
 ]
 
 [workspace.package]
