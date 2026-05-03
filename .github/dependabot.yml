@@ -1,11 +1,41 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+# # Grouping: added groups for both Rust and Go.
+# This means instead of getting separate PRs for every single minor update,
+# Dependabot will bundle them into one rust-dependencies PR and one go-dependencies PR each week.
+# # Labels: All PRs will now be automatically tagged with dependencies and the respective language (rust or go),
+# making your PR list much easier to manage.
+# # Schedule: pinned the updates to Mondays to give you a consistent start to the week.
+# # Limit: set an open-pull-requests-limit of 5 to prevent Dependabot from cluttering your repository
+# if you fall behind on reviews.
+
 
 version: 2
 updates:
-  - package-ecosystem: "gomod" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  # Rust (Cargo) updates
+  - package-ecosystem: "cargo"
+    directory: "/"
     schedule:
       interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    groups:
+      rust-dependencies:
+        patterns:
+          - "*"
+    labels:
+      - "dependencies"
+      - "rust"
+
+  # Go (Go modules) updates
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    groups:
+      go-dependencies:
+        patterns:
+          - "*"
+    labels:
+      - "dependencies"
+      - "go"
