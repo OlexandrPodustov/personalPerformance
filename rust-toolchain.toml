@@ -1,0 +1,7 @@
+# Rust 2024 edition (see each crate's Cargo.toml) needs rustc >= 1.85.
+# rustup searches upward for this file from the project directory.
+
+[toolchain]
+channel = "stable"
+components = ["rustfmt", "clippy"]
+profile = "default"

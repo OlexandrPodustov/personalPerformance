@@ -26,26 +26,56 @@
 //     handle.join().unwrap();
 // }
 
-use std::sync::{Arc, Mutex};
-use std::thread;
+// use std::sync::{Arc, Mutex};
+// use std::thread;
+
+// fn main() {
+//     let counter = Arc::new(Mutex::new(0));
+//     let mut handles = vec![];
+
+//     for _ in 0..10 {
+//         let counter = Arc::clone(&counter);
+//         let handle = thread::spawn(move || {
+//             // Task: Lock the mutex and increment the inner value
+//             let mut count = counter.lock().unwrap();
+//             *count += 1;
+//         });
+//         handles.push(handle);
+//     }
+
+//     for handle in handles {
+//         handle.join().unwrap();
+//     }
+
+//     println!("Result: {}", *counter.lock().unwrap());
+// }
+
+/// Returns the largest integer in `numbers`, or `None` if the slice is empty.
+fn largest(numbers: &[i32]) -> Option<i32> {
+    numbers.iter().copied().max()
+}
 
 fn main() {
-    let counter = Arc::new(Mutex::new(0));
-    let mut handles = vec![];
+    let nums = vec![3, 7, 2, 9, 1];
+    match largest(&nums) {
+        Some(n) => println!("Largest: {}", n),
+        None => println!("Empty list"),
+    }
+}
 
-    for _ in 0..10 {
-        let counter = Arc::clone(&counter);
-        let handle = thread::spawn(move || {
-            // Task: Lock the mutex and increment the inner value
-            let mut count = counter.lock().unwrap();
-            *count += 1;
-        });
-        handles.push(handle);
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn largest_nonempty() {
+        assert_eq!(largest(&[3, 7, 2, 9, 1]), Some(9));
+        assert_eq!(largest(&[42]), Some(42));
+        assert_eq!(largest(&[-5, -1, -10]), Some(-1));
     }
 
-    for handle in handles {
-        handle.join().unwrap();
+    #[test]
+    fn largest_empty() {
+        assert_eq!(largest(&[]), None);
     }
-
-    println!("Result: {}", *counter.lock().unwrap());
 }

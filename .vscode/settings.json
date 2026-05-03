@@ -4,6 +4,7 @@
     "coursera/rust/t2/Cargo.toml",
     "rust/minigrep/Cargo.toml",
     "rust/guessing_game/Cargo.toml",
-    "leetcode/rust/1.TwoSum/my_rust_project/Cargo.toml"
+    "leetcode/rust/1.TwoSum/my_rust_project/Cargo.toml",
+    // "coursera/rust/rayon-challenge/Cargo.toml"
   ]
 }

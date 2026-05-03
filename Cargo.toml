@@ -1,0 +1,9 @@
+[workspace]
+members = ["coursera/rust/rayon-challenge"
+,"coursera/rust/t1"
+,"coursera/rust/t2"
+,"rust/minigrep"
+,"rust/minigrep"
+,"rust/guessing_game"
+,"leetcode/rust/1.TwoSum/my_rust_project"
+]
