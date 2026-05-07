@@ -1,0 +1,8 @@
+[package]
+name = "parsing-log-files-3"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+regex = "1.5.4"
+flate2 = "1.0.20"
