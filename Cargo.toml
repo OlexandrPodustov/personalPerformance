@@ -1,7 +1,12 @@
 [workspace]
 resolver = "3"
 members = [
-    "coursera/rust/*",
+    "coursera/rust/rayon-challenge",
+    "coursera/rust/t*",
+    "coursera/rust/rust-programming/3rd/*",
+    "rust/guessing_game",
+    "rust/minigrep",
+    "rust/rustlings",
     "rust/leetcode/*",
 ]
 exclude = ["rust/exercises"]
@@ -14,3 +19,9 @@ version = "0.1.0"
 rand = "0.10.1"
 colored = "3.1.1"
 rayon = "1.11.0"
+
+[profile.release]
+panic = "abort"
+
+[profile.dev]
+panic = "abort"
