@@ -2,10 +2,9 @@
 resolver = "3"
 members = [
     "coursera/rust/*",
-    "rust/*",
     "rust/leetcode/*",
 ]
-exclude = ["rust/exercises", "rust/leetcode"]
+exclude = ["rust/exercises"]
 
 [workspace.package]
 edition = "2024"

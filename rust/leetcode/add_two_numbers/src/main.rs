@@ -1,0 +1,53 @@
+// Definition for singly-linked list.
+#[derive(PartialEq, Eq, Clone, Debug)]
+pub struct ListNode {
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
+}
+
+impl ListNode {
+    #[inline]
+    fn new(val: i32) -> Self {
+        ListNode { next: None, val }
+    }
+}
+
+pub struct Solution;
+
+impl Solution {
+    pub fn add_two_numbers(
+        l1: Option<Box<ListNode>>,
+        l2: Option<Box<ListNode>>,
+    ) -> Option<Box<ListNode>> {
+        if l1.is_none() && l2.is_none() {
+            return None;
+        }
+
+        let mut current_l1 = l1;
+        while let Some(node) = current_l1 {
+            println!("current_l1: {} {:?}", node.val, node.next);
+            current_l1 = node.next;
+        }
+
+        None
+    }
+}
+
+fn main() {}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        let mut head = Box::new(ListNode::new(1));
+        head.next = Some(Box::new(ListNode::new(2)));
+        let l1 = Some(head);
+        let l2 = Some(Box::new(ListNode::new(2)));
+
+        let result = Solution::add_two_numbers(l1, l2);
+        let expected_result = Some(Box::new(ListNode::new(3)));
+        assert_eq!(result, expected_result);
+    }
+}
