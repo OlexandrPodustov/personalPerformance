@@ -57,7 +57,10 @@ fn read_buffer(file_path: &str) {
                     } else {
                         0.0
                     };
-                    println!("{} - Errors: {}, Total: {}, Rate: {:.2}%", prev_hour, hour_errors, hour_total, rate);
+                    println!(
+                        "{} - Errors: {}, Total: {}, Rate: {:.2}%",
+                        prev_hour, hour_errors, hour_total, rate
+                    );
                 }
 
                 // Reset counters for the new hour.
@@ -82,7 +85,10 @@ fn read_buffer(file_path: &str) {
         } else {
             0.0
         };
-        println!("{} - Errors: {}, Total: {}, Rate: {:.2}%", prev_hour, hour_errors, hour_total, rate);
+        println!(
+            "{} - Errors: {}, Total: {}, Rate: {:.2}%",
+            prev_hour, hour_errors, hour_total, rate
+        );
     }
 
     println!("Total error count for current log: {total_errors}");

@@ -29,7 +29,9 @@ fn main() {
     if !path.exists() {
         println!("Path '{}' does not exist.", path.display());
         if args[1] == "target" {
-            println!("Note: In a Cargo workspace, the 'target' directory is usually at the workspace root.");
+            println!(
+                "Note: In a Cargo workspace, the 'target' directory is usually at the workspace root."
+            );
             println!("Try: cargo run -- ../../../target");
         }
         return;

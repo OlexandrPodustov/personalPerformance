@@ -42,10 +42,9 @@ impl Point {
 fn main() -> io::Result<()> {
     let mut result = 0;
     let mut current_point: Point = Point::new();
-    let mut row_number = 1;
 
     let stdin = io::stdin();
-    for line in stdin.lock().lines() {
+    for (row_number, line) in (1..).zip(stdin.lock().lines()) {
         let input_line = line?;
         if input_line.trim().is_empty() {
             break;
@@ -64,7 +63,6 @@ fn main() -> io::Result<()> {
         result += zero_times;
         println!("result accumulated: {}", result);
         println!(" ------------------- ");
-        row_number += 1;
     }
 
     println!("result: {}", result);

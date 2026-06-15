@@ -6,8 +6,12 @@ members = [
     "coursera/rust/rust-programming/3rd/*",
     "rust/guessing_game",
     "rust/minigrep",
-    "rust/rustlings",
     "rust/leetcode/*",
+    "pandas/ppp",
+    "exercism/rust/reverse-string",
+    "adventofcode/2025/day1",
+    "adventofcode/2025/day1/p2",
+    "leetcode/rust/1.TwoSum/my_rust_project",
 ]
 exclude = ["rust/exercises"]
 

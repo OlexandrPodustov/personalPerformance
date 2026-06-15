@@ -1,3 +1,7 @@
+// LeetCode solution: `main` is an empty stub and the solution is exercised by
+// the `#[cfg(test)]` cases below, so the non-test binary build sees it as dead.
+#![allow(dead_code)]
+
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
