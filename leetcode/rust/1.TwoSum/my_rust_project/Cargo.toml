@@ -1,6 +1,0 @@
-[package]
-name = "my_rust_project"
-version.workspace = true
-edition.workspace = true
-
-[dependencies]
