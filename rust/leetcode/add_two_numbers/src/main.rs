@@ -37,7 +37,7 @@ impl Solution {
     }
 }
 
-fn main() {}
+const fn main() {}
 
 #[cfg(test)]
 mod tests {
