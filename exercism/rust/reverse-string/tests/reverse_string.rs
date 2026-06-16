@@ -1,3 +1,5 @@
+#![allow(clippy::cargo_common_metadata)]
+
 use reverse_string::*;
 
 #[test]

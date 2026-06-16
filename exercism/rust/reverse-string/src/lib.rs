@@ -1,3 +1,4 @@
+#![allow(clippy::cargo_common_metadata)]
 use unicode_segmentation::UnicodeSegmentation;
 
 #[must_use] 

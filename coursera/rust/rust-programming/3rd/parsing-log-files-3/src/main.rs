@@ -1,7 +1,11 @@
+#![allow(clippy::cargo_common_metadata)]
+
 use flate2::read::GzDecoder;
 use regex::Regex;
 use std::env;
 use std::fs::File;
+use std::io::{BufRead, BufReader};
+use std::path::Path;
 
 fn read_buffer(file_path: &str) {
     // Initialize variables for error rate calculation.
@@ -24,12 +28,15 @@ fn read_buffer(file_path: &str) {
         }
     };
 
-    use std::io::{BufRead, BufReader};
-
-    let reader: Box<dyn BufRead> = if file_path.ends_with(".gz") {
+    let reader: Box<dyn BufRead> = if Path::new(file_path)
+        .extension()
+        .is_some_and(|ext| ext.eq_ignore_ascii_case("gz"))
+    {
         let decompressor = GzDecoder::new(file);
         Box::new(BufReader::new(decompressor))
-    } else { Box::new(BufReader::new(file)) };
+    } else {
+        Box::new(BufReader::new(file))
+    };
 
     for line in reader.lines() {
         let line = match line {

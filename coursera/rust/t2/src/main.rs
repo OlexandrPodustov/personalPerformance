@@ -1,3 +1,5 @@
+#![allow(clippy::cargo_common_metadata)]
+
 // fn main() {
 //     let spacey_num = "  42  ";
 

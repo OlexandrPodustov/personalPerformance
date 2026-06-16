@@ -12,7 +12,7 @@ members = [
     "adventofcode/2025/day1",
     "adventofcode/2025/day1/p2",
 ]
-exclude = ["rust/exercises"]
+exclude = ["rust/exercises", "rust/leetcode/.claude"]
 
 [workspace.package]
 edition = "2024"

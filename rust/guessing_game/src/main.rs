@@ -1,3 +1,9 @@
+// Workspace deps pin different majors of hashbrown/wit-bindgen transitively
+// (rand's wasm support vs. rstest's toml tooling elsewhere in the workspace) —
+// not fixable from this crate.
+#![allow(clippy::multiple_crate_versions)]
+#![allow(clippy::cargo_common_metadata)]
+
 use colored::Colorize;
 use std::cmp::Ordering;
 use std::io;

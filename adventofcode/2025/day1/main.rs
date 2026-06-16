@@ -1,3 +1,5 @@
+#![allow(clippy::cargo_common_metadata)]
+
 use std::io::{self, BufRead};
 
 fn main() -> io::Result<()> {

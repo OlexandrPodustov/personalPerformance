@@ -1,3 +1,5 @@
+#![allow(clippy::cargo_common_metadata)]
+
 struct Highlight<'a> {
     content: &'a str,
 }

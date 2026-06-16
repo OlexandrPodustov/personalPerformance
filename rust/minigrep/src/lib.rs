@@ -1,3 +1,5 @@
+#![allow(clippy::cargo_common_metadata)]
+
 use std::error::Error;
 use std::fs;
 
@@ -7,6 +9,9 @@ pub struct Config {
 }
 
 impl Config {
+    /// # Errors
+    ///
+    /// Returns an error if fewer than 3 arguments are provided.
     pub fn build(args: &[String]) -> Result<Self, &'static str> {
         if args.len() < 3 {
             return Err("not enough arguments");
@@ -19,6 +24,9 @@ impl Config {
     }
 }
 
+/// # Errors
+///
+/// Returns an error if the configured file can't be read.
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     // --snip--
     let contents = fs::read_to_string(config.file_path)?;

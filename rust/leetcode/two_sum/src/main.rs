@@ -1,6 +1,7 @@
 // LeetCode solution: `main` is an empty stub and the solution is exercised by
 // the `#[cfg(test)]` cases below, so the non-test binary build sees it as dead.
 #![allow(dead_code)]
+#![allow(clippy::cargo_common_metadata)]
 
 use std::collections::HashMap;
 
@@ -9,12 +10,17 @@ struct Solution;
 const fn main() {}
 
 impl Solution {
+    // `nums` is taken by value to match LeetCode's published method signature.
+    #[allow(clippy::needless_pass_by_value)]
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let mut seen = HashMap::new();
         for (i, num) in nums.iter().enumerate() {
             let need = target - num;
             if let Some(&j) = seen.get(&need) {
-                return vec![j as i32, i as i32];
+                return vec![
+                    i32::try_from(j).expect("index fits in i32"),
+                    i32::try_from(i).expect("index fits in i32"),
+                ];
             }
             seen.insert(num, i);
         }

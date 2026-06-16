@@ -1,3 +1,5 @@
+#![allow(clippy::cargo_common_metadata)]
+
 // LeetCode solution: `main` is an empty stub and the solution is exercised by
 // the `#[cfg(test)]` cases below, so the non-test binary build sees it as dead.
 #![allow(dead_code)]
@@ -19,7 +21,10 @@ impl ListNode {
 pub struct Solution;
 
 impl Solution {
-    #[must_use] 
+    // l1/l2 are taken by value to match LeetCode's published method signature
+    // (l2 is unused for now — solution is still a WIP stub).
+    #[allow(clippy::needless_pass_by_value)]
+    #[must_use]
     pub fn add_two_numbers(
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,

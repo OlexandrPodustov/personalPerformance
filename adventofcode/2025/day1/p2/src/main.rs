@@ -1,3 +1,4 @@
+#![allow(clippy::cargo_common_metadata)]
 use std::io::{self, BufRead};
 
 struct Point {

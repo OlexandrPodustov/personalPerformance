@@ -1,3 +1,5 @@
+#![allow(clippy::cargo_common_metadata)]
+
 // use rayon::prelude::*;
 // use std::time::Instant;
 
@@ -79,6 +81,7 @@ fn main() {
     println!("  Logical CPUs available: {}", rayon::current_num_threads());
     println!("  Rayon threads spawned:  {}", unique_threads.len());
 
+    #[allow(clippy::cast_precision_loss)]
     let ratio = sequential_time.as_nanos() as f64 / parallel_time.as_nanos() as f64;
     println!("  Speedup (seq/par):      {ratio:.2}x");
 
