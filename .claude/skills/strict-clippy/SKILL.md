@@ -37,3 +37,21 @@ Run this from anywhere inside the workspace (cargo walks up to find the workspac
 - `clippy::cargo`'s `multiple_crate_versions` warning (e.g. duplicate `hashbrown` or
   `wit-bindgen` versions) is a dependency-graph issue, not a code issue — leave it unless
   asked to chase down `Cargo.lock` duplication.
+
+## Gotchas learned the hard way
+
+- **Manifest `[lints]` tables don't reliably beat CLI group flags.** Allowing a specific
+  lint via `[workspace.lints.clippy]` (with member crates opting in via
+  `lints.workspace = true`) looks like the "proper" cargo-native way to suppress it, but
+  cargo translates that into a CLI flag too — and when this command's own
+  `-W clippy::cargo` group flag is appended after it, the group re-enables the
+  specifically-allowed lint. Only a source-level `#![allow(clippy::lint_name)]` attribute
+  at the crate root reliably wins over a CLI group flag. Don't waste time on the manifest
+  approach for this command; go straight to the attribute.
+- **Workspace member globs are fragile.** `rust/leetcode/*` (and similar globs in this
+  repo's root `Cargo.toml`) break `cargo` entirely if any directory matching the glob
+  lacks a `Cargo.toml` — including stray dotfiles/dirs the Claude Code harness can drop
+  while working in a subfolder (e.g. a per-directory `.claude/settings.local.json`). If
+  `cargo clippy --workspace` suddenly errors with "failed to load manifest for workspace
+  member", check for a new stray directory and add it to `exclude` in the root
+  `Cargo.toml` rather than deleting it blindly (it may hold real permission grants).
