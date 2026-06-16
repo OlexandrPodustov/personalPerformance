@@ -6,7 +6,7 @@ use std::collections::HashMap;
 
 struct Solution;
 
-fn main() {}
+const fn main() {}
 
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {

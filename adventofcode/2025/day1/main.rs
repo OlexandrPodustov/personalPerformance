@@ -12,8 +12,7 @@ fn main() -> io::Result<()> {
         let distance_mod = distance_int % 100;
 
         println!(
-            "direction: {}, distance: {}, distance modulo: {}",
-            direction, distance_int, distance_mod
+            "direction: {direction}, distance: {distance_int}, distance modulo: {distance_mod}"
         );
 
         if direction == "L" {
@@ -26,14 +25,14 @@ fn main() -> io::Result<()> {
         } else if points_to >= 100 {
             points_to -= 100;
         }
-        println!("  points_to: {}", points_to);
+        println!("  points_to: {points_to}");
 
         if points_to == 0 {
             result += 1;
         }
     }
 
-    println!("result: {}", result);
+    println!("result: {result}");
 
     Ok(())
 }

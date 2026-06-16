@@ -19,26 +19,23 @@ fn read_buffer(file_path: &str) {
     let file = match File::open(file_path) {
         Ok(f) => f,
         Err(e) => {
-            eprintln!("Error opening file {}: {}", file_path, e);
+            eprintln!("Error opening file {file_path}: {e}");
             return;
         }
     };
 
     use std::io::{BufRead, BufReader};
 
-    let reader: Box<dyn BufRead> = match file_path.ends_with(".gz") {
-        true => {
-            let decompressor = GzDecoder::new(file);
-            Box::new(BufReader::new(decompressor))
-        }
-        false => Box::new(BufReader::new(file)),
-    };
+    let reader: Box<dyn BufRead> = if file_path.ends_with(".gz") {
+        let decompressor = GzDecoder::new(file);
+        Box::new(BufReader::new(decompressor))
+    } else { Box::new(BufReader::new(file)) };
 
     for line in reader.lines() {
         let line = match line {
             Ok(line) => line,
             Err(error) => {
-                eprintln!("Error reading line: {}", error);
+                eprintln!("Error reading line: {error}");
                 continue;
             }
         };
@@ -53,13 +50,12 @@ fn read_buffer(file_path: &str) {
                 // Calculate and print error rate for the previous hour.
                 if let Some(prev_hour) = current_hour {
                     let rate = if hour_total > 0 {
-                        (hour_errors as f64 / hour_total as f64) * 100.0
+                        (f64::from(hour_errors) / f64::from(hour_total)) * 100.0
                     } else {
                         0.0
                     };
                     println!(
-                        "{} - Errors: {}, Total: {}, Rate: {:.2}%",
-                        prev_hour, hour_errors, hour_total, rate
+                        "{prev_hour} - Errors: {hour_errors}, Total: {hour_total}, Rate: {rate:.2}%"
                     );
                 }
 
@@ -81,13 +77,12 @@ fn read_buffer(file_path: &str) {
     // Print error rate for the final hour in the file.
     if let Some(prev_hour) = current_hour {
         let rate = if hour_total > 0 {
-            (hour_errors as f64 / hour_total as f64) * 100.0
+            (f64::from(hour_errors) / f64::from(hour_total)) * 100.0
         } else {
             0.0
         };
         println!(
-            "{} - Errors: {}, Total: {}, Rate: {:.2}%",
-            prev_hour, hour_errors, hour_total, rate
+            "{prev_hour} - Errors: {hour_errors}, Total: {hour_total}, Rate: {rate:.2}%"
         );
     }
 

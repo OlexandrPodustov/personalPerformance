@@ -7,7 +7,7 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn build(args: &[String]) -> Result<Config, &'static str> {
+    pub fn build(args: &[String]) -> Result<Self, &'static str> {
         if args.len() < 3 {
             return Err("not enough arguments");
         }
@@ -27,6 +27,7 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
+#[must_use] 
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
     println!("{query}");
 

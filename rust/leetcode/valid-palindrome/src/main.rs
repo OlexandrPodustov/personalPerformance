@@ -1,6 +1,7 @@
 pub struct Solution;
 
 impl Solution {
+    #[must_use] 
     pub fn is_palindrome(_s: String) -> bool {
         false
     }

@@ -5,8 +5,8 @@ struct Point {
 }
 
 impl Point {
-    fn new() -> Self {
-        Point { points_to: 50 }
+    const fn new() -> Self {
+        Self { points_to: 50 }
     }
 
     fn rotate(&mut self, direction: &str, distance: i32) -> i32 {
@@ -50,22 +50,22 @@ fn main() -> io::Result<()> {
             break;
         }
 
-        println!("row_number: {}", row_number);
+        println!("row_number: {row_number}");
 
         let (direction, distance) = input_line.split_at(1);
         let distance_int = distance.parse::<i32>().unwrap();
 
-        println!("direction: {}, distance: {}", direction, distance_int);
+        println!("direction: {direction}, distance: {distance_int}");
 
         let zero_times = current_point.rotate(direction, distance_int);
-        println!("zero_times: {}", zero_times);
+        println!("zero_times: {zero_times}");
 
         result += zero_times;
-        println!("result accumulated: {}", result);
+        println!("result accumulated: {result}");
         println!(" ------------------- ");
     }
 
-    println!("result: {}", result);
+    println!("result: {result}");
 
     Ok(())
 }

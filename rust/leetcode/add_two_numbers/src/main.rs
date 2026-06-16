@@ -6,19 +6,20 @@
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
     pub val: i32,
-    pub next: Option<Box<ListNode>>,
+    pub next: Option<Box<Self>>,
 }
 
 impl ListNode {
     #[inline]
-    fn new(val: i32) -> Self {
-        ListNode { next: None, val }
+    const fn new(val: i32) -> Self {
+        Self { next: None, val }
     }
 }
 
 pub struct Solution;
 
 impl Solution {
+    #[must_use] 
     pub fn add_two_numbers(
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,

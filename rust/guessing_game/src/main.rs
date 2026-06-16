@@ -1,4 +1,4 @@
-use colored::*;
+use colored::Colorize;
 use std::cmp::Ordering;
 use std::io;
 
@@ -22,7 +22,7 @@ fn main() {
             }
         };
 
-        println!("You guessed: {}", guess);
+        println!("You guessed: {guess}");
 
         match guess.cmp(&sec) {
             Ordering::Less => println!("{}", "Too small!".red()),
