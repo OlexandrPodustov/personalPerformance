@@ -1,5 +1,4 @@
 use log::{debug, error};
-use serde_json;
 use std::process::Command;
 
 fn run_command(command: &str) -> String {
@@ -69,7 +68,7 @@ pub fn parse_df_output(input: &str) -> Vec<Filesystem> {
             debug!("Skipping header line: {line}");
             continue;
         }
-        if line.len() == 0 {
+        if line.is_empty() {
             debug!("skipping that is empty");
             continue;
         }
@@ -105,7 +104,7 @@ pub fn which_executable(command: &str) -> String {
             return full_path;
         }
     }
-    return command.to_string();
+    command.to_string()
 }
 
 pub fn run_df(path: &str) -> serde_json::Value {
@@ -119,7 +118,7 @@ pub fn run_df(path: &str) -> serde_json::Value {
     // serialize the result of the parsing and return the JSON array
     let devices = parse_df_output(&output);
     if path.is_empty() {
-        return serde_json::json!(devices);
+        serde_json::json!(devices)
     } else {
         for device in &devices {
             if device.mounted_on == path {
