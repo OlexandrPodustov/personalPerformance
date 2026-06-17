@@ -88,9 +88,7 @@ fn read_buffer(file_path: &str) {
         } else {
             0.0
         };
-        println!(
-            "{prev_hour} - Errors: {hour_errors}, Total: {hour_total}, Rate: {rate:.2}%"
-        );
+        println!("{prev_hour} - Errors: {hour_errors}, Total: {hour_total}, Rate: {rate:.2}%");
     }
 
     println!("Total error count for current log: {total_errors}");

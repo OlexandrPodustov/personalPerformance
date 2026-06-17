@@ -1,20 +1,24 @@
-use clap::{Parser, ArgAction};
-use rdf::run_df;
-use log::LevelFilter;
+use clap::{ArgAction, Parser};
 use env_logger::{Builder, Target};
+use log::LevelFilter;
+use rdf::run_df;
 use std::fs::OpenOptions;
 
-
 #[derive(Parser)]
-#[command(name = "rdf", version = "0.0.1", author = "Alfredo Deza", about = "df wrapper in Rust")]
+#[command(
+    name = "rdf",
+    version = "0.0.1",
+    author = "Alfredo Deza",
+    about = "df wrapper in Rust"
+)]
 struct Opts {
     #[clap(short, long, action = ArgAction::Count)]
     verbose_level: u8,
 
-    #[clap(long, help= "Enable logging to a file")]
+    #[clap(long, help = "Enable logging to a file")]
     log_file: bool,
 
-    #[clap(short, long, env = "RDF_DEBUG")]
+    #[arg(short, long)]
     debug: bool,
 
     #[clap(subcommand)]

@@ -35,7 +35,7 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-#[must_use] 
+#[must_use]
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
     println!("{query}");
 

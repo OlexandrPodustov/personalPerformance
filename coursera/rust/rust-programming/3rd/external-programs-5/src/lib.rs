@@ -140,7 +140,7 @@ mod tests {
 overlay        123329088 43470228  73551072  38% /
 tmpfs              65536        0     65536   0% /dev
 /dev/vda1      123329088 43470228  73551072  38% /etc/hosts";
-        
+
         let devices = parse_df_output(input);
         // Only /dev/vda1 should be included
         assert_eq!(devices.len(), 1);

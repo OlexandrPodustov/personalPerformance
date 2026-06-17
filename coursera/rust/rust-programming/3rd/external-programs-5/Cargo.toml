@@ -1,5 +1,5 @@
 [package]
-name = "external-programs-5"
+name = "rdf"
 edition.workspace = true
 version.workspace = true
 
