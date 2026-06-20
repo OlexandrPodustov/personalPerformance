@@ -72,8 +72,11 @@ fn main() {
                 2 => {
                     println!("Running in verbose mode level 2");
                 }
-                3 | _ => {
+                3 => {
                     println!("Running in verbose mode level 3");
+                }
+                _ => {
+                    println!("Running in default case");
                 }
             }
 
