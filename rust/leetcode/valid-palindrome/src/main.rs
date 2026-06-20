@@ -11,25 +11,9 @@ impl Solution {
             .map(|c| c.to_ascii_lowercase())
             .collect();
 
-        if vc.is_empty() {
-            return true;
-        }
-
-        let end = vc.len();
-        let (mut s, mut e) = (0, end - 1);
-        loop {
-            if s >= e {
-                break;
-            }
-
-            if vc[s] != vc[e] {
-                return false;
-            }
-            s += 1;
-            e -= 1;
-        }
-
-        true
+        vc.iter()
+            .filter(|&s| s.is_alphanumeric())
+            .eq(vc.iter().filter(|&s| s.is_alphanumeric()).rev())
     }
 }
 fn main() {
