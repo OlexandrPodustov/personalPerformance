@@ -32,13 +32,32 @@ impl Solution {
             return None;
         }
 
-        let mut current_l1 = l1;
-        while let Some(node) = current_l1 {
-            println!("current_l1: {} {:?}", node.val, node.next);
-            current_l1 = node.next;
+        let mut head: Option<Box<ListNode>> = None;
+        let mut tail = &mut head;
+
+        let mut l1 = l1;
+        let mut l2 = l2;
+        let mut remainder = 0;
+
+        while l1.is_some() || l2.is_some() || remainder > 0 {
+            let nnn1 = l1.take().map_or(0, |mut node| {
+                l1 = node.next.take();
+                node.val
+            });
+
+            let nnn2 = l2.take().map_or(0, |mut node| {
+                l2 = node.next.take();
+                node.val
+            });
+
+            let sum = remainder + nnn1 + nnn2;
+            remainder = sum / 10;
+
+            *tail = Some(Box::new(ListNode::new(sum % 10)));
+            tail = &mut tail.as_mut().unwrap().next;
         }
 
-        None
+        head
     }
 }
 
@@ -53,10 +72,14 @@ mod tests {
         let mut head = Box::new(ListNode::new(1));
         head.next = Some(Box::new(ListNode::new(2)));
         let l1 = Some(head);
-        let l2 = Some(Box::new(ListNode::new(2)));
+        let l2 = Some(Box::new(ListNode::new(4)));
 
         let result = Solution::add_two_numbers(l1, l2);
-        let expected_result = Some(Box::new(ListNode::new(3)));
+        let expected_result = Some(Box::new(ListNode {
+            val: 5,
+            next: Some(Box::new(ListNode { val: 2, next: None })),
+        }));
+
         assert_eq!(result, expected_result);
     }
 }
