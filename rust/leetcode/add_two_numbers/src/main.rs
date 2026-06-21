@@ -28,6 +28,13 @@ impl Solution {
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
+        fn pop_front(list: &mut Option<Box<ListNode>>) -> i32 {
+            list.take().map_or(0, |n| {
+                *list = n.next;
+                n.val
+            })
+        }
+
         if l1.is_none() && l2.is_none() {
             return None;
         }
@@ -40,17 +47,7 @@ impl Solution {
         let mut remainder = 0;
 
         while l1.is_some() || l2.is_some() || remainder > 0 {
-            let nnn1 = l1.take().map_or(0, |mut node| {
-                l1 = node.next.take();
-                node.val
-            });
-
-            let nnn2 = l2.take().map_or(0, |mut node| {
-                l2 = node.next.take();
-                node.val
-            });
-
-            let sum = remainder + nnn1 + nnn2;
+            let sum = remainder + pop_front(&mut l1) + pop_front(&mut l2);
             remainder = sum / 10;
 
             *tail = Some(Box::new(ListNode::new(sum % 10)));
