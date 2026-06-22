@@ -1,14 +1,14 @@
 module github.com/OlexandrPodustov/personalPerformance
 
-go 1.23
+go 1.25.0
 
 require (
 	github.com/google/uuid v1.6.0
-	github.com/stretchr/testify v1.8.4
-	golang.org/x/time v0.3.0
+	github.com/stretchr/testify v1.11.1
+	golang.org/x/time v0.15.0
 	golang.org/x/tour v0.1.0
 	gotest.tools v2.2.0+incompatible
-	gotest.tools/v3 v3.5.1
+	gotest.tools/v3 v3.5.2
 )
 
 require (
