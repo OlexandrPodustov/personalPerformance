@@ -20,8 +20,7 @@ impl ListNode {
 pub struct Solution;
 
 impl Solution {
-    // l1/l2 are taken by value to match LeetCode's published method signature
-    // (l2 is unused for now — solution is still a WIP stub).
+    // l1/l2 are taken by value to match LeetCode's published method signature.
     #[allow(clippy::needless_pass_by_value)]
     #[must_use]
     pub fn add_two_numbers(
@@ -63,20 +62,27 @@ const fn main() {}
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rstest::rstest;
 
-    #[test]
-    fn it_works() {
-        let mut head = Box::new(ListNode::new(1));
-        head.next = Some(Box::new(ListNode::new(2)));
-        let l1 = Some(head);
-        let l2 = Some(Box::new(ListNode::new(4)));
+    impl ListNode {
+        fn list(vals: &[i32]) -> Option<Box<ListNode>> {
+            vals.iter()
+                .rev()
+                .fold(None, |next, &val| Some(Box::new(ListNode { val, next })))
+        }
+    }
 
+    #[rstest]
+    #[case(&[1, 2, 3], &[5, 5, 5], &[6, 7, 8])]
+    #[case(&[0], &[0], &[0])]
+    #[case(&[9, 9, 9], &[1], &[0, 0, 0, 1])]
+    #[case(&[2, 4, 3], &[5, 6, 4], &[7, 0, 8])]
+    #[case(&[9, 9, 9, 9, 9, 9, 9], &[9, 9, 9, 9], &[8, 9, 9, 9, 0, 0, 0, 1])]
+    fn it_works(#[case] l1_vals: &[i32], #[case] l2_vals: &[i32], #[case] expected_vals: &[i32]) {
+        let l1 = ListNode::list(l1_vals);
+        let l2 = ListNode::list(l2_vals);
         let result = Solution::add_two_numbers(l1, l2);
-        let expected_result = Some(Box::new(ListNode {
-            val: 5,
-            next: Some(Box::new(ListNode { val: 2, next: None })),
-        }));
-
+        let expected_result = ListNode::list(expected_vals);
         assert_eq!(result, expected_result);
     }
 }

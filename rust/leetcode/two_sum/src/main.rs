@@ -7,7 +7,10 @@ use std::collections::HashMap;
 
 struct Solution;
 
-const fn main() {}
+fn main() {
+    let _ = Solution {};
+    Solution::two_sum(vec![2, 7, 11, 15], 9);
+}
 
 impl Solution {
     // `nums` is taken by value to match LeetCode's published method signature.
