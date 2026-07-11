@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"html"
 	"log"
 	"net/http"
 	"strings"
@@ -70,7 +71,8 @@ func handleOne(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusNotFound)
 			return
 		}
-		if _, err := w.Write(element); err != nil {
+		escapedElement := html.EscapeString(string(element))
+		if _, err := w.Write([]byte(escapedElement)); err != nil {
 			log.Print(err)
 			w.WriteHeader(http.StatusInternalServerError)
 			return
