@@ -24,6 +24,10 @@ updates:
     labels:
       - "dependencies"
       - "rust"
+    assignees:
+      - "OlexandrPodustov"
+    reviewers:
+      - "OlexandrPodustov"
 
   # Go (Go modules) updates
   - package-ecosystem: "gomod"
@@ -39,3 +43,7 @@ updates:
     labels:
       - "dependencies"
       - "go"
+    assignees:
+      - "OlexandrPodustov"
+    reviewers:
+      - "OlexandrPodustov"
