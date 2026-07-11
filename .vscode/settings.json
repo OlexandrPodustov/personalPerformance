@@ -4,5 +4,14 @@
   ],
   "rust-analyzer.files.exclude": [
     "rust/exercises"
-  ]
+  ],
+  "emeraldwalk.runonsave": {
+    "autoClearConsole": true,
+    "commands": [
+      {
+        "match": "\\.rs$",
+        "cmd": "cd \"${fileDirname}\" && cargo test"
+      }
+    ]
+  }
 }
