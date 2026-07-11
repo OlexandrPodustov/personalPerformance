@@ -9,7 +9,7 @@
 //
 // Build:
 //
-//	go build -o rstest-fmt.exe rstest-fmt.go
+//	go build -o rstest-fmt.exe ./cmd/rstest-fmt
 //
 // Usage (PowerShell):
 //

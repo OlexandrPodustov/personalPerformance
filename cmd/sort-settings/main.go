@@ -5,7 +5,7 @@
 //
 // Build:
 //
-//	go build -o sort-settings.exe sort-settings.go
+//	go build -o sort-settings.exe ./cmd/sort-settings
 //
 // Usage (PowerShell):
 //
