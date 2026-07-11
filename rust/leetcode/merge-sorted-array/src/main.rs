@@ -28,9 +28,9 @@ mod tests {
     use rstest::rstest;
 
     #[rstest]
-    #[case(vec! [1, 2, 3, 0, 0, 0], 3, vec![2, 5, 6],3, vec![1, 2, 2, 3, 5, 6])]
-    #[case(vec! [1], 1, vec![],0, vec![1])]
-    #[case(vec! [2,0], 1, vec![1],1, vec![1,2])]
+    #[case(vec![1, 2, 3, 0, 0, 0], 3, vec![2, 5, 6], 3, vec![1, 2, 2, 3, 5, 6])]
+    #[case(vec![1], 1, vec![], 0, vec![1])]
+    #[case(vec![2, 0], 1, vec![1], 1, vec![1, 2])]
     fn it_works(
         #[case] mut nums1: Vec<i32>,
         #[case] m: i32,
