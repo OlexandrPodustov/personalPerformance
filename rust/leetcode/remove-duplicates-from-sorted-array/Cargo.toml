@@ -1,0 +1,7 @@
+[package]
+name = "remove-duplicates-from-sorted-array"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+rstest = "0.26.1"
