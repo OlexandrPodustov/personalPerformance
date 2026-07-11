@@ -1,4 +1,4 @@
-package main
+package leetcode102_BinaryTreeLevelOrderTraversal
 
 import (
 	"reflect"

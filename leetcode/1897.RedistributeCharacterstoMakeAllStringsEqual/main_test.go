@@ -1,1 +1,1 @@
-package main
+package leetcode1897_RedistributeCharacterstoMakeAllStringsEqual

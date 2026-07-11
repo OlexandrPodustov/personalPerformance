@@ -1,4 +1,4 @@
-package main
+package leetcode232_ImplementQueueusingStacks
 
 // Your MyQueue object will be instantiated and called as such:
 // func main() {

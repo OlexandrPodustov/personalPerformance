@@ -1,4 +1,4 @@
-package main
+package leetcode20_ValidParentheses
 
 import "testing"
 

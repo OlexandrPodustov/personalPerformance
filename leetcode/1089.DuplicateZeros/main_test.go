@@ -1,4 +1,4 @@
-package main
+package leetcode1089_DuplicateZeros
 
 import (
 	"reflect"

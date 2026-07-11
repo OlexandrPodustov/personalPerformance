@@ -1,4 +1,4 @@
-package main
+package leetcode169_MajorityElement
 
 import "testing"
 

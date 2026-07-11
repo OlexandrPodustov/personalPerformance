@@ -1,4 +1,4 @@
-package main
+package asteroidCollision
 
 func asteroidCollision(asteroids []int) []int {
 	j := len(asteroids) - 1

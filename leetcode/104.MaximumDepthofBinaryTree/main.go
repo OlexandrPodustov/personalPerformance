@@ -1,4 +1,4 @@
-package main
+package leetcode104_MaximumDepthofBinaryTree
 
 // Definition for a binary tree node.
 type TreeNode struct {

@@ -1,4 +1,4 @@
-package main
+package leetcode409_LongestPalindrome
 
 func longestPalindrome(s string) int {
 	if len(s) == 1 {

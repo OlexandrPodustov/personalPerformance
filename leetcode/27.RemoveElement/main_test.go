@@ -1,4 +1,4 @@
-package main
+package leetcode27_RemoveElement
 
 import (
 	"reflect"

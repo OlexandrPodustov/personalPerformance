@@ -1,4 +1,4 @@
-package main
+package leetcode457_CircularArrayLoop
 
 import "testing"
 

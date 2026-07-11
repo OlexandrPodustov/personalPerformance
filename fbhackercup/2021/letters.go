@@ -1,4 +1,4 @@
-package main
+package fbhackercup2021
 
 func getVowels() map[string]struct{} {
 	return map[string]struct{}{"A": {}, "E": {}, "I": {}, "O": {}, "U": {}} // "A", "E", "I", "O", and "U"

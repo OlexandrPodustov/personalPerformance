@@ -762,6 +762,9 @@ issues:
     - linters: # Exclude lll issues for long lines with go:generate
         - lll
       source: "^//go:generate "
+    - linters: # Exercise packages are named after their directories (digits, underscores, MixedCaps)
+        - revive
+      text: "don't use (an underscore|MixedCaps) in package name"
     - path: _test\.go # Exclude some linters from running on tests files.
       linters:
         - gocognit

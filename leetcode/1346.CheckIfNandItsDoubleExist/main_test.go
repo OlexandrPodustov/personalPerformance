@@ -1,4 +1,4 @@
-package main
+package leetcode1346_CheckIfNandItsDoubleExist
 
 import "testing"
 

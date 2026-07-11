@@ -1,4 +1,4 @@
-package main
+package leetcode476_NumberComplement
 
 import "testing"
 

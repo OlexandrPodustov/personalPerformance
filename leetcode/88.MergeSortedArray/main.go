@@ -1,4 +1,4 @@
-package main
+package leetcode88_MergeSortedArray
 
 func merge(nums1 []int, m int, nums2 []int, n int) {
 	l1 := m - 1

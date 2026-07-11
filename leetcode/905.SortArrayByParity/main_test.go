@@ -1,4 +1,4 @@
-package main
+package leetcode905_SortArrayByParity
 
 import (
 	"reflect"

@@ -1,4 +1,4 @@
-package main
+package leetcode153_FindMinimuminRotatedSortedArray
 
 func findMin(nums []int) int {
 	if len(nums) == 1 {

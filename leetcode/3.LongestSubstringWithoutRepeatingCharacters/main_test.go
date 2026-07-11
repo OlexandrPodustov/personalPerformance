@@ -1,4 +1,4 @@
-package main
+package leetcode3_LongestSubstringWithoutRepeatingCharacters
 
 import "testing"
 

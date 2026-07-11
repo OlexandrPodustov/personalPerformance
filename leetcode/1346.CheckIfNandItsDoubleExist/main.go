@@ -1,4 +1,4 @@
-package main
+package leetcode1346_CheckIfNandItsDoubleExist
 
 func checkIfExist(arr []int) bool {
 	doubles := make(map[int]int)

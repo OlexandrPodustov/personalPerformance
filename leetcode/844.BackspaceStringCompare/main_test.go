@@ -1,4 +1,4 @@
-package main
+package leetcode844_BackspaceStringCompare
 
 import "testing"
 

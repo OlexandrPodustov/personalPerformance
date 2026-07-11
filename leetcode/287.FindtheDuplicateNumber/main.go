@@ -1,4 +1,4 @@
-package main
+package leetcode287_FindtheDuplicateNumber
 
 func findDuplicate(nums []int) int {
 	dictionary := make(map[int]int)

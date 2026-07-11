@@ -1,4 +1,4 @@
-package main
+package leetcode9_WordSearch
 
 func exist(board [][]byte, word string) bool {
 	for i := 0; i < len(board); i++ {

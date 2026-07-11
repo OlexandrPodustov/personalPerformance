@@ -1,4 +1,4 @@
-package main
+package leetcode21_MergeTwoSortedLists
 
 import (
 	"encoding/json"

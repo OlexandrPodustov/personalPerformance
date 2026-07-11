@@ -1,4 +1,4 @@
-package main
+package leetcode27_RemoveElement
 
 func removeElement(nums []int, val int) int {
 	insertAt := 0

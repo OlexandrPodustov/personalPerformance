@@ -1,4 +1,4 @@
-package main
+package leetcode905_SortArrayByParity
 
 func sortArrayByParity(nums []int) []int {
 	res := make([]int, len(nums))

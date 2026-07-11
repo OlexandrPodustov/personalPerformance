@@ -1,4 +1,4 @@
-package main
+package leetcode704_BinarySearch
 
 import "testing"
 

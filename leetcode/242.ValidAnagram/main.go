@@ -1,4 +1,4 @@
-package main
+package leetcode242_ValidAnagram
 
 func isAnagram(s string, t string) bool {
 	smap := make(map[rune]int)

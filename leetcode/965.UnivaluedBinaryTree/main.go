@@ -1,4 +1,4 @@
-package main
+package leetcode965_UnivaluedBinaryTree
 
 // Definition for a binary tree node.
 type TreeNode struct {

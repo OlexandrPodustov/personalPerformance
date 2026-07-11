@@ -1,4 +1,4 @@
-package main
+package leetcode102_BinaryTreeLevelOrderTraversal
 
 // Definition for a binary tree node.
 type TreeNode struct {

@@ -1,4 +1,4 @@
-package main
+package leetcode49_GroupAnagrams
 
 func groupAnagrams(strs []string) [][]string {
 	data := map[[26]uint16][]string{}

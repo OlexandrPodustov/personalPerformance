@@ -1,4 +1,4 @@
-package main
+package validPalindrome
 
 func isPalindrome(inputString string) bool {
 	left := 0

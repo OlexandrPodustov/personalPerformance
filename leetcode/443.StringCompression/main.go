@@ -1,4 +1,4 @@
-package main
+package leetcode443_StringCompression
 
 import "fmt"
 

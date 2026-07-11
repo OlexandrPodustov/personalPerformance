@@ -1,4 +1,4 @@
-package main
+package sstore4
 
 import (
 	"sync"

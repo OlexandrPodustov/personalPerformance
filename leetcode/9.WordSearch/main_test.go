@@ -1,4 +1,4 @@
-package main
+package leetcode9_WordSearch
 
 import "testing"
 

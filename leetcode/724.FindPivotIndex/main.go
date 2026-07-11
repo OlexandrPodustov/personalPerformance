@@ -1,4 +1,4 @@
-package main
+package leetcode724_FindPivotIndex
 
 func pivotIndex(nums []int) int {
 	lnums := len(nums)

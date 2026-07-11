@@ -1,4 +1,4 @@
-package main
+package palindromeLinkedList
 
 // palindrome function checks if the given linked list is a palindrome or not
 func palindrome(head *EduLinkedListNode) bool {

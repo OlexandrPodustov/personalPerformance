@@ -1,4 +1,4 @@
-package main
+package leetcode941_ValidMountainArray
 
 func validMountainArray(arr []int) bool {
 	if len(arr) < 3 {

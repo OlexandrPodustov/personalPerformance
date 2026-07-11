@@ -1,4 +1,4 @@
-package main
+package leetcode26_RemoveDuplicatesfromSortedArray
 
 import "testing"
 

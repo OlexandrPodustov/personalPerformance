@@ -1,4 +1,4 @@
-package main
+package leetcode1342NumberofStepstoReduceaNumbertoZero
 
 func numberOfSteps(num int) int {
 	numberOfSteps := 0

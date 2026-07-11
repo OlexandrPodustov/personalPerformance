@@ -1,4 +1,4 @@
-package main
+package leetcode21_MergeTwoSortedLists
 
 type ListNode struct {
 	Val  int

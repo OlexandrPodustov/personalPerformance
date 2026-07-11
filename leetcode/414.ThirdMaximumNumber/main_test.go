@@ -1,4 +1,4 @@
-package main
+package leetcode414_ThirdMaximumNumber
 
 import "testing"
 

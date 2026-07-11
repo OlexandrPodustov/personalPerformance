@@ -1,4 +1,4 @@
-package main
+package leetcode206_ReverseLinkedList
 
 import (
 	"encoding/json"

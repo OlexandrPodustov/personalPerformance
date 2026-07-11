@@ -1,4 +1,4 @@
-package main
+package leetcode409_LongestPalindrome
 
 import "testing"
 

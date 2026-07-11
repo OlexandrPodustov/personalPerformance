@@ -1,4 +1,4 @@
-package main
+package leetcode67_AddBinary
 
 import (
 	"strings"

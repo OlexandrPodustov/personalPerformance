@@ -1,4 +1,4 @@
-package main
+package leetcode133_CloneGraph
 
 // Definition for a Node.
 type Node struct {

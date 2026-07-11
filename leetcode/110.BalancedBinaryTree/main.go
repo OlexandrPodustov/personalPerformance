@@ -1,4 +1,4 @@
-package main
+package leetcode110_BalancedBinaryTree
 
 // Definition for a binary tree node.
 type TreeNode struct {

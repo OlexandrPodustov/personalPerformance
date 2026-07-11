@@ -1,4 +1,4 @@
-package main
+package leetcode2357_MakeArrayZerobySubtractingEqualAmounts
 
 import "testing"
 

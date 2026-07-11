@@ -1,4 +1,4 @@
-package main
+package leetcode75_SortColors
 
 import (
 	"testing"

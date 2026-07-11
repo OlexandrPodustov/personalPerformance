@@ -1,4 +1,4 @@
-package main
+package validPalindromeSecond
 
 func validPalindrome(inputString string) bool {
 	left := 0

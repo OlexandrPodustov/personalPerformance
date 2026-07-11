@@ -1,4 +1,4 @@
-package main
+package leetcode2357_MakeArrayZerobySubtractingEqualAmounts
 
 func minimumOperations(nums []int) int {
 	distinctNumbers := make(map[int]struct{}, 0)

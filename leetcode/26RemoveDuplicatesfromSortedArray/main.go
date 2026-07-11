@@ -1,4 +1,4 @@
-package main
+package leetcode26RemoveDuplicatesfromSortedArray
 
 func removeDuplicates(nums []int) int {
 	var j int

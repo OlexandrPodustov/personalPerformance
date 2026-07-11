@@ -1,4 +1,4 @@
-package main
+package leetcode226_InvertBinaryTree
 
 import (
 	"reflect"

@@ -1,4 +1,4 @@
-package main
+package leetcode252_MeetingRooms
 
 import "testing"
 

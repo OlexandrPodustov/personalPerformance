@@ -1,4 +1,4 @@
-package main
+package leetcode733_FloodFill
 
 func floodFill(image [][]int, sr int, sc int, color int) [][]int {
 	cc := image[sr][sc]

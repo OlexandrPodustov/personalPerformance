@@ -1,4 +1,4 @@
-package main
+package leetcode13_RomantoInteger
 
 func romanToInt(s string) int {
 	mapping := map[string]int{

@@ -1,4 +1,4 @@
-package main
+package leetcode724_FindPivotIndex
 
 import "testing"
 

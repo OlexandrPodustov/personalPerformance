@@ -1,4 +1,4 @@
-package main
+package leetcode94_BinaryTreeInorderTraversal
 
 // Definition for a binary tree node.
 type TreeNode struct {

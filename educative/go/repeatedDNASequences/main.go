@@ -1,4 +1,4 @@
-package main
+package repeatedDNASequences
 
 func findRepeatedSequences(s string, k int) []string {
 	windowSize := k

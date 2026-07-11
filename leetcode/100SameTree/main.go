@@ -1,4 +1,4 @@
-package main
+package leetcode100SameTree
 
 // Definition for a binary tree node.
 type TreeNode struct {

@@ -1,4 +1,4 @@
-package main
+package leetcode884_UncommonWordsfromTwoSentences
 
 import (
 	"reflect"

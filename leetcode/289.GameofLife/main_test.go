@@ -1,4 +1,4 @@
-package main
+package leetcode289_GameofLife
 
 import (
 	"slices"

@@ -1,4 +1,4 @@
-package main
+package leetcode116_PopulatingNextRightPointersinEachNode
 
 // Definition for a Node.
 type Node struct {

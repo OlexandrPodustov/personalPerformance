@@ -1,4 +1,4 @@
-package main
+package findMaximuminSlidingWindow
 
 type Deque struct {
 	items []int

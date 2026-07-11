@@ -1,4 +1,4 @@
-package main
+package leetcode70_ClimbingStairs
 
 func climbStairs(n int) int {
 	switch n {

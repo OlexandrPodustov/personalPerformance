@@ -1,4 +1,4 @@
-package main
+package leetcode383RansomNote
 
 func canConstruct(ransomNote string, magazine string) bool {
 	if len(ransomNote) > len(magazine) {

@@ -1,4 +1,4 @@
-package main
+package leetcode2870_MinimumNumberofOperationstoMakeArrayEmpty
 
 func minOperations(nums []int) int {
 	counters := make(map[int]int)

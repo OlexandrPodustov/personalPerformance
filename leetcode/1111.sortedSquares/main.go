@@ -1,4 +1,4 @@
-package main
+package leetcode1111_sortedSquares
 
 func sortedSquares(nums []int) []int { // retry with two pointers
 	if len(nums) == 1 {

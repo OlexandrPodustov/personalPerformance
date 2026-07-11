@@ -1,4 +1,4 @@
-package main
+package leetcode238_ProductofArrayExceptSelf
 
 import (
 	"reflect"

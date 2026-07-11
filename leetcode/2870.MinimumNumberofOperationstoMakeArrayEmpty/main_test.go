@@ -1,4 +1,4 @@
-package main
+package leetcode2870_MinimumNumberofOperationstoMakeArrayEmpty
 
 import "testing"
 

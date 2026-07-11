@@ -1,4 +1,4 @@
-package main
+package leetcode217_ContainsDuplicate
 
 func containsDuplicate(nums []int) bool {
 	distinctNums := make(map[int]struct{})

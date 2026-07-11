@@ -1,4 +1,4 @@
-package main
+package leetcode1642_FurthestBuildingYouCanReach
 
 import (
 	"container/heap"

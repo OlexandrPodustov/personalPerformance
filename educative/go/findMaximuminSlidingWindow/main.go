@@ -1,4 +1,4 @@
-package main
+package findMaximuminSlidingWindow
 
 func findMaxSlidingWindow(nums []int, windowSize int) []int {
 	result := make([]int, 0)

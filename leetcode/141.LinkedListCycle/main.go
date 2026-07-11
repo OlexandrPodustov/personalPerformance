@@ -1,4 +1,4 @@
-package main
+package leetcode141_LinkedListCycle
 
 // Definition for singly-linked list.
 type ListNode struct {

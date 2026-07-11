@@ -1,4 +1,4 @@
-package main
+package leetcode1897_RedistributeCharacterstoMakeAllStringsEqual
 
 func makeEqual(words []string) bool {
 	count := make(map[rune]int)

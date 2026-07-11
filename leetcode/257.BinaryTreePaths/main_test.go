@@ -1,4 +1,4 @@
-package main
+package leetcode257_BinaryTreePaths
 
 import (
 	"reflect"

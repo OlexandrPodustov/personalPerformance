@@ -1,5 +1,5 @@
 // Template to reverse the linked list
-package main
+package palindromeLinkedList
 
 func ReverseList(slowPtr *EduLinkedListNode) *EduLinkedListNode {
 	reverse := new(EduLinkedListNode)

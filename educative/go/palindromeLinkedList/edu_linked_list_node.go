@@ -1,4 +1,4 @@
-package main
+package palindromeLinkedList
 
 type EduLinkedListNode struct {
 	data int

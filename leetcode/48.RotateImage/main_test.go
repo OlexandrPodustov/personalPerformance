@@ -1,4 +1,4 @@
-package main
+package leetcode48_RotateImage
 
 import (
 	"reflect"

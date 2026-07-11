@@ -1,4 +1,4 @@
-package main
+package leetcode110_BalancedBinaryTree
 
 import (
 	"testing"

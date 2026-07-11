@@ -1,4 +1,4 @@
-package main
+package middleoftheLinkedList
 
 import "fmt"
 

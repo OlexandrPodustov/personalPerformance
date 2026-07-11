@@ -1,4 +1,4 @@
-package main
+package leetcode1111_maxConsecutiveOnes
 
 func findMaxConsecutiveOnes(nums []int) int {
 	if len(nums) == 0 {

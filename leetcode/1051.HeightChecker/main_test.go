@@ -1,4 +1,4 @@
-package main
+package leetcode1051_HeightChecker
 
 import "testing"
 

@@ -1,4 +1,4 @@
-package main
+package leetcode88_mergeSortedArrays
 
 import (
 	"testing"

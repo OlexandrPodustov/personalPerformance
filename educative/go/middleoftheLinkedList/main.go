@@ -1,4 +1,4 @@
-package main
+package middleoftheLinkedList
 
 // getMiddleNode function to find the middle node of the linked list
 func getMiddleNode(head *EduLinkedListNode) *EduLinkedListNode {

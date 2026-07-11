@@ -1,4 +1,4 @@
-package main
+package leetcode994_RottingOranges
 
 import "testing"
 

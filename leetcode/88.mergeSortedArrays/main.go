@@ -1,4 +1,4 @@
-package main
+package leetcode88_mergeSortedArrays
 
 // min-max size 0...1000
 // elements 10^-9...10^9

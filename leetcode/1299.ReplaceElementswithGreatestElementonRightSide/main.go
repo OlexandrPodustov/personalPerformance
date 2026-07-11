@@ -1,4 +1,4 @@
-package main
+package leetcode1299_ReplaceElementswithGreatestElementonRightSide
 
 func replaceElements(arr []int) []int {
 	if len(arr) == 1 {

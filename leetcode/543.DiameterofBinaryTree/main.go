@@ -1,4 +1,4 @@
-package main
+package leetcode543_DiameterofBinaryTree
 
 // Definition for a binary tree node.
 type TreeNode struct {

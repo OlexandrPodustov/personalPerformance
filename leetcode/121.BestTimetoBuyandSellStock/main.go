@@ -1,4 +1,4 @@
-package main
+package leetcode121_BestTimetoBuyandSellStock
 
 func maxProfit(prices []int) int {
 	localMin := 10000

@@ -1,4 +1,4 @@
-package main
+package leetcode937_ReorderDatainLogFiles
 
 import (
 	"regexp"

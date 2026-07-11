@@ -1,4 +1,4 @@
-package main
+package leetcode116_PopulatingNextRightPointersinEachNode
 
 import (
 	"reflect"

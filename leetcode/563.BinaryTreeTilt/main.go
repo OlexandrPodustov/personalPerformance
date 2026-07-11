@@ -1,4 +1,4 @@
-package main
+package leetcode563_BinaryTreeTilt
 
 // Definition for a binary tree node.
 type TreeNode struct {

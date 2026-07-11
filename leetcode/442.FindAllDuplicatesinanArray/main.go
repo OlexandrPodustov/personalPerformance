@@ -1,4 +1,4 @@
-package main
+package leetcode442_FindAllDuplicatesinanArray
 
 import "sort"
 

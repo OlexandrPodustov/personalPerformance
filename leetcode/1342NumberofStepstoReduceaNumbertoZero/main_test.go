@@ -1,4 +1,4 @@
-package main
+package leetcode1342NumberofStepstoReduceaNumbertoZero
 
 import "testing"
 
