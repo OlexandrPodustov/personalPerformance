@@ -1,6 +1,14 @@
 name: Go CI
 
 on:
+  push:
+    branches: ["main"]
+    paths:
+      - "**/*.go"
+      - "go.mod"
+      - "go.sum"
+      - ".golangci.yaml"
+      - ".github/workflows/go-ci.yml"
   pull_request:
     paths:
       - "**/*.go"
@@ -9,13 +17,19 @@ on:
       - ".golangci.yaml"
       - ".github/workflows/go-ci.yml"
 
+permissions:
+  contents: read
+
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+        with:
+          # full history: golangci-lint resolves issues.new-from-rev against it
+          fetch-depth: 0
 
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v6
         with:
           go-version-file: go.mod
 
@@ -29,6 +43,6 @@ jobs:
         run: go test ./...
 
       - name: lint
-        uses: golangci/golangci-lint-action@v6
+        uses: golangci/golangci-lint-action@v9
         with:
-          version: v1.54.2
+          version: v2.12.2

@@ -47,3 +47,22 @@ updates:
       - "OlexandrPodustov"
     reviewers:
       - "OlexandrPodustov"
+
+  # GitHub Actions updates
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    groups:
+      actions-dependencies:
+        patterns:
+          - "*"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    assignees:
+      - "OlexandrPodustov"
+    reviewers:
+      - "OlexandrPodustov"
