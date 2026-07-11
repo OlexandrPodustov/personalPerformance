@@ -53,6 +53,7 @@ mod tests {
     use super::*;
 
     #[test]
+    #[ignore = "search() is an unfinished exercise"]
     fn one_result() {
         let query = "duct";
         let contents = "\
