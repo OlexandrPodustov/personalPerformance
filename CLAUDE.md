@@ -46,3 +46,29 @@ A Sonnet classifier evaluates every tool call.
 - **Blocks:** download-and-execute, credential leaks, force-push to `main`, mass deletion
 
 **Circuit breaker:** 3 consecutive blocks → stop auto-deciding and resume prompting.
+
+### Limits of the deterministic rules
+
+The `permissions.deny` list in `.claude/settings.json` is a fast first pass, not a
+security boundary. Know what it cannot do:
+
+- **Prefix matching only.** `Bash(git push --force *)` catches
+  `git push --force origin main` but not `git push origin main --force` — flag
+  order defeats it. The same applies to every `Bash(...)` rule.
+- **`Read(...)` denies gate the Read tool, not the shell.** A denied
+  `Read(//**/.env)` does nothing to stop `cat .env` in Bash.
+- **Compound and indirect forms slip through.** `curl -o f url && sh f` is not
+  the denied `curl * | sh`.
+
+Tier 3 is what actually holds: the classifier reads intent rather than matching
+strings, and `autoMode.hard_deny` is where the real prohibitions live. Treat the
+deny list as defense in depth, never as the only fence.
+
+### What belongs in which file
+
+`.claude/settings.json` is committed to a **public** repo — anyone who clones it
+inherits those rules. Keep it to non-executing operations. Anything that compiles
+or runs repository code (`cargo build`/`test`/`clippy`, `go build`/`test`, `npm
+install`) executes `build.rs`, proc macros, test bodies, and install scripts, so
+it belongs in the git-ignored `.claude/settings.local.json` alongside
+machine-specific paths and the `defaultMode: "auto"` opt-in.

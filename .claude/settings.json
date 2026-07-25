@@ -9,17 +9,15 @@
       "Bash(git log *)",
       "Bash(git show *)",
       "Bash(cargo metadata *)",
-      "Bash(cargo tree *)",
-      "Bash(cargo clippy *)",
-      "Bash(cargo test *)",
-      "Bash(cargo build *)",
-      "Bash(go test *)",
-      "Bash(go build *)",
-      "Bash(go vet *)"
+      "Bash(cargo tree *)"
     ],
     "deny": [
       "Bash(rm -rf *)",
+      "Bash(rm -fr *)",
+      "Bash(rm -r -f *)",
+      "Bash(rm -f -r *)",
       "Bash(sudo *)",
+      "Bash(doas *)",
       "Bash(git push --force *)",
       "Bash(git push -f *)",
       "Bash(curl * | sh)",
@@ -28,8 +26,22 @@
       "Bash(wget * | bash)",
       "Read(//**/.ssh/**)",
       "Read(//**/.aws/**)",
+      "Read(//**/.gnupg/**)",
+      "Read(//**/.kube/config)",
+      "Read(//**/.docker/config.json)",
       "Read(//**/.env)",
-      "Read(//**/*.pem)"
+      "Read(//**/.env.*)",
+      "Read(//**/.netrc)",
+      "Read(//**/.npmrc)",
+      "Read(//**/.pypirc)",
+      "Read(//**/.git-credentials)",
+      "Read(//**/credentials.json)",
+      "Read(//**/id_rsa*)",
+      "Read(//**/id_ed25519*)",
+      "Read(//**/*.pem)",
+      "Read(//**/*.key)",
+      "Read(//**/*.p12)",
+      "Read(//**/*.pfx)"
     ]
   }
 }
