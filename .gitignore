@@ -15,3 +15,4 @@
 node_modules
 target/
 rust/rustlings/**
+graphify-out/
